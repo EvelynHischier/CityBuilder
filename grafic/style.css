@@ -1,0 +1,246 @@
+@CHARSET "ISO-8859-1";
+/*
+ *  ----------------------    general  ----------------------------
+*/
+body {
+	background-image: url("background.png");
+	margin: 0px;
+	z-index: -10; /* Layer  (background) */
+	font-family: Arial;
+}
+
+h1 {
+	font-family: Papyrus, Arial;
+	font-size: 30pt;
+	text-decoration: underline;
+	text-align: center;
+	text-decoration: underline;
+}
+
+#content {
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+div#mainDiv, div#divRight {
+	z-index: 2; /* Layer  (forground) */
+	height: 80%;
+}
+
+div#title {
+	height: 10%;
+}
+
+div#mainDiv {
+	width: 70%;
+	float: left;
+}
+
+div#divRight {
+	width: 30%;
+	float: right;
+}
+
+/*
+ *  ----------------------    buttons Main Menu  ----------------------------
+*/
+.mainMenu {
+	width: 50%;
+	height: 15%;
+	margin-left: 45%;
+	margin-bottom: 5%;
+	font-size: 26pt;
+}
+
+.mainMenu:hover, .buttonRight:hover {
+	background-color: #ffb044;
+}
+
+input[type="button"] {
+	color: black;
+	border: 1px solid black;
+	background-color: #ffd966; /* orange */
+	font-family: 'Calibri';
+}
+/*
+ *  ----------------------    Menu Right  ----------------------------
+*/
+.buttonRight {
+	width: 100%;
+	height: 100%;
+	font-size: 20pt;
+}
+
+div#button_1, div#button_2 {
+	height: 10%;
+}
+
+div#textImage, div#button_1, div#button_2 {
+	z-index: 2;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	margin-right: 5px;
+}
+
+div#textImage {
+	height: 75%;
+	padding: 10px;
+	border: 1px solid black;
+	background-color: #ffd966; /* orange */
+}
+
+div#hover_image {
+	z-index: 4;
+	height: 35%;
+	width: 100%;
+}
+
+div#hover_text {
+	z-index: 4;
+	height: 60%;
+	width: 100%;
+	margin-top: 4%;
+}
+
+img {
+	max-width: auto;
+	max-height: 100%;
+	/* center image */
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+
+/*
+ *  ----------------------    Placement Map  ----------------------------
+*/
+div#placementMap {
+	z-index: 1px;
+	height: 100%;
+	width: 100%;
+	border: 3px solid black;
+	background-color: #ffd966; /* orange */
+}
+
+#map{
+	height: 100%;
+	width: 100%;
+}
+
+ .zone {
+   	 background-color: red;
+   	 border: 2px solid white;
+   	 border-radius: 100%;
+   	 cursor: pointer;
+   	 position: absolute;
+    }
+    
+    .zone:hover {
+   	 background-color: pink;
+    }
+
+/*
+ *  ----------------------    game interface  ----------------------------
+*/
+
+/* table size*/
+div#gameInterface {
+	border: 1px solid black;
+	background-color: #ffd966; /* orange */
+	height: 100%;
+	width: 100%;
+}
+
+table {
+	padding-left: 15px;
+	width: 100%;
+	height: 100%;
+	width: 100%;
+	border-spacing: 10px;
+}
+
+.citizen {
+	width: 25%;
+	height: 7%;
+}
+
+.number {
+	width: 7%;
+	min-width: 70px;
+	text-align: right;
+}
+
+.pyramid {
+	width: 65%;
+	height: 80%;
+}
+
+.tech {
+	width: 21%;
+	text-align: center;
+}
+
+.description {
+	height: 10%;
+}
+
+input[type="number"] {
+	width: 100%;
+	text-align: right;
+}
+
+/* table content */
+.tech_Button {
+	width: 100%;
+	height: 100%;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto 100%;
+}
+
+.tech_Button[name="writing"] {
+	background-image: url(../pictures/management_writing.png);
+}
+
+.tech_Button[name="pottery"] {
+	background-image: url(../pictures/management_pottery.png);
+}
+
+.tech_Button[name="granary"] {
+	background-image: url(../pictures/management_granary.png);
+}
+
+/* color of the fields */
+#table_king {
+	background-color: #FDFBB5; /* yellow  */
+}
+
+#table_priest {
+	background-color: #B962B9; /* violet  */
+}
+
+#table_craftsment {
+	background-color: #FDFBB5; /* piggy orange :)  */
+}
+
+#table_scribes {
+	background-color: #39B7FB; /* blue  */
+}
+
+#table_soldiers {
+	background-color: #F36971; /* red  */
+}
+
+#table_peasants {
+	background-color: #D2F079; /* green  */
+}
+
+#table_slaves {
+	background-color: #C3C3C3; /* grey  */
+}
+
+#table_population, #table_caravans {
+	background-color: #ffb044; /* dark orange  */
+}

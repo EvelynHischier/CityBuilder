@@ -1,18 +1,28 @@
 
 <div id="viewMenu">
+	<!-- Launch the game -->
+	<input type="button" class="mainMenu" value="Launch the game"
+		id="button_launch" onclick="launchGame()" />
 
-	<input type="button" class="mainMenu" name="button_01"
-		value="Exit game"> 
-		
-	<input type="button" class="mainMenu"
-		name="button_02" value="Exit game">
 
+	<!-- 	rules -->
+	<input type="button" class="mainMenu" value="Rules" id="button_rules"
+		onclick="displayRules()" />
+
+
+	<!-- game modes -->
 	<!-- if admin -> display -->
-	<input type="button" class="mainMenu" name="button_03"
-		value="Exit game">
-	<!-- else ->  nothing -->
+	<input type="button" class="mainMenu" value="Game modes"
+		id="button_modes" onclick="displayGameModes()" />
+	<!-- else -> do not display -->
 
-	<input type="button" class="mainMenu" name="button_04"
-		value="Infinite turns mode">
+
+	<!-- 		exit game		 -->
+	<input type="button" class="mainMenu" value="Exit game"
+		id="button_exit" onclick="exitGame()" />
+
+
+	<!--  script for clicks on buttons -->
+	<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
 
 </div>

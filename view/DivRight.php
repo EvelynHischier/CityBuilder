@@ -14,15 +14,17 @@
 
 
 	<div id="button_1">
-		<input type="button" class="buttonRight" name="button_turn"
-			value="End of turn">
+		<input type="button" class="buttonRight" id="button_turn"
+			value="End of turn" onclick="turnFinish()">
 	</div>
 
 
 	<div id="button_2">
-		<input type="button" class="buttonRight" name="button_exit"
-			value="Exit game">
+		<input type="button" class="buttonRight" id="button_exit"
+			value="Exit game" onclick="exitGame()">
 	</div>
 
+	<!--  javascript -->
+	<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
 
 </div>

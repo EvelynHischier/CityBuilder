@@ -28,9 +28,9 @@
 			
 			<?php
 			// include main menu
-			//include_once 'view/DivMenu.php';
+			include_once 'view/DivMenu.php';
 			
-			include_once 'view/DivMap.php';
+			//include_once 'view/DivMap.php';
 			
 			//include_once 'view/DivGame.php';
 			

@@ -29,11 +29,13 @@
 			
 			<?php
 			// include main menu
-			//include_once 'view/mainMenu.php';
+			//include_once 'view/DivMenu.php';
 			
-			//include_once 'view/placementMap.php';
+			//include_once 'view/DivMap.php';
 			
-			include_once 'view/gameInterface.php';
+			//include_once 'view/DivGame.php';
+			
+			include_once 'view/DivRules';
 			?>
 			
 		</div>
@@ -43,7 +45,7 @@
 		<div id="divRight">
 		<?php
 		// include interface on the right
-		include_once 'view/interfaceRight.php';
+		include_once 'view/DivRight.php';
 		?>
 		
 

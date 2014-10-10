@@ -42,6 +42,13 @@ div#divRight {
 	float: right;
 }
 
+/* Div: 100% size, Background color: orange */
+div#DivRules{
+	height: 100%;
+	width: 100%;
+	background-color: #ffd966; 
+}
+
 /*
  *  ----------------------    buttons Main Menu  ----------------------------
 */
@@ -54,7 +61,7 @@ div#divRight {
 }
 
 .mainMenu:hover, .buttonRight:hover {
-	background-color: #ffb044;
+	background-color: #ffb044; /* dark orange */
 }
 
 input[type="button"] {
@@ -244,3 +251,7 @@ input[type="number"] {
 #table_population, #table_caravans {
 	background-color: #ffb044; /* dark orange  */
 }
+
+/*
+ *  ----------------------    Rules interface  ----------------------------
+*/

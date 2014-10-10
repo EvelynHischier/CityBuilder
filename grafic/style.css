@@ -23,7 +23,7 @@ h1 {
 	margin-right: 20px;
 }
 
-div#mainDiv, div#divRight {
+div#mainDiv, div#divHoverRight {
 	z-index: 2; /* Layer  (forground) */
 	height: 80%;
 }
@@ -37,13 +37,13 @@ div#mainDiv {
 	float: left;
 }
 
-div#divRight {
+div#divHoverRight {
 	width: 30%;
 	float: right;
 }
 
 /* Div: 100% size, Background color: orange */
-div#DivRules{
+div#viewMap, #viewGame, div#viewRules, {
 	height: 100%;
 	width: 100%;
 	background-color: #ffd966; 
@@ -122,11 +122,13 @@ img {
 /*
  *  ----------------------    Placement Map  ----------------------------
 */
-div#placementMap {
+div#viewMap {
 	z-index: 1px;
-	height: 100%;
-	width: 100%;
 	border: 3px solid black;
+	
+	/* height: 100%;
+	width: 100%;
+	
 	background-color: #ffd966; /* orange */
 }
 
@@ -152,11 +154,14 @@ div#placementMap {
 */
 
 /* table size*/
-div#gameInterface {
+div#viewGame {
 	border: 1px solid black;
-	background-color: #ffd966; /* orange */
+	
+	/*
 	height: 100%;
 	width: 100%;
+	background-color: #ffd966; /* orange */
+
 }
 
 table {
@@ -255,3 +260,15 @@ input[type="number"] {
 /*
  *  ----------------------    Rules interface  ----------------------------
 */
+
+div#viewRules{
+	
+	/* set scroll bar */
+	overflow:auto; 
+	display: block;
+	padding-left: 10px;
+	
+	/* Scrollbar for Ipad*/
+}
+
+

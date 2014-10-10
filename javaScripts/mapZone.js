@@ -13,7 +13,7 @@ $(function() {
 
 	function init(){
 
-		map = $("#placementMap");
+		map = $("#viewMap");
 
 		divContent = $('#content');
 

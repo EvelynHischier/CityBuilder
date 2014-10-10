@@ -11,8 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="grafic/style.css">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
-<!--  type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js" -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
 </head>
 
 <body>
@@ -31,18 +30,18 @@
 			// include main menu
 			//include_once 'view/DivMenu.php';
 			
-			//include_once 'view/DivMap.php';
+			include_once 'view/DivMap.php';
 			
 			//include_once 'view/DivGame.php';
 			
-			include_once 'view/DivRules';
+			//include_once 'view/DivRules.php';  // --> scrollbar for ipad
 			?>
 			
 		</div>
 
 
 		<!-- ---------------     Div on the right  - text / image / ingame buttons   ---------------    -->
-		<div id="divRight">
+		<div id="divHoverRight">
 		<?php
 		// include interface on the right
 		include_once 'view/DivRight.php';

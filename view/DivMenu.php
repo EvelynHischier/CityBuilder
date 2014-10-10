@@ -1,8 +1,10 @@
 
-<div id="mainMenu">
+<div id="viewMenu">
 
 	<input type="button" class="mainMenu" name="button_01"
-		value="Exit game"> <input type="button" class="mainMenu"
+		value="Exit game"> 
+		
+	<input type="button" class="mainMenu"
 		name="button_02" value="Exit game">
 
 	<!-- if admin -> display -->

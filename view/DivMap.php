@@ -1,8 +1,8 @@
-<div id="placementMap">
+<div id="viewMap">
 
-<img src = "/SeriousGame/pictures/map.png" id="map"/>
+<img src = "pictures/map.png" id="map"/>
  
-<script  src="/SeriousGame/javaScripts/mapZone.js" type="text/javascript"></script>
+<script  src="javaScripts/mapZone.js" type="text/javascript"></script>
 
 
 </div>

@@ -1,4 +1,4 @@
-<div id="interfaceRight">
+<div id="viewRight">
 	<div id="textImage">
 		<div id="hover_image">
 			<img alt="picture" src="/SeriousGame/pictures/management1.png">

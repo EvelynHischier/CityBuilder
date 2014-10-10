@@ -1,4 +1,4 @@
-<div id="gameInterface">
+<div id="viewGame">
 
 	<table>
 		<tbody>

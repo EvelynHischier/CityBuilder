@@ -2,7 +2,7 @@
 
 <!-- Responsive Design:  http://getbootstrap.com/2.3.2/scaffolding.html -->
 <!-- IPad simulation: http://www.yourhelpcenter.com/ipad-browser-simulation/ -->
-
+<!-- my Git test comment -->
 <html>
 <head>
 <title>Serious game</title>

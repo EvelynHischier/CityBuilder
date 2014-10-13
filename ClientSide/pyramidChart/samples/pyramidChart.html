@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>amCharts examples</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="../amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="../amcharts/funnel.js" type="text/javascript"></script>
+        <script type="text/javascript">
+			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
+			var chart;
+			
+			configChart = function() {
+				chart = new AmCharts.AmFunnelChart();
+				chart.rotate = true;
+				chart.titleField = "title";
+				chart.balloon.fixedPosition = true;
+				chart.pullDistance = 0;
+				chart.marginRight = 210;
+				chart.marginLeft = 15;
+				chart.labelPosition = "right";
+				chart.funnelAlpha = 0.9;
+				chart.valueField = "value";
+				chart.startX = -500;
+				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBB5"];
+				/*
+				Colors:
+				#C3C3C3 = grey
+				#D2F079 = green
+				#F36971 = red
+				#39B7FB = blue
+				#FADAA9 = piggy orange :)
+				#B962B9 = violet
+				#FDFBB5 = yellow
+				*/
+				chart.borderAlpha = 1;
+				chart.startAlpha = 0;
+				chart.valueRepresents = "area";
+				chart.write("chartdiv");
+			};
+			
+			if(AmCharts.isReady) {
+				configChart();
+			} else {
+				AmCharts.ready(configChart);
+			}
+			
+        </script>
+    </head>
+    
+    <body>
+        <div id="chartdiv" style="width: 500px; height: 300px;"></div>
+		<div>
+			<table border="0">
+			<tr>
+				<td>Available population</td>
+				<td><input type="number" id="txt_popavailable" value="1200" readonly /></td>
+			</tr>
+			<tr>
+				<td>Kings</td>
+				<td><input type="number" id="txt1" onBlur="updatePyramid()" /></td>
+			</tr>
+			<tr>
+				<td>Priests</td>
+				<td><input type="number" id="txt2" onBlur="updatePyramid()" /></td>
+			</tr>
+			<tr>
+				<td>Craftsmen</td>
+				<td><input type="number" id="txt3" onBlur="updatePyramid()" /></td>
+			</tr>
+			<tr>
+				<td>Scribes</td>
+				<td><input type="number" id="txt4" onBlur="updatePyramid()" /></td>
+			</tr>
+			<tr>
+				<td>Soldiers</td>
+				<td><input type="number" id="txt5" onBlur="updatePyramid()" /></td>
+			</tr>
+			<tr>
+				<td>Peasants</td>
+				<td><input type="number" id="txt6" onBlur="updatePyramid()" /></td>
+			</tr>
+			<tr>
+				<td>Slaves</td>
+				<td><input type="number" id="txt7" onBlur="updatePyramid()" /></td>
+			</tr>
+			</table>
+			<script type="text/javascript">
+				var popAvailable = 1200;
+				function updatePyramid()
+				{
+					/*var scribesResearched = true;
+			
+					if(!scribesResearched)
+						document.getElementById("txt4").setAttribute("readonly", "true");
+					else
+						document.getElementById("txt4").setAttribute("readonly", "false");*/
+					
+					var data = [
+					{
+						"title": "Slaves",
+						"value": Number(document.getElementById("txt7").value)
+					},
+					{
+						"title": "Peasants",
+						"value": Number(document.getElementById("txt6").value)
+					},
+					{
+						"title": "Soldiers",
+						"value": Number(document.getElementById("txt5").value)
+					},
+					{
+						"title": "Scribes",
+						"value": Number(document.getElementById("txt4").value)
+					},
+					{
+						"title": "Craftsmen",
+						"value": Number(document.getElementById("txt3").value)
+					},
+					{
+						"title": "Priests",
+						"value": Number(document.getElementById("txt2").value)
+					},
+					{
+						"title": "King",
+						"value": Number(document.getElementById("txt1").value)
+					}
+					];
+					
+					var sum = 0;
+					for(var i = 0; i<data.length; i++) {
+						sum += data[i]["value"];
+					}
+					
+					if(sum > popAvailable) {
+						alert("You cannot assign more people than available!");
+						document.getElementById("txt_popavailable").value = 0;
+					}
+					else
+						document.getElementById("txt_popavailable").value = popAvailable - sum;
+					
+					chart.dataProvider = data;
+					chart.validateData();
+				}
+			</script>
+		</div>
+    </body>
+
+</html>

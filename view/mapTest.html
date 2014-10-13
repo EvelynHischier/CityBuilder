@@ -1,0 +1,50 @@
+<style>
+	#map {
+		border: 3px ridge black;
+		position:absolute;
+		top: 50px;
+	}
+	
+	.zone {
+		background-color: red;
+		border: 2px solid white;
+		border-radius: 100%;
+		cursor: pointer;
+		position: absolute;
+	}
+	
+	.zone:hover {
+		background-color: pink;
+	}
+</style>
+
+<div id="map">
+	<img src = "map.png" />
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+	zoneOne = document.createElement("div");
+	
+	$map = $("#map");
+	unit = $map.width()/100;
+	
+	$(zoneOne).addClass("zone")
+	.css("width", unit*9+"px")
+	.css("height", unit*9+"px")
+	.css("border", "solid white " + unit*1 + "px")
+	.css("position", "absolute")
+	.attr("title", "zone one")
+	.css("left", unit*25+"px")
+	.css("top", unit*30+"px")
+	.on("click", function(evt) {
+		alert("Hello");
+	})
+	.mouseover(function(evt) {
+		alert("hover");
+	});
+	
+	$map.prepend(zoneOne);
+	
+</script>

@@ -4,6 +4,8 @@
 
 // frontController is not online actualy
 
+var url = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
+
 function launchGame(){
 	var buttonLaunch = $("#button_launch");
 
@@ -41,18 +43,27 @@ function displayRules(){
 
 function displayGameModes(){
 	var buttonLaunch = $("#button_modes");
-
-	alert("Game modes ->clicked");
-//	$.ajax({
-//		url: "http://localhost:8080/Git/CityBuilder/ServerSide/fc.php", 
-//		type: "POST",
-//		data:    {
-//			request: {
-//				functions: [ {
-//					path: “game/setMode”, data: {null }  } ] 
-//			}
-//		}
-//	})
+	
+	//alert("Game modes ->clicked");
+	$.ajax({
+		url: url, 
+		type: "POST",
+		data:    {
+			request: {
+				functions: [ {
+					path: "game/setMode", data: "tests"  } ] 
+			}
+		}
+	})
+	.done(function( data ){
+		alert(JSON.stringify(data));
+	})
+	.fail(function( data ){
+		alert(JSON.stringify( data ));
+	})
+	.always(function( data ){
+		
+	});
 }
 
 function exitGame(){

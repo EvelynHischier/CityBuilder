@@ -51,5 +51,6 @@
 		</div>
 	</div>
 	<!--   <script src='js/MainMenu.js'></script> -->
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js' type="text/javascript">
 </body>
 </html>

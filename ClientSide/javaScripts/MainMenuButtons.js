@@ -46,7 +46,7 @@ function displayGameModes(){
 	
 	//alert("Game modes ->clicked");
 	$.ajax({
-		url: url, 
+		url: url,
 		type: "POST",
 		data:    {
 			request: {

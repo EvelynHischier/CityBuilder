@@ -2,7 +2,7 @@
 
 <!-- Responsive Design:  http://getbootstrap.com/2.3.2/scaffolding.html -->
 <!-- IPad simulation: http://www.yourhelpcenter.com/ipad-browser-simulation/ -->
-
+<!-- my Git test comment -->
 <html>
 <head>
 <title>Serious game</title>
@@ -51,5 +51,6 @@
 		</div>
 	</div>
 	<!--   <script src='js/MainMenu.js'></script> -->
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js' type="text/javascript">
 </body>
 </html>

@@ -1,7 +1,7 @@
 <div id="viewRight">
 	<div id="textImage">
 		<div id="hover_image">
-			<img alt="picture" src="/SeriousGame/pictures/management1.png">
+			<img alt="picture" src="pictures/management1.png">
 		</div>
 
 		<div id="hover_text">

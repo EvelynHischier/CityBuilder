@@ -12,6 +12,7 @@ class Permission {
 	
 	public function checkPermission( $user, $functions ) {
 		$response = "";
+		return $response;
 		
 		foreach($functions as $index => $object) {
 			

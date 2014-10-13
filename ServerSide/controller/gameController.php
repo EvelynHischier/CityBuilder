@@ -10,7 +10,10 @@ class gameController {
 	}
 	
 	public function setModeAction( $data ) {
-		return ( new Mode() )->setMode( $data );
+		if($data == "test")
+			return true;
+		else
+			return false;
 	}
 	
 }

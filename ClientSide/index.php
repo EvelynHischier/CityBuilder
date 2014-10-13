@@ -23,7 +23,7 @@
 		</div>
 
 		<!-- ---------------     Main Div   ---------------    -->
-		<div id="mainDiv">
+		<div data-ng-app="app" id="mainDiv" data-ng-controller="ViewController">
 			
 			
 			<?php
@@ -32,7 +32,7 @@
 			
 			//include_once 'view/DivMap.php';
 			
-			//include_once 'view/DivGame.php';
+			include_once 'view/DivGame.php';
 			
 			//include_once 'view/DivRules.php';  // --> scrollbar for ipad
 			?>
@@ -47,10 +47,13 @@
 		include_once 'view/DivRight.php';
 		?>
 		
-
 		</div>
 	</div>
 	<!--   <script src='js/MainMenu.js'></script> -->
-	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js' type="text/javascript">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var app = angular.module("app", []);
+	</script>
+	<script src="javaScripts/ViewController.js" type="text/javascript"></script>
 </body>
 </html>

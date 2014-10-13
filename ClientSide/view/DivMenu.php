@@ -1,5 +1,5 @@
 
-<div id="viewMenu">
+<div id="viewMenu" data-ng-show="{{ page=='mainMenu' }}" >
 	<!-- Launch the game -->
 	<input type="button" class="mainMenu" value="Launch the game"
 		id="button_launch" onclick="launchGame()" />

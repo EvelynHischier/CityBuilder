@@ -1,4 +1,4 @@
-<div id="viewGame" data-ng-show="{{ page == 'gameStart' }}">
+<div id="viewGame" data-ng-show = "{{ page == 'gameStart' }}">
 	<table>
 		<tbody>
 			<tr>

@@ -1,7 +1,7 @@
 <?php
 class turnController {
 	
-	public function endTurnAction( $datas ) {
+	public function endTurnAction($data) {
 		
 	}
 	

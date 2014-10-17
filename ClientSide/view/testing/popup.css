@@ -1,0 +1,76 @@
+#hintergrund {
+    display:none;
+    z-index:1;
+    position: fixed;
+    height:100%;
+    width:100%;
+    top:0px;
+    left:0px;
+    background:#000000;
+}
+ 
+#popup {
+    display: none;
+    z-index: 2;
+    position: fixed;
+    width:450px;
+    top: 20%;
+    left: 50%;
+    margin-left: -250px;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 8px solid #ccc;
+    border-radius: 5px 5px 5px 5px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+ 
+div.schliessen {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    left: -5px;
+    bottom: -4px;
+    background: url("close.png") no-repeat scroll 0 0 transparent;
+    float: right;
+    cursor: pointer;
+}
+ 
+#popup_inhalt {
+    margin: 8px 14px;
+}
+
+.buttonYes, .buttonNo {
+	background: orange;
+	color: white;
+	font-weight: bold;
+	border: 2px solid darkorange;
+	width: 25%;
+	text-align: center;
+	margin: 10px 5px;
+	font-size: 12pt;
+	float: left;
+}
+
+.buttonYes:hover, .buttonNo:hover {
+	background: darkorange;
+	cursor: pointer;	
+}
+
+input[type="button"] {
+	background:orange;
+	color:white;
+	font-weight: bold;
+	font-size:18pt;
+	padding: 20px;
+	width: 400px;
+}
+
+input[type="button"]:hover {
+	background: darkorange;
+	cursor: pointer;
+}
+
+input[type="button"]:focus {
+	outline:0;
+}

@@ -1,4 +1,4 @@
-<div id="viewRules">  
+<div id="viewRules"  data-ng-show = "{{ page == 'showRules' }}">  
 	<h1>But du jeu</h1>
 	<p>Le but du jeu Bâtisseur de cité est de faire prospérer une petite
 		société dans la vallée du Nil pendant l’Égypte antique. Vous incarnez

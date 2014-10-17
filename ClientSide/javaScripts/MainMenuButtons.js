@@ -2,9 +2,8 @@
  *   On Click action of main Menu
  */
 
-// frontController is not online actualy
-
-var url = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
+var urlMedhi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
+var url = "http://localhost:8080/Git/CityBuilder/ServerSide/fc.php";
 
 function launchGame(){
 	var buttonLaunch = $("#button_launch");

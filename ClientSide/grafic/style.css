@@ -43,7 +43,7 @@ div#divHoverRight {
 }
 
 /* Div: 100% size, Background color: orange */
-div#viewMap, #viewGame, div#viewRules, {
+div#viewMap, #viewGame, div#viewRules{
 	height: 100%;
 	width: 100%;
 	background-color: #ffd966; 
@@ -73,6 +73,11 @@ input[type="button"] {
 /*
  *  ----------------------    Menu Right  ----------------------------
 */
+div#viewRight{
+/* 	Only displays when set explitly set */
+	display: none;
+}
+
 .buttonRight {
 	width: 100%;
 	height: 100%;

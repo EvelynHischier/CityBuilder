@@ -1,5 +1,5 @@
 
-<div id="gameModes" data-ng-show="{{ page=='gameModes' }}" >
+<div id="gameModes" data-ng-show="{{ page=='DivGameModes' }}" >
 
 	<!-- Block game -->
 	<input type="button" class="mainMenu" value="Block game"
@@ -12,7 +12,6 @@
 
 
 	<!-- 5 turn mode -->
-
 	<input type="button" class="mainMenu" value="5 turns mode"
 		id="button_modes" onclick="fiveTurns()" />
 

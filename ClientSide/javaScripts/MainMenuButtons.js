@@ -10,17 +10,25 @@ function launchGame(){
 
 	alert("launch -> clicked");
 
-
 //	$.ajax({
-//		url: "http://localhost:8080/Git/CityBuilder/ServerSide/fc.php", 
+//		url: url,
 //		type: "POST",
 //		data:    {
 //			request: {
 //				functions: [ {
-//					path: “game/launch”, data: {null }  } ] 
+//					path: "game/setMode", data: "tests"  } ] 
 //			}
 //		}
 //	})
+//	.done(function( data ){
+//		alert(" OK " + JSON.stringify(data));
+//	})
+//	.fail(function( data ){
+//		alert("Fail    " +JSON.stringify( data ));
+//	})
+//	.always(function( data ){
+//		
+//	});
 }
 
 function displayRules(){
@@ -28,22 +36,16 @@ function displayRules(){
 
 	alert("Rules -> clicked");
 
-//	$.ajax({
-//		url: "http://localhost:8080/Git/CityBuilder/ServerSide/fc.php", 
-//		type: "POST",
-//		data:    {
-//			request: {
-//				functions: [ {
-//					path: “game/rules”, data: {null }  } ] 
-//			}
-//		}
-//	})
+	ViewControllerDisplayRules();
+// no interaction with the front controller
+	// just display the rules
+	
 }
 
 function displayGameModes(){
 	var buttonLaunch = $("#button_modes");
 	
-	//alert("Game modes ->clicked");
+//	alert("Game modes ->clicked");
 	$.ajax({
 		url: url,
 		type: "POST",
@@ -55,10 +57,10 @@ function displayGameModes(){
 		}
 	})
 	.done(function( data ){
-		alert(JSON.stringify(data));
+		alert(" OK " + JSON.stringify(data));
 	})
 	.fail(function( data ){
-		alert(JSON.stringify( data ));
+		alert("Fail    " +JSON.stringify( data ));
 	})
 	.always(function( data ){
 		
@@ -69,16 +71,26 @@ function exitGame(){
 	var buttonLaunch = $("#button_exit");
 
 	alert("Exit Game -> clicked");
+	
 //	$.ajax({
-//		url: "http://localhost:8080/Git/CityBuilder/ServerSide/fc.php", 
+//		url: url,
 //		type: "POST",
 //		data:    {
 //			request: {
 //				functions: [ {
-//					path: “game/exit”, data: {null }  } ] 
+//					path: "game/setMode", data: "tests"  } ] 
 //			}
 //		}
 //	})
+//	.done(function( data ){
+//		alert(" OK " + JSON.stringify(data));
+//	})
+//	.fail(function( data ){
+//		alert("Fail    " +JSON.stringify( data ));
+//	})
+//	.always(function( data ){
+//		
+//	});
 }
 
 

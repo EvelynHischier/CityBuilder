@@ -43,7 +43,7 @@ div#divHoverRight {
 }
 
 /* Div: 100% size, Background color: orange */
-div#viewMap, #viewGame, div#viewRules{
+div#viewMap, #viewGame, div#viewRules, div#viewScore{
 	height: 100%;
 	width: 100%;
 	background-color: #ffd966; 

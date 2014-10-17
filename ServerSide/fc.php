@@ -5,6 +5,7 @@ require_once( __DIR__."/model/Class.User.php");
 
 session_start();
 
+
 // check there's a request
 if( isset($_POST["request"]) )
 	$request = $_POST["request"];

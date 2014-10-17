@@ -3,39 +3,36 @@
  */
 
 var urlMedhi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
-var url = "http://localhost:8080/Git/CityBuilder/ServerSide/fc.php";
+var url = "http://127.0.0.1:8080/Git/CityBuilder/ServerSide/fc.php";
 
 function launchGame(){
 	var buttonLaunch = $("#button_launch");
 
-	alert("launch -> clicked");
-
-//	$.ajax({
-//		url: url,
-//		type: "POST",
-//		data:    {
-//			request: {
-//				functions: [ {
-//					path: "game/setMode", data: "tests"  } ] 
-//			}
-//		}
-//	})
-//	.done(function( data ){
-//		alert(" OK " + JSON.stringify(data));
-//	})
-//	.fail(function( data ){
-//		alert("Fail    " +JSON.stringify( data ));
-//	})
-//	.always(function( data ){
-//		
-//	});
+	$.ajax({
+		url: url,
+		type: "POST",
+		data:    {
+			request: {
+				functions: [ {
+					path: "game/launch", data: "test"  } ] 
+			}
+		}
+	})
+	.done(function( data ){
+		alert(" OK " + JSON.stringify(data));
+	})
+	.fail(function( data ){
+		alert("Fail    " +JSON.stringify( data ));
+	})
+	.always(function( data ){
+		
+	});
 }
 
 function displayRules(){
 	var buttonLaunch = $("#button_rules");
-
-	alert("Rules -> clicked");
-
+	
+	
 	ViewControllerDisplayRules();
 // no interaction with the front controller
 	// just display the rules
@@ -45,14 +42,13 @@ function displayRules(){
 function displayGameModes(){
 	var buttonLaunch = $("#button_modes");
 	
-//	alert("Game modes ->clicked");
 	$.ajax({
 		url: url,
 		type: "POST",
 		data:    {
 			request: {
 				functions: [ {
-					path: "game/setMode", data: "tests"  } ] 
+					path: "game/setMode", data: "test" } ] 
 			}
 		}
 	})
@@ -70,27 +66,12 @@ function displayGameModes(){
 function exitGame(){
 	var buttonLaunch = $("#button_exit");
 
-	alert("Exit Game -> clicked");
-	
-//	$.ajax({
-//		url: url,
-//		type: "POST",
-//		data:    {
-//			request: {
-//				functions: [ {
-//					path: "game/setMode", data: "tests"  } ] 
-//			}
-//		}
-//	})
-//	.done(function( data ){
-//		alert(" OK " + JSON.stringify(data));
-//	})
-//	.fail(function( data ){
-//		alert("Fail    " +JSON.stringify( data ));
-//	})
-//	.always(function( data ){
-//		
-//	});
+	// ask user if really want to exit
+	var confirm = window.confirm('Do you realy want to exit the game?');
+	if (confirm)
+		close();
+	// closes tab
+	// tablet ??       ----------------------------------------------------
 }
 
 

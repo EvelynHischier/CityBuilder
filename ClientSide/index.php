@@ -3,7 +3,9 @@
 <!-- Responsive Design:  http://getbootstrap.com/2.3.2/scaffolding.html -->
 <!-- IPad simulation: http://www.yourhelpcenter.com/ipad-browser-simulation/ -->
 <!-- my Git test comment -->
-<html data-ng-app="app" data-ng-controller="ViewController">
+
+
+<html>
 <head>
 <title>Serious game</title>
 
@@ -22,19 +24,15 @@
 <script type="text/javascript">
 		var app = angular.module("app", []);
 	</script>
-<script src="javaScripts/ViewController.js" type="text/javascript"></script>
-<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
-<script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
-<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
-<script src="javaScripts/mapZones.js" type="text/javascript"></script>
+
 </head>
 
-<body>
+<body data-ng-app="app" data-ng-controller="ViewController">
 
 	<div id="content">
 
 		<div id="title">
-			<h1>{{ Page.title() }}</h1>
+			<h1 id="titleTag"></h1>
 		</div>
 
 		<!-- ---------------     Main Div   ---------------    -->
@@ -51,6 +49,8 @@
 			include_once 'view/DivRules.php'; // --> scrollbar for ipad
 			
 			include_once 'view/DivGameModes.php';
+			
+			include_once 'view/DivScore.php';
 			?>
 			
 		</div>
@@ -65,6 +65,12 @@
 		
 		</div>
 	</div>
+	<script src="javaScripts/GlobalScript.js" type="text/javascript"></script>
+	<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
+	<script src="javaScripts/ViewController.js" type="text/javascript"></script>
+	<script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
+	<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
+	<script src="javaScripts/mapZones.js" type="text/javascript"></script>
 
 
 </body>

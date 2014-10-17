@@ -1,6 +1,10 @@
-// default
-var pageToShow = "mainMenu";
-display();
+//default
+var pageToShow = "";
+var showDivRight = true;
+
+displayMainMenu();
+//displayMap();
+//displayScore();
 
 //does not change at runtime !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -10,60 +14,73 @@ display();
  * DivMenu:  mainMenu
  * DivRight: showHoverDiv
  * DivRules: showRules
+ * DivScore: score
  * DivGameModes: DivGameModes   // problem -> not displayed
  */
 
+function displayScore(){
+	pageToShow = "score";
+	
+	setTitle("Score");
+	showDivRight = false;
+	displayAndReloadPage();
+}
+
 function ViewControllerDisplayGame(){
 	pageToShow = "gameStart";
-	
-	displayDisplayDivRight();
-	
+
+	setTitle("Management of the city");
+	showDivRight = true;
 	displayAndReloadPage();
+	
 }
 
 function displayMap(){
 	pageToShow = "showMap";
-	
-	displayDisplayDivRight();
-	
+
+	showDivRight = true;
 	displayAndReloadPage();
+	setTitle("Placement of the city");
 }
 
 function ViewControllerDisplayRules(){
 	alert("View controller : display Rules ");
-	
+
 	pageToShow = "showRules";
-	
+	showDivRight = false;
 	displayAndReloadPage();
+	setTitle("Rules");
 }
 
 function displayGameModes(){
 	pageToShow = "DivGameModes";
-	
-	hideDisplayDivRight();
+
+	showDivRight = false;
 	displayAndReloadPage();
+	setTitle("Game modes");
 }
 
 function displayMainMenu(){
 	pageToShow = "mainMenu";
-	
-	hideDisplayDivRight();
+
+	showDivRight = false;
 	displayAndReloadPage();
+	setTitle("City builder");
 }
 
 function hideDisplayDivRight(){
-	
 	$('#viewRight').hide();
-	displayAndReloadPage();
 }
 
-function displayDisplayDivRight(){
+function displayDivRight(){
 	$('#viewRight').show();
-	displayAndReloadPage();
 }
 
 function display(){
-	
+	if (showDivRight)
+		displayDivRight();
+	else 
+		hideDisplayDivRight();
 	app.controller("ViewController", function($scope) {
 		$scope.page = pageToShow;
 	});
@@ -72,18 +89,9 @@ function display(){
 
 function displayAndReloadPage(){
 	display();
+	
+
 }
 
-
-// change title
-function changeTitle(name){
-	app.controller("Page", function($name) {
-		var title = 'CityBuilder';
-		   return {
-		     title: function() { return title; },
-		     setTitle: function(name) { title = name }
-		   };
-	});
-}
 
 

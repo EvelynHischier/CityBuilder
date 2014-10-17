@@ -169,7 +169,7 @@ div#viewGame {
 
 }
 
-table {
+#tableGame {
 	padding-left: 15px;
 	width: 100%;
 	height: 100%;
@@ -269,11 +269,30 @@ input[type="number"] {
 div#viewRules{
 	
 	/* set scroll bar */
-	overflow:auto; 
+	overflow-y:scroll; 
 	display: block;
 	padding-left: 10px;
 	
 	/* Scrollbar for Ipad*/
 }
 
+/*
+ *  ----------------------    Score interface  ----------------------------
+*/
 
+.scoreName{
+	width: 30%;
+}
+.scoreNumber{
+	witdh: 20%;
+}
+
+#textEndOfGame{
+	width: 60%;
+	background-color: green;
+}
+
+#tableScore{
+	width: 100%;
+	padding-top: 10%;
+}

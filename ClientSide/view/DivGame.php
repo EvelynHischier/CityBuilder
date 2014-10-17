@@ -1,10 +1,10 @@
 <div id="viewGame" data-ng-show = "{{ page == 'gameStart' }}">
-	<table>
+	<table id="tableGame">
 		<tbody>
 			<tr>
 				<td>Score (title)</td>
 				<td>Score</td>
-				<td class="tech">Writing</td><!-- HELLO, I'm a comment! -->
+				<td class="tech">Writing</td>
 				<td class="tech">Granary</td>
 				<td class="tech">Pottery</td>
 			</tr>

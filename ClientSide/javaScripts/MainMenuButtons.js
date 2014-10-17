@@ -22,7 +22,7 @@ function launchGame(){
 		alert(" OK " + JSON.stringify(data));
 	})
 	.fail(function( data ){
-		alert("Fail    " +JSON.stringify( data ));
+		alert("Fail    " +JSON.stringify(data));
 	})
 	.always(function( data ){
 		

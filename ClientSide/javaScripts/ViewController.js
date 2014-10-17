@@ -2,9 +2,10 @@
 var pageToShow = "";
 var showDivRight = true;
 
-displayMainMenu();
+//displayMainMenu();
 //displayMap();
 //displayScore();
+ViewControllerDisplayRules();
 
 //does not change at runtime !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -81,6 +82,8 @@ function display(){
 		displayDivRight();
 	else 
 		hideDisplayDivRight();
+	
+	
 	app.controller("ViewController", function($scope) {
 		$scope.page = pageToShow;
 	});

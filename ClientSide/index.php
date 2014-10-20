@@ -58,13 +58,44 @@
 			$scope.admin = true;
 
 			// prepare a table for language
-			$scope.lang = [];
-			$scope.lang["gameModeInfinite"] = "Infinite turns mode";
+			$scope.lang= "fr";
+			$scope.dictionnary = [];
+			$scope.dictionnary["en"] = [];
+			$scope.dictionnary["en"]["mainMenuTitle"] = "City Builder";
+			$scope.dictionnary["en"]["mainMenuLaunchButton"] = "Launch game";
+			$scope.dictionnary["en"]["mainMenuRulesButton"] = "Rules";
+			$scope.dictionnary["en"]["mainMenuGameModesButton"] = "Game modes";
+			$scope.dictionnary["en"]["mainMenuExitButton"] = "Exit game";
+			
+			$scope.dictionnary["en"]["gameModesTitle"] = "Game mode";
+			$scope.dictionnary["en"]["gameModesBlock"] = "Block game";
+			$scope.dictionnary["en"]["gameModesPlacement"] = "Placement only";
+			$scope.dictionnary["en"]["gameModes5turns"] = "5 turns mode";
+			$scope.dictionnary["en"]["gameModesInfinite"] = "Infinite turns mode";
+
+			$scope.dictionnary["en"]["rulesTitle"] = "Rules";
+			$scope.dictionnary["en"]["rulesDescription"] = "Rules";
+
+			$scope.dictionnary["fr"] = [];
+			$scope.dictionnary["fr"]["mainMenuTitle"] = "City Builder";
+			$scope.dictionnary["fr"]["mainMenuLaunchButton"] = "Lancer le jeu";
+			$scope.dictionnary["fr"]["mainMenuRulesButton"] = "Règles";
+			$scope.dictionnary["fr"]["mainMenuGameModesButton"] = "Modes de jeu";
+			$scope.dictionnary["fr"]["mainMenuExitButton"] = "Sortir";
+			
+			$scope.dictionnary["fr"]["gameModesTitle"] = "Mode de jeu";
+			$scope.dictionnary["fr"]["gameModesBlock"] = "Bloquer le jeu";
+			$scope.dictionnary["fr"]["gameModesPlacement"] = "Seulement le placement";
+			$scope.dictionnary["fr"]["gameModes5turns"] = "5 tours";
+			$scope.dictionnary["fr"]["gameModesInfinite"] = "Tours infinis";
+
+			$scope.dictionnary["fr"]["rulesTitle"] = "Rules";
+			$scope.dictionnary["fr"]["rulesDescription"] = "Rules";
 
 			// change the view
-			$scope.changeView = function(pageName, title) {
+			$scope.changeView = function(pageName) {
 				$scope.page = pageName;
-				$scope.title = title;
+				$scope.title = $scope.dictionnary[$scope.lang][pageName+"Title"];
 				
 				switch(pageName) {
 				case "gameStart":
@@ -78,7 +109,7 @@
 			$scope.setMode = function(mode) {
 				
 				var success = function(data) {
-					$scope.page = "mainMenu";
+					$scope.changeView("mainMenu");
 					$scope.$apply();
 					alert(JSON.stringify(data));
 				};

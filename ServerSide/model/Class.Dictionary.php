@@ -1,18 +1,29 @@
 <?php
 function __autoload($class){
-	include_once __DIR__."/Class.".$class."php";
+	include_once __DIR__."/Class.".$class.".php";
 }
 class Dictionary{
 	private $_itemType;
 	private $_key;
 	private $_language;
 	private $_text;
+	private $_pdo;
 	
-	public function __construct($key,$language,$text){
-		$this->setKey($key);
-		$this->setLanguage($language);
-		$this->setText($text);
-		$this->_itemType=new ItemType();
+	public function __construct() {
+		$this->_pdo = new PDO("mysql:host=db4free.net;
+				port=3306;
+				dbname=pyramidgame1",
+				"groupe1",
+				"8?Wzgr10");
+	}
+	
+	public static function newTranslation($key,$language,$text){
+		$instance = new self();
+		$instance->setKey($key);
+		$instance->setLanguage($language);
+		$instance->setText($text);
+		//$instance->_itemType=new ItemType();
+		return $instance;
 	}
 	public function getKey(){
 		return $this->_key;
@@ -34,23 +45,25 @@ class Dictionary{
 	}
 	
 	public function getError(){
-		if($GLOBALS["pdo"]->errorCode()!='00000')
+		if($this->_pdo->errorCode()!='00000')
 			return 'Query failed';
 	}
 	public function getDictionary($key,$language){
 		$texts =array();
-		$query="select * from dictionary where key = '".$key."' and language = '".$language."'";
-		$pdo = $GLOBALS["pdo"];
+		$query="select * from Dictionary where `Key` = '".$key."' and `Language` = '".$language."'";
+		//$pdo = $GLOBALS["pdo"];
 		
-		$result= $pdo->query($query);
-		if($this->getError())
-			trigger_error($this->getError());
+		$result= $this->_pdo->query($query);
+
+		/*if($this->getError())
+			trigger_error($this->getError());*/
 		while($row =$result->fetch()){
-			$translation=new Dictionary($row['key'], $row['language'], $row['text']);
-			$translation->itemType=$row['itemType'];
-			$texts[$row['key']]=$translation;
+			$texts[0]=$row['Key'];
+			$texts[1]=$row['Language'];
+			$texts[2]=$row['Text'];
 		}
 		$result->closeCursor();
+
 		return $texts;
 	}
 }

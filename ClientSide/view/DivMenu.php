@@ -1,5 +1,5 @@
 
-<div id="viewMenu" data-ng-show="{{ page=='mainMenu' }}">
+<div id="viewMenu" data-ng-show="page=='mainMenu'">
 
 	<!-- Launch the game -->
 	<input type="button" class="mainMenu" value="Launch the game"
@@ -8,7 +8,7 @@
 
 	<!-- 	rules -->
 	<input type="button" class="mainMenu" value="Rules" 
-	id="button_rules" onclick="displayRules()" />
+	id="button_rules" data-ng-click="changeView('showRules', 'Rules');" />
 
 
 	<!-- game modes -->

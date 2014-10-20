@@ -74,8 +74,7 @@ input[type="button"] {
  *  ----------------------    Menu Right  ----------------------------
 */
 div#viewRight{
-/* 	Only displays when set explitly set */
-	display: none;
+
 }
 
 .buttonRight {

@@ -23,6 +23,25 @@
 	type="text/javascript"></script>
 <script type="text/javascript">
 		var app = angular.module("app", []);
+
+		app.controller("ViewController", function($scope) {
+			$scope.page = "mainMenu";
+			$scope.title="City Builder";
+			$scope.pageRight = false;
+			
+			$scope.changeView = function(pageName, title) {
+				$scope.page = pageName;
+				$scope.title = title;
+				
+				switch(pageName) {
+				case "showRules": 
+				case "gameStart":
+					 $scope.pageRight = true;
+					 break;
+				default: $scope.pageRight = false;
+				}
+			};
+		});
 	</script>
 
 </head>
@@ -32,7 +51,7 @@
 	<div id="content">
 
 		<div id="title">
-			<h1 id="titleTag"></h1>
+			<h1 id="titleTag" data-ng-bind="title"></h1>
 		</div>
 
 		<!-- ---------------     Main Div   ---------------    -->
@@ -43,7 +62,7 @@
 			include_once 'view/DivMenu.php';
 			
 			include_once 'view/DivMap.php';
-			
+
 			include_once 'view/DivGame.php';
 			
 			include_once 'view/DivRules.php'; // --> scrollbar for ipad

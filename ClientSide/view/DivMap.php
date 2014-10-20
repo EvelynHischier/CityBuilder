@@ -1,4 +1,4 @@
-<div id="viewMap" data-ng-show = "{{ page == 'showMap' }}">
+<div id="viewMap" data-ng-show = "page == 'showMap'">
 
 <img src = "pictures/map.png" id="map"/>
  

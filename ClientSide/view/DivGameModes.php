@@ -1,5 +1,5 @@
 
-<div id="gameModes" data-ng-show="{{ page=='DivGameModes' }}" >
+<div id="gameModes" data-ng-show="page=='DivGameModes'" >
 
 	<!-- Block game -->
 	<input type="button" class="mainMenu" value="Block game"

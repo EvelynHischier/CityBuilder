@@ -54,6 +54,9 @@ function displayGameModes(){
 	})
 	.done(function( data ){
 		alert(" OK " + JSON.stringify(data));
+		w = window.open("", "_blank");
+		w.document.write(JSON.stringify(data));
+		
 	})
 	.fail(function( data ){
 		alert("Fail    " +JSON.stringify( data ));

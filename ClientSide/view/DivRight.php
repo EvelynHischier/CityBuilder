@@ -1,4 +1,4 @@
-<div id="viewRight" data-ng-show = "{{ page == 'showHoverDiv' }}">
+<div id="viewRight" data-ng-show = "pageRight">
 	<div id="textImage">
 		<div id="hover_image">
 			<img alt="picture" src="pictures/management1.png">

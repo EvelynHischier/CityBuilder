@@ -2,10 +2,11 @@
 var pageToShow = "";
 var showDivRight = true;
 
-//displayMainMenu();
+displayMainMenu();
 //displayMap();
 //displayScore();
-ViewControllerDisplayRules();
+//ViewControllerDisplayRules();
+//ViewControllerDisplayGame();
 
 //does not change at runtime !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -69,13 +70,13 @@ function displayMainMenu(){
 	setTitle("City builder");
 }
 
-function hideDisplayDivRight(){
-	$('#viewRight').hide();
-}
-
-function displayDivRight(){
-	$('#viewRight').show();
-}
+//function hideDisplayDivRight(){
+//	$('#viewRight').hide();
+//}
+//
+//function displayDivRight(){
+//	$('#viewRight').show();
+//}
 
 function display(){
 	if (showDivRight)
@@ -85,7 +86,20 @@ function display(){
 	
 	
 	app.controller("ViewController", function($scope) {
-		$scope.page = pageToShow;
+		$scope.page = "mainMenu";
+		$scope.pageRight = false;
+		
+		$scope.changeView = function(name) {
+			$scope.page = name;
+			
+			switch(name) {
+			case "showRules": 
+			case "gameStart":
+				 $scope.pageRight = true;
+				 break;
+			default: $scope.pageRight = false;
+			}
+		};
 	});
 
 }

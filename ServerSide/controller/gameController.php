@@ -10,10 +10,17 @@ class gameController {
 	}
 	
 	public function setModeAction( $data ) {
-		if($data == "test")
-			return true;
-		else
-			return false;
+		switch($data) {
+			case "block":
+			case "placement_only":
+			case "5turns":
+			case "infinite":
+				break;
+			default:
+				return false;
+		}
+		
+		return "The game mode has been set to " . $data;
 	}
 	
 }

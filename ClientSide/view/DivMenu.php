@@ -14,8 +14,8 @@
 	<!-- game modes -->
 	<!-- if admin -> display -->
 	<input type="button" class="mainMenu" value="Game modes"
-		id="button_modes" onclick="displayGameModes()" />
-	<!-- else -> do not display -->
+		id="button_modes" data-ng-click="changeView('showGameModes', 'Game Mode');"
+		data-ng-show="admin" />
 
 
 	<!-- 		exit game		 -->

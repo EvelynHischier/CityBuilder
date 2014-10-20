@@ -24,22 +24,71 @@
 <script type="text/javascript">
 		var app = angular.module("app", []);
 
+		var query = function(functions, callBackDone, callBackFail, callBackAlways) {
+			$.ajax({
+				url: "http://127.0.0.1/CityBuilder-ServerSide/fc.php",
+				type: "POST",
+				data:    {
+					request: {
+						"functions": functions 
+					}
+				}
+			})
+			.done(function( data ){
+				callBackDone(data);
+			})
+			.fail(function( data ){
+				if(typeof callBackFail !== "undefined")
+					callBackFail(data);
+			})
+			.always(function( data ){
+				if(typeof callBackAlways !== "undefined")
+					callBackAlways(data);
+			});
+		}
+
+		// main controller
 		app.controller("ViewController", function($scope) {
+			// variables to be changed to control the views
 			$scope.page = "mainMenu";
 			$scope.title="City Builder";
 			$scope.pageRight = false;
-			
+
+			// update it with database
+			$scope.admin = true;
+
+			// prepare a table for language
+			$scope.lang = [];
+			$scope.lang["gameModeInfinite"] = "Infinite turns mode";
+
+			// change the view
 			$scope.changeView = function(pageName, title) {
 				$scope.page = pageName;
 				$scope.title = title;
 				
 				switch(pageName) {
-				case "showRules": 
 				case "gameStart":
 					 $scope.pageRight = true;
 					 break;
 				default: $scope.pageRight = false;
 				}
+			};
+
+			// set game mode
+			$scope.setMode = function(mode) {
+				
+				var success = function(data) {
+					$scope.page = "mainMenu";
+					$scope.$apply();
+					alert(JSON.stringify(data));
+				};
+				
+				var fail = function(data) {
+					w = window.open("", "_blank");
+					w.document.write(JSON.stringify(data));
+				};
+				
+				query([{path: "game/setMode", data: mode}], success, fail);
 			};
 		});
 	</script>
@@ -80,6 +129,7 @@
 		<?php
 		// include interface on the right
 		include_once 'view/DivRight.php';
+		include_once 'view/DivRulesButton.php';
 		?>
 		
 		</div>

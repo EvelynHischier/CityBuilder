@@ -16,11 +16,11 @@ else {
 }
 
 // prepare MySQL connection
-$pdo = new PDO("mysql:host=localhost;
+$pdo = new PDO("mysql:host=groupe1.informatiquegestion.ch;
 				port=3306;
-				dbname=pyramidgame",
-				"pyramidgamer",
-				"pMsM5uquG2KuHs9T");
+				dbname=groupe1",
+				"groupe1",
+				"8?Wzgr10");
 
 // prepare the user's session
 if( !isset($_SESSION["user"]) ) {

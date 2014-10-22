@@ -7,8 +7,8 @@ session_start();
 $pdo = new PDO("mysql:host=db4free.net;
 				port=3306;
 				dbname=pyramidgame1",
-		"groupe1",
-		"8?Wzgr10");
+				"groupe1",
+				"8?Wzgr10");
 
 $dict = new Dictionary();
 

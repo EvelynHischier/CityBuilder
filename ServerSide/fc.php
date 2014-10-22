@@ -16,9 +16,9 @@ else {
 }
 
 // prepare MySQL connection
-$pdo = new PDO("mysql:host=groupe1.informatiquegestion.ch;
+$pdo = new PDO("mysql:host=db4free.net;
 				port=3306;
-				dbname=groupe1",
+				dbname=pyramidgame1",
 				"groupe1",
 				"8?Wzgr10");
 

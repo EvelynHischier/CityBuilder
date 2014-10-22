@@ -6,7 +6,7 @@ function __autoload( $class ) {
 class gameController {
 	
 	public function launchAction() {
-		return null;
+		return "goToMap";
 	}
 	
 	public function setModeAction( $data ) {

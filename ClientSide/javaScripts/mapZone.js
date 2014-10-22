@@ -2,7 +2,7 @@
  *  used in placementMap.php
  *  creates buttons on map
  */
-$(function() {
+function initializeMap() {
 	var map;
 	var zoneOne;
 	var zoneTwo;
@@ -164,6 +164,6 @@ $(function() {
 
 		map.prepend(zone);
 	}
-});
+};
 
 

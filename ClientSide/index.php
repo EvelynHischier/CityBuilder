@@ -18,9 +18,14 @@
 
 <!--  Import all scripts  -->
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"
-	type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js" type="text/javascript"></script>
+	<script src="javaScripts/GlobalScript.js" type="text/javascript"></script>
+	<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
+	<script src="javaScripts/ViewController.js" type="text/javascript"></script>
+	<script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
+	<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
+	<script src="javaScripts/mapZone.js" type="text/javascript"></script>
+	
 <script type="text/javascript">
 		var app = angular.module("app", []);
 
@@ -45,7 +50,23 @@
 				if(typeof callBackAlways !== "undefined")
 					callBackAlways(data);
 			});
-		}
+		};
+
+		function mapLanguage($scope, dataStr ) {
+			data = JSON.parse(dataStr);
+			
+			$.each(data[0].data, function(index, row) {
+				
+				if(typeof $scope.dictionary[row.language] !== "object") {
+					$scope.dictionary[row.language] = [];
+					$scope.lang = row.language;
+				}
+				
+				$scope.dictionary[row.language][row.key] = row.text;
+			});
+
+			$scope.$apply();
+		};
 
 		// main controller
 		app.controller("ViewController", function($scope) {
@@ -56,29 +77,16 @@
 
 			// update it with database
 			$scope.admin = true;
+			$scope.gameMode = "5turns";
 
 			// prepare a table for language
 			$scope.lang= "fr";
 			$scope.dictionary = [];
-			$scope.dictionary["en"] = [];
-
-			function mapLanguage( dataStr ) {
-				data = JSON.parse(dataStr);
-				
-				$.each(data[0].data, function(index, row) {
-					
-					if(typeof $scope.dictionary[row.language] !== "object")
-						$scope.dictionary[row.language] = [];
-					
-					$scope.dictionary[row.language][row.key] = row.text;
-				});
-
-				alert($scope.lang);
-			};
-			
-			query([{path: "dictionary/initialize", data: null }], mapLanguage, function(data) {
-				alert(JSON.stringify(data));
-			});
+		
+			query( [{path: "dictionary/initialize", data: null }],
+					function(data){ mapLanguage($scope, data); },
+					function(data){ alert(JSON.stringify(data)); }
+				);
 
 			// change the view
 			$scope.changeView = function(pageName) {
@@ -108,6 +116,26 @@
 				};
 				
 				query([{path: "game/setMode", data: mode}], success, fail);
+			};
+
+			$scope.launchGame = function() {
+				
+				var success = function( data ) {
+					if(JSON.parse(data)[0] == "goToMap") {
+						$scope.changeView("map");
+						$scope.$apply();
+						initializeMap();
+					}
+					else
+						alert($scope.dictionary[$scope.lang]["if_main_launch"]);
+				};
+				
+				var fail = function(data) {
+					w = window.open("", "_blank");
+					w.document.write(JSON.stringify(data));
+				};
+				
+				query([{path: "game/launch", data: null}], success, fail);
 			};
 		});
 	</script>
@@ -153,12 +181,6 @@
 		
 		</div>
 	</div>
-	<script src="javaScripts/GlobalScript.js" type="text/javascript"></script>
-	<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
-	<script src="javaScripts/ViewController.js" type="text/javascript"></script>
-	<script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
-	<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
-	<script src="javaScripts/mapZones.js" type="text/javascript"></script>
 
 
 </body>

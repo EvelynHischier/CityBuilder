@@ -3,7 +3,7 @@
 
 	<!-- Launch the game -->
 	<input type="button" class="mainMenu" data-ng-value="dictionary[lang]['if_main_launch'];"
-		id="button_launch" />
+		data-ng-click="launchGame()" id="button_launch" />
 
 
 	<!-- 	rules -->

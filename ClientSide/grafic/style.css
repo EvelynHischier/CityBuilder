@@ -315,7 +315,7 @@ div#viewRules {
  *  ----------------------    Score interface  ----------------------------
 */
 .scoreName {
-	width: 30%;
+	width: 20%;
 }
 
 .scoreNumber {
@@ -323,11 +323,14 @@ div#viewRules {
 }
 
 #textEndOfGame {
-	width: 60%;
-	background-color: green;
+	width: 55%;
+	border: 1px solid black;
 }
 
 #tableScore {
 	width: 100%;
 	padding-top: 10%;
+	padding-left: 5%;
+	padding-right: 5%;
+	border-spacing: 10px;
 }

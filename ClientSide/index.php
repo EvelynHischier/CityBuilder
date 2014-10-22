@@ -73,7 +73,7 @@
 		// main controller
 		app.controller("ViewController", function($scope) {
 			// variables to be changed to control the views
-			$scope.page = "mainMenu";
+			$scope.page = "score";
 			$scope.title="City Builder";
 			$scope.pageRight = false;
 

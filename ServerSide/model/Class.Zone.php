@@ -1,23 +1,25 @@
 <?php
 class Zone{
-	private $_name;
-	private $_picture;
+private $_pdo = null;
 	
-	public function __construct($name,$picture){
-		$this->setPicture($picture);
-		$this->setName($name);
+	public function __construct() {
+		$this->_pdo = $GLOBALS["pdo"];
+	}
+
+	public function getError(){
+		if($this->_pdo->errorCode()!='00000')
+			return 'Query failed';
 	}
 	
-	public function getName(){
-		return $this->_name;
-	}
-	public function setName($name){
-		$this->_name=$name;
-	}
-	public function getPicture(){
-		return $this->_picture;
-	}
-	public function setPicture($picture){
-		$this->_picture=$picture;
+	public function getZone($name){
+		$query="select name, `picture` from Zone where `Name` = ?";
+		
+		$result= $this->_pdo->prepare($query);
+		$result->execute(array($name));
+		if($this->getError())
+			trigger_error($this->getError());
+		$zones = $result->fetchAll(PDO::FETCH_ASSOC);
+
+		return $zones;
 	}
 }

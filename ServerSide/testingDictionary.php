@@ -12,7 +12,7 @@ $pdo = new PDO("mysql:host=db4free.net;
 
 $dict = new Dictionary();
 
-$item_test = $dict->getDictionary("popup_pottery","en");
+$item_test = $dict->getDictionary("en");
 
 $now = new DateTime();
 ?>

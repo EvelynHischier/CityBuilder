@@ -301,11 +301,14 @@ div#viewRules {
 
 .buttonRules{
 	width: 80%;
-	padding-left: 5%;
 	color: black;
 	border: 1px solid black;
 	background-color: #ffd966; /* orange */
 	font-family: 'Calibri';
+	margin-left: 5%;
+	
+	height: 10%;
+	font-size: 26pt;
 }
 
 /*

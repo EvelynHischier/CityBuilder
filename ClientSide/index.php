@@ -150,6 +150,10 @@
 
 		<div id="title">
 			<h1 id="titleTag" data-ng-bind="title"></h1>
+			<li>
+			<ul><input type="button" id="frenchButton" 	class="languageButton"/></ul>
+			<ul><input type="button" id="englishButton"  class="languageButton"/></ul>
+			</li>
 		</div>
 
 		<!-- ---------------     Main Div   ---------------    -->

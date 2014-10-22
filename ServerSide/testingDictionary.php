@@ -1,5 +1,6 @@
 <?php
 require_once( __DIR__."/model/Class.Dictionary.php");
+require_once( __DIR__."/model/Class.Zone.php");
 
 session_start();
 
@@ -15,6 +16,10 @@ $dict = new Dictionary();
 $item_test = $dict->getDictionary("en");
 
 $now = new DateTime();
+
+$zone = new Zone();
+
+$zone_test=$zone->getZone("desert");
 ?>
 
 <html>
@@ -32,7 +37,8 @@ $now = new DateTime();
 		echo "<br />";
 		print_r($value);
 	}*/
-	var_dump($item_test);
+	//var_dump($item_test);
+	var_dump($zone_test);
 	
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {

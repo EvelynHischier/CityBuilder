@@ -10,11 +10,7 @@ class Dictionary{
 	private $_pdo;
 	
 	public function __construct() {
-		$this->_pdo = new PDO("mysql:host=db4free.net;
-				port=3306;
-				dbname=pyramidgame1",
-				"groupe1",
-				"8?Wzgr10");
+		$this->_pdo = $GLOBALS["pdo"];
 	}
 	
 	public static function newTranslation($key,$language,$text){

@@ -14,6 +14,7 @@ $dict = new Dictionary();
 
 $item_test = $dict->getDictionary("popup_pottery","en");
 
+$now = new DateTime();
 ?>
 
 <html>
@@ -23,6 +24,9 @@ $item_test = $dict->getDictionary("popup_pottery","en");
 </head>
 <body>
 <?php 
+	echo "<h1>Current time: ".$now->format('Y-m-d H:i:s')."</h1>";
+	echo "<h1>Current timestamp: ".$now->getTimestamp()."</h1>";
+	
 	foreach($item_test as $key => $value) {	
 		echo "<br />";
 		print_r($value);

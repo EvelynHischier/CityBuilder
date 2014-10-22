@@ -9,23 +9,27 @@ class Game{
 	private $_start;
 	private $_end;
 	
-	public function __construct($start,$end){
-		$this->setStart($start);
-		$this->setEnd($end);
+	public function __construct() {
+		$now = new DateTime();
+		$this->setStart($now->format('Y-m-d H:i:s'));
 		$this->_mode=new Mode();
 		$this->_user=new User();
 		$this->_zone=new Zone();
 	}
-	public function getEnd(){
-		return $this->_end;
-	}
-	public function setEnd($end){
-		$this->_end=$end;
-	}
+	
 	public function getStart(){
 		return $this->_start;
 	}
+	
 	public function setStart($start){
 		$this->_start=$start;
+	}
+	
+	public function getEnd(){
+		return $this->_end;
+	}
+	
+	public function setEnd($end){
+		$this->_end=$end;
 	}
 }

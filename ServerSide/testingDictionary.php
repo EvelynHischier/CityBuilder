@@ -14,6 +14,7 @@ $dict = new Dictionary();
 
 $item_test = $dict->getDictionary("popup_pottery","en");
 
+$now = new DateTime();
 ?>
 
 <html>
@@ -23,10 +24,28 @@ $item_test = $dict->getDictionary("popup_pottery","en");
 </head>
 <body>
 <?php 
-	foreach($item_test as $key => $value) {	
+
+	echo "<h1>Current time: ".$now->format('Y-m-d H:i:s')."</h1>";
+	echo "<h1>Current timestamp: ".$now->getTimestamp()."</h1>";
+	
+	/*foreach($item_test as $key => $value) {	
 		echo "<br />";
 		print_r($value);
+	}*/
+	var_dump($item_test);
+	
+	function searchForIndex($search,$array) {
+		foreach ($array as $key => $val) {
+			if ($val['key'] === $search) {
+				return $key;
+			}
+		}
+		return null;
 	}
+	
+	$idx = searchForIndex("score_total",$item_test);
+	echo "<br />".$item_test[$idx]['text'];
+	
 ?>
 </body>
 </html>

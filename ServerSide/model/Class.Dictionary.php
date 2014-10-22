@@ -5,7 +5,7 @@ class Dictionary{
 	public function __construct() {
 		$this->_pdo = $GLOBALS["pdo"];
 	}
-	
+
 	public function getError(){
 		if($this->_pdo->errorCode()!='00000')
 			return 'Query failed';

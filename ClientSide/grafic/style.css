@@ -28,10 +28,6 @@ div#mainDiv, div#divHoverRight {
 	height: 80%;
 }
 
-div#title {
-	height: 10%;
-}
-
 div#mainDiv {
 	width: 70%;
 	float: left;
@@ -42,17 +38,50 @@ div#divHoverRight {
 	float: right;
 }
 
+div#title {
+	height: 10%;
+	width: 100%;
+}
+
+#titleTag {
+	width: 95%;
+	height: 100%;
+}
+.languageButton{
+	width: 10%;
+	height: auto;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+li{
+	float: right;
+}
+ul {
+	list-style: none;
+	text-align: center;
+}
+
+/* language button */
+input#frenchButton {
+	background-image: url("../pictures/LanguageFR.png");
+}
+
+input#englishButton {
+	background-image: url("../pictures/LanguageEN.png");
+}
+
 /* Div: 100% size, Background color: orange */
-div#viewMap, #viewGame, div#viewRules, div#viewScore{
+div#viewMap, #viewGame, div#viewRules, div#viewScore {
 	height: 100%;
 	width: 100%;
-	background-color: #ffd966; 
+	background-color: #ffd966;
 }
 
 /*
  *  ----------------------    buttons Main Menu  ----------------------------
 */
-.mainMenu {
+.mainMenu, .buttonRight {
 	width: 50%;
 	height: 15%;
 	margin-left: 45%;
@@ -64,7 +93,7 @@ div#viewMap, #viewGame, div#viewRules, div#viewScore{
 	background-color: #ffb044; /* dark orange */
 }
 
-input[type="button"] {
+.mainMenu {
 	color: black;
 	border: 1px solid black;
 	background-color: #ffd966; /* orange */
@@ -73,8 +102,8 @@ input[type="button"] {
 /*
  *  ----------------------    Menu Right  ----------------------------
 */
-div#viewRight{
-
+div#viewRight {
+	
 }
 
 .buttonRight {
@@ -129,29 +158,29 @@ img {
 div#viewMap {
 	z-index: 1px;
 	border: 3px solid black;
-	
+
 	/* height: 100%;
 	width: 100%;
 	
 	background-color: #ffd966; /* orange */
 }
 
-#map{
+#map {
 	height: 100%;
 	width: 100%;
 }
 
- .zone {
-   	 background-color: red;
-   	 border: 2px solid white;
-   	 border-radius: 100%;
-   	 cursor: pointer;
-   	 position: absolute;
-    }
-    
-    .zone:hover {
-   	 background-color: pink;
-    }
+.zone {
+	background-color: red;
+	border: 2px solid white;
+	border-radius: 100%;
+	cursor: pointer;
+	position: absolute;
+}
+
+.zone:hover {
+	background-color: pink;
+}
 
 /*
  *  ----------------------    game interface  ----------------------------
@@ -160,12 +189,11 @@ div#viewMap {
 /* table size*/
 div#viewGame {
 	border: 1px solid black;
-	
+
 	/*
 	height: 100%;
 	width: 100%;
 	background-color: #ffd966; /* orange */
-
 }
 
 #tableGame {
@@ -264,34 +292,39 @@ input[type="number"] {
 /*
  *  ----------------------    Rules interface  ----------------------------
 */
-
-div#viewRules{
-	
+div#viewRules {
 	/* set scroll bar */
-	overflow-y:scroll; 
+	overflow-y: scroll;
 	display: block;
 	padding-left: 10px;
-	
-	/* Scrollbar for Ipad*/
+}
+
+.buttonRules{
+	width: 80%;
+	padding-left: 5%;
+	color: black;
+	border: 1px solid black;
+	background-color: #ffd966; /* orange */
+	font-family: 'Calibri';
 }
 
 /*
  *  ----------------------    Score interface  ----------------------------
 */
-
-.scoreName{
+.scoreName {
 	width: 30%;
 }
-.scoreNumber{
+
+.scoreNumber {
 	witdh: 20%;
 }
 
-#textEndOfGame{
+#textEndOfGame {
 	width: 60%;
 	background-color: green;
 }
 
-#tableScore{
+#tableScore {
 	width: 100%;
 	padding-top: 10%;
 }

@@ -10,7 +10,6 @@
 	<input type="button" class="mainMenu" data-ng-value="dictionnary[lang]['mainMenuRulesButton'];" 
 	id="button_rules" data-ng-click="changeView('showRules', 'Rules');" />
 
-
 	<!-- game modes -->
 	<!-- if admin -> display -->
 	<input type="button" class="mainMenu" data-ng-value="dictionnary[lang]['mainMenuGameModesButton'];"

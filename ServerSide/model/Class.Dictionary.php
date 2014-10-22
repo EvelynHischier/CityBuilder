@@ -7,7 +7,7 @@ class Dictionary{
 	private $_key;
 	private $_language;
 	private $_text;
-	private $_pdo;
+	private $_pdo = null;
 	
 	public function __construct() {
 		$this->_pdo = $GLOBALS["pdo"];
@@ -45,20 +45,20 @@ class Dictionary{
 			return 'Query failed';
 	}
 	public function getDictionary($key,$language){
-		$texts =array();
-		$query="select * from Dictionary where `Key` = '".$key."' and `Language` = '".$language."'";
+		//$texts = array();
+		$query="select Language, `key`, `text` from Dictionary where `Language` = \"fr\"";
 		//$pdo = $GLOBALS["pdo"];
 		
 		$result= $this->_pdo->query($query);
-
-		/*if($this->getError())
-			trigger_error($this->getError());*/
-		while($row =$result->fetch()){
-			$texts[0]=$row['Key'];
-			$texts[1]=$row['Language'];
-			$texts[2]=$row['Text'];
-		}
-		$result->closeCursor();
+		$texts = $result->fetchAll(PDO::FETCH_ASSOC);
+// 		/*if($this->getError())
+// 			trigger_error($this->getError());*/
+// 		while($row =$result->fetch()){
+// 			$texts[0]=$row['Key'];
+// 			$texts[1]=$row['Language'];
+// 			$texts[2]=$row['Text'];
+// 		}
+// 		$result->closeCursor();
 
 		return $texts;
 	}

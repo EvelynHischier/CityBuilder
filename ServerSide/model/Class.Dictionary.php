@@ -16,6 +16,8 @@ class Dictionary{
 		
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array($language));
+		if($this->getError())
+			trigger_error($this->getError());
 		$texts = $result->fetchAll(PDO::FETCH_ASSOC);
 
 		return $texts;

@@ -1,18 +1,18 @@
 <?php
 class Zone{
-	private $_description;
+	private $_name;
 	private $_picture;
 	
-	public function __construct($description,$picture){
+	public function __construct($name,$picture){
 		$this->setPicture($picture);
-		$this->setDescription($description);
+		$this->setName($name);
 	}
 	
-	public function getDescription(){
-		return $this->_description;
+	public function getName(){
+		return $this->_name;
 	}
-	public function setDescription($description){
-		$this->_description=$description;
+	public function setName($name){
+		$this->_name=$name;
 	}
 	public function getPicture(){
 		return $this->_picture;

@@ -24,6 +24,8 @@
 				chart.funnelAlpha = 0.9;
 				chart.valueField = "value";
 				chart.startX = -500;
+				chart.labelText = "[[title]]";
+				//chart.balloonText = "[[title]]";
 				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBB5"];
 				/*
 				Colors:
@@ -37,7 +39,7 @@
 				*/
 				chart.borderAlpha = 1;
 				chart.startAlpha = 0;
-				chart.valueRepresents = "area";
+				chart.valueRepresents = "height";
 				chart.write("chartdiv");
 			};
 			
@@ -86,53 +88,62 @@
 				<td>Slaves</td>
 				<td><input type="number" id="txt7" onBlur="updatePyramid()" /></td>
 			</tr>
+			<tr>
+				<td>Sum</td>
+				<td><input type="number" id="txt8" /></td>
+			</tr>
 			</table>
 			<script type="text/javascript">
 				var popAvailable = 1200;
 				function updatePyramid()
 				{
-					/*var scribesResearched = true;
+					var scribesResearched = true;
 			
-					if(!scribesResearched)
+					if(scribesResearched == false)
 						document.getElementById("txt4").setAttribute("readonly", "true");
-					else
-						document.getElementById("txt4").setAttribute("readonly", "false");*/
+					
+					var slaves = Number(document.getElementById("txt7").value);
+					var peasants = Number(document.getElementById("txt6").value);
+					var soldiers = Number(document.getElementById("txt5").value);
+					var scribes = Number(document.getElementById("txt4").value);
+					var craftsmen = Number(document.getElementById("txt3").value);
+					var priests = Number(document.getElementById("txt2").value);
+					var king = Number(document.getElementById("txt1").value);
+					
+					var sum = slaves+peasants+soldiers+scribes+craftsmen+priests+king;
+					document.getElementById("txt8").setAttribute("value", sum);
 					
 					var data = [
 					{
 						"title": "Slaves",
-						"value": Number(document.getElementById("txt7").value)
+						"value": slaves
 					},
 					{
 						"title": "Peasants",
-						"value": Number(document.getElementById("txt6").value)
+						"value": peasants
 					},
 					{
 						"title": "Soldiers",
-						"value": Number(document.getElementById("txt5").value)
+						"value": soldiers
 					},
 					{
 						"title": "Scribes",
-						"value": Number(document.getElementById("txt4").value)
+						"value": scribes
 					},
 					{
 						"title": "Craftsmen",
-						"value": Number(document.getElementById("txt3").value)
+						"value": craftsmen
 					},
 					{
 						"title": "Priests",
-						"value": Number(document.getElementById("txt2").value)
+						"value": priests
 					},
 					{
 						"title": "King",
-						"value": Number(document.getElementById("txt1").value)
-					}
-					];
-					
-					var sum = 0;
-					for(var i = 0; i<data.length; i++) {
-						sum += data[i]["value"];
-					}
+						"value": king
+					}];
+
+					data[3].value = 20;
 					
 					if(sum > popAvailable) {
 						alert("You cannot assign more people than available!");

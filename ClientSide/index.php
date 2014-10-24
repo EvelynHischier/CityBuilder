@@ -26,6 +26,8 @@
 <script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
 <script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
 <script src="javaScripts/mapZone.js" type="text/javascript"></script>
+<script src="javaScripts/amcharts.js" type="text/javascript"></script>
+<script src="javaScripts/funnel.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 		var app = angular.module("app", []);
@@ -75,7 +77,7 @@
 		// main controller
 		app.controller("ViewController", function($scope) {
 			// variables to be changed to control the views
-			$scope.page = "mainMenu";
+			$scope.page = "gameStart";
 			$scope.title="City Builder";
 			$scope.pageRight = false;
 

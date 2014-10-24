@@ -1,48 +1,4 @@
 <div id="viewGame" data-ng-show = "page == 'gameStart'">
-        <script type="text/javascript">
-			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
-			var chart;
-			
-			configChart = function() {
-				chart = new AmCharts.AmFunnelChart();
-				chart.rotate = true;
-				chart.titleField = "title";
-				chart.balloonText = "";
-				chart.pullDistance = 0;
-				chart.marginRight = 210;
-				chart.marginLeft = 15;
-				chart.labelPosition = "right";
-				chart.funnelAlpha = 0.9;
-				chart.valueField = "value";
-				chart.startX = -500;
-				chart.labelText = "[[title]]: [[value]] ([[percents]]%)";
-				chart.labelText = "[[title]]";
-				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBB5"];
-				/*
-				Colors:
-				#C3C3C3 = grey
-				#D2F079 = green
-				#F36971 = red
-				#39B7FB = blue
-				#FADAA9 = piggy orange :)
-				#B962B9 = violet
-				#FDFBB5 = yellow
-				*/
-				chart.borderAlpha = 1;
-				chart.startAlpha = 0;
-				chart.valueRepresents = "height";
-				chart.write("chartdiv");
-			};
-			
-			if(AmCharts.isReady) {
-				configChart();
-			} else {
-				AmCharts.ready(configChart);
-			}
-			
-        </script>
-
-
 	<table id="tableGame">
 		<tbody>
 			<tr>
@@ -68,39 +24,39 @@
 			</tr>
 			<tr>
 				<td class="citizen" id="table_population">Aviable pop</td>
-				<td class="number"><input type="number" id="txt_popavailable" value="1200" readonly /></td>
+				<td class="number">number</td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_king">king</td>
-				<td class="number"><input type="number" id="txt1" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="table_king_number" value="1" min="0"/></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_priest">priest</td>
-				<td class="number"><input type="number" id="txt2" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="table_priest_number" value="1" min="0"/></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_craftsment">Craftsmen</td>
-				<td class="number"><input type="number" id="txt3" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="table_craftsment_number" value="1" min="0"/></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_scribes">Scribes</td>
-				<td class="number"><input type="number" id="txt4" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="table_scribes_number" value="1" min="0"/></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_soldiers">Soldiers</td>
-				<td class="number"><input type="number" id="txt5" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="table_soldiers_number" value="1" min="0"/></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_peasants">Peasants</td>
-				<td class="number"><input type="number" id="txt6" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="table_peasants_number" value="1" min="0"/></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_slaves">Slaves</td>
-				<td class="number"><input type="number" id="txt7" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="table_slaves_number" value="1" min="0"/></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_caravans">Caravans</td>
-				<td class="number"><input type="number" id="caravans" value="1" min="0" onBlur="updatePyramid()"/></td>
+				<td class="number"><input type="number" id="caravans" value="1" min="0"/></td>
 			</tr>
 
 			

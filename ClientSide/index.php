@@ -9,8 +9,7 @@
 <head>
 <title>Serious game</title>
 
-<!-- Responsive Design -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" type="text/css" href="grafic/style.css">
 
 <script type="text/javascript"
@@ -32,6 +31,7 @@
 		var app = angular.module("app", []);
 		var urlMehdi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
 		var urlEvi = "http://127.0.0.1:8080/Git/CityBuilder/ServerSide/fc.php";
+		var url = "http://groupe1.informatiquegestion.ch/Old/CityBuilder/ServerSide/fc.php"; // check ? 
 			
 		var query = function(functions, callBackDone, callBackFail, callBackAlways) {
 			$.ajax({
@@ -98,6 +98,7 @@
 				$scope.title = $scope.dictionary[$scope.lang][pageName+"Title"];
 				
 				switch(pageName) {
+				case "map" :
 				case "gameStart":
 					 $scope.pageRight = true;
 					 break;
@@ -152,14 +153,6 @@
 
 		<div id="title">
 			<h1 id="titleTag" data-ng-bind="title"></h1>
-			<li>
-				<ul>
-					<input type="button" id="frenchButton" class="languageButton" />
-				</ul>
-				<ul>
-					<input type="button" id="englishButton" class="languageButton" />
-				</ul>
-			</li>
 		</div>
 
 		<!-- ---------------     Main Div   ---------------    -->

@@ -37,7 +37,6 @@ div#mainDiv {
 
 div#divHoverRight {
 	width: 30%;
-	height: 100%;
 	float: right;
 }
 
@@ -84,7 +83,7 @@ div#viewMap, #viewGame, div#viewRules, div#viewScore {
 /*
  *  ----------------------    buttons Main Menu  ----------------------------
 */
-.mainMenu, .buttonRight {
+.mainMenu {
 	width: 50%;
 	height: 15%;
 	margin-left: 45%;
@@ -96,7 +95,7 @@ div#viewMap, #viewGame, div#viewRules, div#viewScore {
 	background-color: #ffb044; /* dark orange */
 }
 
-.mainMenu {
+.mainMenu, .buttonRight {
 	color: black;
 	border: 1px solid black;
 	background-color: #ffd966; /* orange */
@@ -106,7 +105,7 @@ div#viewMap, #viewGame, div#viewRules, div#viewScore {
  *  ----------------------    Menu Right  ----------------------------
 */
 div#viewRight {
-	
+	height: 100%;
 }
 
 .buttonRight {

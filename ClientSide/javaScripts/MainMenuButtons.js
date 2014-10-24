@@ -76,37 +76,6 @@ function exitGame(){
 		close();
 	}
 
-	</a>
+
 }
-
-// closes tab
-// tablet ??       ----------------------------------------------------
-}
-
-
-
-//$("input[type=button]").click( function( evt ) {
-//var success = document.getElementById("success");
-//var error = document.getElementById("error");
-//$.ajax({
-//url: "http://127.0.0.1/CityBuilder/ServerSide/fc.php",
-//type: "POST",
-//data:    {
-//request: {
-//functions: [ {
-//path: “login/connect”, data: {username: “mehdi”, password: “pwd” }  } ]
-//}
-//}
-//})
-//.done( function( data ) {
-//var response =  data.responseText ;
-//success.value = data;
-//error.value = "";
-//})
-//.fail( function ( data ) {
-//var response =  JSON.parse(data.responseText);
-//error.value = JSON.stringify( response.errorInfo );
-//success.value = "";
-//});
-//});
 

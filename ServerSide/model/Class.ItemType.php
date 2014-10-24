@@ -46,6 +46,7 @@ class ItemType{
 	public function getItemTypes() {
 		$query = "SELECT `ItemTypeID`, `Name`, `Min`, `Max`, `Description` FROM ItemType";
 		
+		
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array());
 		if($this->getError())

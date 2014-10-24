@@ -1,6 +1,7 @@
 <?php
 require_once( __DIR__."/model/Class.Dictionary.php");
 require_once( __DIR__."/model/Class.Zone.php");
+require_once( __DIR__."/model/Class.ItemType.php");
 
 session_start();
 
@@ -20,6 +21,12 @@ $now = new DateTime();
 $zone = new Zone();
 
 $zone_test=$zone->getZone("desert");
+
+//**********************************//
+
+$it = new ItemType();
+
+$itemTypes = $it->getItemTypes();
 ?>
 
 <html>
@@ -38,8 +45,8 @@ $zone_test=$zone->getZone("desert");
 		print_r($value);
 	}*/
 	//var_dump($item_test);
-	var_dump($zone_test);
-	
+	//var_dump($zone_test);
+	var_dump($itemTypes);
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {
 			if ($val['key'] === $search) {

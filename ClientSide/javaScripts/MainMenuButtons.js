@@ -68,12 +68,17 @@ function displayGameModes(){
 
 function exitGame(){
 	var buttonLaunch = $("#button_exit");
-
 	// ask user if really want to exit
 	var confirm = window.confirm('Do you realy want to exit the game?');
+	
+	// close browser tab
 	if (confirm){
-		Window.close();
-		close();
+		
+		// close tab
+         window.focus(); 
+         window.close();
+
+         // works on firefox
 	}
 
 

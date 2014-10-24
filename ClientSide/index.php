@@ -98,11 +98,22 @@
 				$scope.title = $scope.dictionary[$scope.lang][pageName+"Title"];
 				
 				switch(pageName) {
+				// display title
+				case "showRules":
+					$scope.title = $scope.dictionary[$scope.lang]['if_main_rules'];
+					break;
+				case "gameModes":
+					$scope.title = $scope.dictionary[$scope.lang]['title_if_gamemodes'];
+					break;
+
+					// display interface right
 				case "map" :
+					$scope.title = $scope.dictionary[$scope.lang]['title_if_placement'];
 				case "gameStart":
 					 $scope.pageRight = true;
 					 break;
 				default: $scope.pageRight = false;
+						$scope.title="City Builder";
 				}
 			};
 

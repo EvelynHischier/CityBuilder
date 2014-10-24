@@ -12,13 +12,13 @@
 
 	<!-- game modes -->
 	<!-- if admin -> display -->
-	<input type="button" class="mainMenu" data-ng-value="dictionary[lang]['if_main_game'];"
+	<input type="button" class="mainMenu" data-ng-value="dictionary[lang]['title_if_gamemodes'];"
 		id="button_modes" data-ng-click="changeView('gameModes', 'Game Mode');"
 		data-ng-show="admin" />
 
 
 	<!-- 		exit game		 -->
-	<input type="button" class="mainMenu" data-ng-value="dictionary[lang]['mainMenuExitButton'];"
+	<input type="button" class="mainMenu" data-ng-value="dictionary[lang]['if_general_exitGame'];"
 		id="button_exit" onclick="exitGame()" />
 
 </div>

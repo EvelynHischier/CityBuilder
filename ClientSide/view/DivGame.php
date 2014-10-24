@@ -1,4 +1,4 @@
-<div id="viewGame" data-ng-show = "page == 'gameStart'">
+<div id="viewGame" data-ng-show = "page == 'gameStart'" onload="updatePyramid()">
         <script type="text/javascript">
 			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
 			var chart;
@@ -9,13 +9,13 @@
 				chart.titleField = "title";
 				chart.balloonText = "";
 				chart.pullDistance = 0;
-				chart.marginRight = 210;
+				chart.marginRight = 100;
 				chart.marginLeft = 15;
 				chart.labelPosition = "right";
 				chart.funnelAlpha = 0.9;
 				chart.valueField = "value";
 				chart.startX = -500;
-				chart.labelText = "[[title]]: [[value]] ([[percents]]%)";
+// 				chart.labelText = "[[title]]: [[value]] ([[percents]]%)";
 				chart.labelText = "[[title]]";
 				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBB5"];
 				/*
@@ -122,8 +122,6 @@
 						population[i] = Number(document.getElementById("txt" + j).value);
 						sum += population[i];
 					}
-					
-					document.getElementById("txt8").setAttribute("value", sum);
 					
 					//Data for the pyramid chart
 					var data = [

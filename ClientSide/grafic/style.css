@@ -291,6 +291,12 @@ input[type="number"] {
 	background-color: #ffb044; /* dark orange  */
 }
 
+#chartdiv{
+	height: 100%;
+	width:  100%;
+	background-color: white;	
+}
+
 /*
  *  ----------------------    Rules interface  ----------------------------
 */

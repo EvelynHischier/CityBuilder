@@ -17,7 +17,7 @@
 				chart.startX = -500;
 // 				chart.labelText = "[[title]]: [[value]] ([[percents]]%)";
 				chart.labelText = "[[title]]";
-				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBB5"];
+				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBA0"];
 				/*
 				Colors:
 				#C3C3C3 = grey
@@ -26,7 +26,7 @@
 				#39B7FB = blue
 				#FADAA9 = piggy orange :)
 				#B962B9 = violet
-				#FDFBB5 = yellow
+				#FDFBA0 = yellow
 				*/
 				chart.borderAlpha = 1;
 				chart.startAlpha = 0;

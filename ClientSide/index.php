@@ -33,11 +33,12 @@
 		var app = angular.module("app", []);
 		var urlMehdi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
 		var urlEvi = "http://127.0.0.1:8080/Git/CityBuilder/ServerSide/fc.php";
+		var urlPierry = "http://127.0.0.1/Git/CityBuilder/ServerSide/fc.php"
 		var url = "http://groupe1.informatiquegestion.ch/Old/CityBuilder/ServerSide/fc.php"; // check ? 
 			
 		var query = function(functions, callBackDone, callBackFail, callBackAlways) {
 			$.ajax({
-				url: urlEvi,
+				url: urlPierry,
 				type: "POST",
 				data:    {
 					request: {

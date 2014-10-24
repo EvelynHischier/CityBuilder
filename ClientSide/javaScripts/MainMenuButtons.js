@@ -25,23 +25,23 @@ function launchGame(){
 		alert("Fail    " +JSON.stringify(data));
 	})
 	.always(function( data ){
-		
+
 	});
 }
 
 function displayRules(){
 	var buttonLaunch = $("#button_rules");
-	
-	
+
+
 	ViewControllerDisplayRules();
-// no interaction with the front controller
+//	no interaction with the front controller
 	// just display the rules
-	
+
 }
 
 function displayGameModes(){
 	var buttonLaunch = $("#button_modes");
-	
+
 	$.ajax({
 		url: url,
 		type: "POST",
@@ -56,13 +56,13 @@ function displayGameModes(){
 		alert(" OK " + JSON.stringify(data));
 		w = window.open("", "_blank");
 		w.document.write(JSON.stringify(data));
-		
+
 	})
 	.fail(function( data ){
 		alert("Fail    " +JSON.stringify( data ));
 	})
 	.always(function( data ){
-		
+
 	});
 }
 
@@ -71,10 +71,16 @@ function exitGame(){
 
 	// ask user if really want to exit
 	var confirm = window.confirm('Do you realy want to exit the game?');
-	if (confirm)
+	if (confirm){
+		Window.close();
 		close();
-	// closes tab
-	// tablet ??       ----------------------------------------------------
+	}
+
+	</a>
+}
+
+// closes tab
+// tablet ??       ----------------------------------------------------
 }
 
 

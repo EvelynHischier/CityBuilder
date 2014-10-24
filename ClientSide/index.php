@@ -18,14 +18,16 @@
 
 <!--  Import all scripts  -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js" type="text/javascript"></script>
-	<script src="javaScripts/GlobalScript.js" type="text/javascript"></script>
-	<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
-	<script src="javaScripts/ViewController.js" type="text/javascript"></script>
-	<script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
-	<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
-	<script src="javaScripts/mapZone.js" type="text/javascript"></script>
-	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"
+	type="text/javascript"></script>
+<script src="javaScripts/GlobalScript.js" type="text/javascript"></script>
+<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
+<script src="javaScripts/ViewController.js" type="text/javascript"></script>
+<script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
+<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
+<script src="javaScripts/mapZone.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 		var app = angular.module("app", []);
 		var urlMehdi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
@@ -73,7 +75,7 @@
 		// main controller
 		app.controller("ViewController", function($scope) {
 			// variables to be changed to control the views
-			$scope.page = "score";
+			$scope.page = "mainMenu";
 			$scope.title="City Builder";
 			$scope.pageRight = false;
 
@@ -151,8 +153,12 @@
 		<div id="title">
 			<h1 id="titleTag" data-ng-bind="title"></h1>
 			<li>
-			<ul><input type="button" id="frenchButton" 	class="languageButton"/></ul>
-			<ul><input type="button" id="englishButton"  class="languageButton"/></ul>
+				<ul>
+					<input type="button" id="frenchButton" class="languageButton" />
+				</ul>
+				<ul>
+					<input type="button" id="englishButton" class="languageButton" />
+				</ul>
 			</li>
 		</div>
 
@@ -164,14 +170,18 @@
 			include_once 'view/DivMenu.php';
 			
 			include_once 'view/DivMap.php';
-
+			
 			include_once 'view/DivGame.php';
 			
-			include_once 'view/DivRules.php'; // --> scrollbar for ipad
+			include_once 'view/DivRules.php';
 			
 			include_once 'view/DivGameModes.php';
 			
 			include_once 'view/DivScore.php';
+			
+			include_once 'view/DivLogin.php';
+			
+			include_once 'view/DivRegister.php';
 			?>
 			
 		</div>

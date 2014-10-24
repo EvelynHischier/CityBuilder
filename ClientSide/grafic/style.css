@@ -7,6 +7,8 @@ body {
 	margin: 0px;
 	z-index: -10; /* Layer  (background) */
 	font-family: Arial;
+	overflow-y: hidden;
+	
 }
 
 h1 {
@@ -35,6 +37,7 @@ div#mainDiv {
 
 div#divHoverRight {
 	width: 30%;
+	height: 100%;
 	float: right;
 }
 
@@ -333,4 +336,44 @@ div#viewRules {
 	padding-left: 5%;
 	padding-right: 5%;
 	border-spacing: 10px;
+}
+
+
+/*
+ *  ----------------------    login interface  ----------------------------
+*/
+#login, #viewRegister{
+	width: 50%;
+	height: 50%;
+	float: right;
+	padding-left: 5%;
+	padding-top: 5%;
+}
+
+#loginUsername, #loginPassword{
+	width: 90%;
+	height: 15%;
+	font-size: 15pt;
+	border: 1px solid black;
+}
+
+.buttonLogin{
+	width: 90%;
+	height: 15%;
+	
+	color: black;
+	border: 1px solid black;
+	background-color: #ffd966; /* orange */
+	font-family: 'Calibri';
+	font-size: 15pt;
+}
+
+/*
+ *  ----------------------    register interface  ----------------------------
+*/
+.registerButton{
+		width: 90%;
+	height: 15%;
+	font-size: 15pt;
+	border: 1px solid black;
 }

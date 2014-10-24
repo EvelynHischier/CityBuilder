@@ -38,7 +38,7 @@
 			
 		var query = function(functions, callBackDone, callBackFail, callBackAlways) {
 			$.ajax({
-				url: urlPierry,
+				url: urlEvi,
 				type: "POST",
 				data:    {
 					request: {
@@ -78,9 +78,10 @@
 		// main controller
 		app.controller("ViewController", function($scope) {
 			// variables to be changed to control the views
-			$scope.page = "gameStart";
+			//$scope.page = "gameStart";
 			$scope.title="City Builder";
 			$scope.pageRight = false;
+			$scope.popup = "yesNo";
 
 			// update it with database
 			$scope.admin = true;
@@ -165,9 +166,17 @@
 
 	<div id="content">
 
+
+
 		<div id="title">
 			<h1 id="titleTag" data-ng-bind="title"></h1>
 		</div>
+		
+				<?php
+				include_once 'view/DivPopUpYes.php';
+				
+				include_once 'view/DivPopUpContinue.php';
+				?>
 
 		<!-- ---------------     Main Div   ---------------    -->
 		<div id="mainDiv">

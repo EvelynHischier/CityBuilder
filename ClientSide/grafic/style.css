@@ -382,3 +382,40 @@ div#viewRules {
 	font-size: 15pt;
 	border: 1px solid black;
 }
+
+
+/*
+ *  ----------------------    popup interface  ----------------------------
+*/
+
+.divPopup{
+	height: 47%;
+	width: 50%;
+	background-color: #ffd966; /* orange */
+	margin: auto;
+	border: 1px solid black;
+}
+
+.popupImage, .popupText, .popupButton {
+	width: 90%;
+	margin: auto;
+		padding-top: 2%;
+	
+}
+
+
+.popupImage{
+	background-color: blue;
+	height: 30%;
+
+}
+
+.popupText{
+	background-color: red;
+	height: 40%;
+}
+
+.popupButton{
+	background-color: yellow;
+	height: 20%;
+}

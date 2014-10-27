@@ -4,6 +4,7 @@ require_once( __DIR__."/model/Class.Zone.php");
 require_once( __DIR__."/model/Class.ItemType.php");
 require_once( __DIR__."/model/Class.Item.php");
 require_once( __DIR__."/model/Class.Game.php");
+require_once( __DIR__."/model/Class.Mode.php");
 
 session_start();
 
@@ -37,6 +38,10 @@ $items = $item->getItems();
 $game = new Game();
 
 $games = $game->getGames();
+
+$mode=new Mode();
+
+$modes=$mode->getModes();
 ?>
 
 <html>
@@ -58,7 +63,8 @@ $games = $game->getGames();
 	//var_dump($zone_test);
 	//var_dump($itemTypes);
 	//var_dump($items);
-	var_dump($games);
+	//var_dump($games);
+	var_dump($modes);
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {
 			if ($val['key'] === $search) {

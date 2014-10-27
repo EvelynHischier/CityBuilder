@@ -1,34 +1,25 @@
 <?php
 class Mode{
-	private $_name;
-	public function __construct($name){
-		$this->setName($name);
+private $_pdo = null;
+	
+	public function __construct() {
+		$this->_pdo = $GLOBALS["pdo"];
 	}
-	public function getName(){
-		return $this->_name;
-	}
-	public function setName($name){
-		$this->_name=$name;
-	}
-}
 
-class Mode {
-	private $id;
-	private $name;
-	
-	public function getByName($n) {
+	public function getError(){
+		if($this->_pdo->errorCode()!='00000')
+			return 'Query failed';
 	}
 	
-	public function getById($i) {
+	public function getModes(){
+		$query="select `Name` from Mode";
 		
-	}
-	
-	public function getAll() {
-		
-	}
-	
-	public function getChoosenMode() {
-		$id = $response[0]["id"];
-		$name = $response[0]["name"];
+		$result= $this->_pdo->prepare($query);
+		$result->execute(array());
+		if($this->getError())
+			trigger_error($this->getError());
+		$modes = $result->fetchAll(PDO::FETCH_ASSOC);
+
+		return $modes;
 	}
 }

@@ -67,7 +67,7 @@ $modes=$mode->getModes();
 	var_dump($modes);
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {
-			if ($val['key'] === $search) {
+			if ($val['Key'] === $search) {
 				return $key;
 			}
 		}
@@ -75,7 +75,7 @@ $modes=$mode->getModes();
 	}
 	
 	$idx = searchForIndex("score_total",$item_test);
-	echo "<br />".$item_test[$idx]['text'];
+	echo "<br />".$item_test[$idx]['Text'];
 	
 ?>
 </body>

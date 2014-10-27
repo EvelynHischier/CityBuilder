@@ -29,144 +29,15 @@
 <script src="javaScripts/amcharts.js" type="text/javascript"></script>
 <script src="javaScripts/funnel.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-		var app = angular.module("app", []);
-		var urlMehdi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
-		var urlEvi = "http://127.0.0.1:8080/Git/CityBuilder/ServerSide/fc.php";
-		var urlPierry = "http://127.0.0.1/Git/CityBuilder/ServerSide/fc.php"
-		var url = "http://groupe1.informatiquegestion.ch/Old/CityBuilder/ServerSide/fc.php"; // check ? 
-			
-		var query = function(functions, callBackDone, callBackFail, callBackAlways) {
-			$.ajax({
-				url: urlEvi,
-				type: "POST",
-				data:    {
-					request: {
-						"functions": functions 
-					}
-				}
-			})
-			.done(function( data ){
-				callBackDone(data);
-			})
-			.fail(function( data ){
-				if(typeof callBackFail !== "undefined")
-					callBackFail(data);
-			})
-			.always(function( data ){
-				if(typeof callBackAlways !== "undefined")
-					callBackAlways(data);
-			});
-		};
-
-		function mapLanguage($scope, dataStr ) {
-			data = JSON.parse(dataStr);
-			
-			$.each(data[0].data, function(index, row) {
-				
-				if(typeof $scope.dictionary[row.language] !== "object") {
-					$scope.dictionary[row.language] = [];
-					$scope.lang = row.language;
-				}
-				
-				$scope.dictionary[row.language][row.key] = row.text;
-			});
-
-			$scope.$apply();
-		};
-
-		// main controller
-		app.controller("ViewController", function($scope) {
-			// variables to be changed to control the views
-			//$scope.page = "gameStart";
-			$scope.title="City Builder";
-			$scope.pageRight = false;
-			$scope.popup = "yesNo";
-
-			// update it with database
-			$scope.admin = true;
-			$scope.gameMode = "5turns";
-
-			// prepare a table for language
-			$scope.lang= "fr";
-			$scope.dictionary = [];
-		
-			query( [{path: "dictionary/initialize", data: null }],
-					function(data){ mapLanguage($scope, data); },
-					function(data){ alert(JSON.stringify(data)); }
-				);
-
-			// change the view
-			$scope.changeView = function(pageName) {
-				$scope.page = pageName;
-				$scope.title = $scope.dictionary[$scope.lang][pageName+"Title"];
-				
-				switch(pageName) {
-				// display title
-				case "showRules":
-					$scope.title = $scope.dictionary[$scope.lang]['if_main_rules'];
-					break;
-				case "gameModes":
-					$scope.title = $scope.dictionary[$scope.lang]['title_if_gamemodes'];
-					break;
-
-					// display interface right
-				case "map" :
-					$scope.title = $scope.dictionary[$scope.lang]['title_if_placement'];
-				case "gameStart":
-					 $scope.pageRight = true;
-					 break;
-				default: $scope.pageRight = false;
-						$scope.title="City Builder";
-				}
-			};
-
-			// set game mode
-			$scope.setMode = function(mode) {
-				
-				var success = function(data) {
-					$scope.changeView("mainMenu");
-					$scope.$apply();
-					alert(JSON.stringify(data));
-				};
-				
-				var fail = function(data) {
-					w = window.open("", "_blank");
-					w.document.write(JSON.stringify(data));
-				};
-				
-				query([{path: "game/setMode", data: mode}], success, fail);
-			};
-
-			$scope.launchGame = function() {
-				
-				var success = function( data ) {
-					if(JSON.parse(data)[0] == "goToMap") {
-						$scope.changeView("map");
-						$scope.$apply();
-						initializeMap();
-					}
-					else
-						alert($scope.dictionary[$scope.lang]["if_main_launch"]);
-				};
-				
-				var fail = function(data) {
-					w = window.open("", "_blank");
-					w.document.write(JSON.stringify(data));
-				};
-				
-				query([{path: "game/launch", data: null}], success, fail);
-			};
-		});
-	</script>
+<script src="javaScripts/query.js" type="text/javascript" ></script>
+<script src="javaScripts/mapLanguage.js" type="text/javascript" ></script>
+<script src="javaScripts/app.js" type="text/javascript" ></script>
 
 </head>
 
 <body data-ng-app="app" data-ng-controller="ViewController">
 
 	<div id="content">
-
-
 
 		<div id="title">
 			<h1 id="titleTag" data-ng-bind="title"></h1>
@@ -180,7 +51,6 @@
 
 		<!-- ---------------     Main Div   ---------------    -->
 		<div id="mainDiv">
-			
 			
 			<?php
 			include_once 'view/DivMenu.php';

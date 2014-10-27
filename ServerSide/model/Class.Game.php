@@ -1,8 +1,8 @@
 <?php
-function __autoload($class){
+/*function __autoload($class){
 	include_once __DIR__."/Class.".$class."php";
-}
-class Game{
+}*/
+class Game {
 	/*private $_mode;
 	private $_user;
 	private $_zone;

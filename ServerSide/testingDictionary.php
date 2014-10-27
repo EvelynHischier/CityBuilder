@@ -3,6 +3,7 @@ require_once( __DIR__."/model/Class.Dictionary.php");
 require_once( __DIR__."/model/Class.Zone.php");
 require_once( __DIR__."/model/Class.ItemType.php");
 require_once( __DIR__."/model/Class.Item.php");
+require_once( __DIR__."/model/Class.Game.php");
 
 session_start();
 
@@ -32,6 +33,10 @@ $itemTypes = $it->getItemTypes();
 $item = new Item();
 
 $items = $item->getItems();
+
+$game = new Game();
+
+$games = $game->getGames();
 ?>
 
 <html>
@@ -50,9 +55,10 @@ $items = $item->getItems();
 		print_r($value);
 	}*/
 	//var_dump($item_test);
-	var_dump($zone_test);
+	//var_dump($zone_test);
 	//var_dump($itemTypes);
 	//var_dump($items);
+	var_dump($games);
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {
 			if ($val['key'] === $search) {

@@ -21,7 +21,7 @@ $now = new DateTime();
 
 $zone = new Zone();
 
-$zone_test=$zone->getZone("desert");
+$zone_test=$zone->getZone("Desert"); //FertileLand, Desert or Mountain
 
 //**********************************//
 
@@ -50,9 +50,9 @@ $items = $item->getItems();
 		print_r($value);
 	}*/
 	//var_dump($item_test);
-	//var_dump($zone_test);
+	var_dump($zone_test);
 	//var_dump($itemTypes);
-	var_dump($items);
+	//var_dump($items);
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {
 			if ($val['key'] === $search) {

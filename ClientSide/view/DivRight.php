@@ -2,7 +2,7 @@
 	<div id="textImage">
 		<div id="hover_image">
 			<img alt="picture" data-ng-src="pictures/{{ rightPicture }}.png"
-			data-ng-show = "rightPicture">
+				data-ng-show="rightPicture">
 		</div>
 
 		<div id="hover_text" data-ng-bind="rightText"></div>
@@ -18,7 +18,7 @@
 
 	<div id="button_2">
 		<input type="button" class="buttonRight" id="button_exit"
-			value="Exit game" onclick="exitGame()">
+			value="Exit game" data-ng-click="exitGame()">
 	</div>
 
 	<!--  javascript -->

@@ -19,6 +19,6 @@
 
 	<!-- 		exit game		 -->
 	<input type="button" class="mainMenu" data-ng-value="dictionary[lang]['if_general_exitGame'];"
-		id="button_exit" onclick="exitGame()" />
+		id="button_exit" data-ng-click="exitGameMenu()" />
 
 </div>

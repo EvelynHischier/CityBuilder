@@ -64,6 +64,7 @@ app.controller("ViewController", function($scope) {
 		query([{path: "game/setMode", data: mode}], success, fail);
 	};
 
+	// display zones
 	$scope.launchGame = function() {
 
 		var success = function( data ) {
@@ -96,6 +97,7 @@ app.controller("ViewController", function($scope) {
 		query([{path: "game/launch", data: null}], success, fail);
 	};
 	
+	// mouse over a zone
 	$scope.hoverZone = function(zoneNbr) {
 		switch(zoneNbr) {
 		case "fertile":
@@ -111,5 +113,28 @@ app.controller("ViewController", function($scope) {
 			$scope.rightText = $scope.dictionary[$scope.lang]["placement_mountains"];
 			break;
 		}
-	}
+	};
+	
+	// exit the game (map and in-game)
+	$scope.exitGame = function() {
+		switch($scope.page) {
+		case "map":
+			$scope.changeView("mainMenu");
+			break;
+		}
+	};
+	
+	// exit the game (main menu)
+	$scope.exitGameMenu = function() {
+		var success = function( data ) {
+			$scope.changeView("login");
+		};
+		
+		var fail = function( data ) {
+			var w = window.open("", "_blank");
+			w.document.write( JSON.stringify(data) );
+		};
+		
+		query([{path: "login/disconnect", data: null}], success, fail);
+	};
 });

@@ -22,7 +22,6 @@ app.controller("ViewController", function($scope) {
 			function(data){ mapLanguage($scope, data); },
 			function(data){ alert(JSON.stringify(data)); }
 	);
-
 	// change the view
 	$scope.changeView = function(pageName) {
 		$scope.page = pageName;

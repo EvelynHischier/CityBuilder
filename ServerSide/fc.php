@@ -22,6 +22,13 @@ $pdo = new PDO("mysql:host=db4free.net;
 				"groupe1",
 				"8?Wzgr10");
 
+//For the REAL server
+/*$pdo = new PDO("mysql:host=localhost;
+				port=3306;
+				dbname=groupe1",
+				"groupe1",
+				"8?Wzgr10");*/
+
 // prepare the user's session
 if( !isset($_SESSION["user"]) ) {
 	$_SESSION["user"] = new User("", "", false);

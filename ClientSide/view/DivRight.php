@@ -1,21 +1,18 @@
-<div id="viewRight" data-ng-show = "pageRight">
+<div id="viewRight" data-ng-show="pageRight">
 	<div id="textImage">
 		<div id="hover_image">
-			<img alt="picture" src="pictures/management1.png">
+			<img alt="picture" data-ng-src="pictures/{{ rightPicture }}.png"
+			data-ng-show = "rightPicture">
 		</div>
 
-		<div id="hover_text">
-		wsdfgvhbjnkmö.- redftghuk,lö. dghjnkl,ö. trfzghnjkml,ö dvghjk rtfvghnjkl fghjnkm 
-		ahsd sdfij sd sdofjsdlkfsdkfjksd sdkfjsdfkj slskfsdkjfj skfskdfj sfksdfk jsdf
-		sfksjdflsdkf  posdfsodkf. sdfkjsf  slkfjdslfj sdlfj 
-		sflkjfksjfksjd aldkalfshjwaioklj sfolkjsdlfjsjf lsakjsdfj sdf.
-		</div>
+		<div id="hover_text" data-ng-bind="rightText"></div>
 	</div>
 
 
 	<div id="button_1">
 		<input type="button" class="buttonRight" id="button_turn"
-			value="End of turn" onclick="turnFinish()">
+			data-ng-hide="page == 'map' " value="End of turn"
+			onclick="turnFinish()">
 	</div>
 
 

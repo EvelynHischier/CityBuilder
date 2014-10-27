@@ -17,14 +17,8 @@
 
 <!--  Import all scripts  -->
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"
-	type="text/javascript"></script>
-<script src="javaScripts/GlobalScript.js" type="text/javascript"></script>
-<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
-<script src="javaScripts/ViewController.js" type="text/javascript"></script>
-<script src="javaScripts/GameModeButtons.js" type="text/javascript"></script>
-<script src="javaScripts/MainMenuButtons.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js" type="text/javascript"></script>
+
 <script src="javaScripts/mapZone.js" type="text/javascript"></script>
 <script src="javaScripts/amcharts.js" type="text/javascript"></script>
 <script src="javaScripts/funnel.js" type="text/javascript"></script>

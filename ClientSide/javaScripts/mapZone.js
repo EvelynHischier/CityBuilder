@@ -2,6 +2,131 @@
  *  used in placementMap.php
  *  creates buttons on map
  */
+function Map() {
+	this.map = $("#viewMap");
+	this.unitLeft = this.map.width()/100;
+	this.unitTop = this.map.height()/100;
+	this.offsetTop = Math.round( this.map.offset().top );
+	this.offsetLeft = Math.round( this.map.offset().left );
+}
+
+Map.prototype.getPXTop = function(number){
+	return Math.round( this.offsetTop + this.unitTop * number );
+}
+Map.prototype.getPXLeft = function(number){
+	return Math.round( this.offsetLeft + this.unitLeft * number );
+}
+Map.prototype.getRndPoint = function(max, min) {
+	return Math.floor((Math.random() *( max - min)) + min);
+}
+Map.prototype.setButtonDiagonal = function(top, maxTop, maxLeft){
+	procent = top/maxTop;
+	return Math.round( maxLeft * procent );
+}
+
+
+//fertile land
+Map.prototype.getZoneOne = function(){
+	var left ;
+	var top;
+	var rndLeft;
+	var rndTop;
+
+	var rndZone;
+
+	var minLeft = [this.getPXLeft(15),	this.getPXLeft(34)];
+	var minTop  = [this.getPXTop(12),	this.getPXTop(17)];
+
+	var maxLeft = [this.getPXLeft(43),	this.getPXLeft(35)];
+	var maxTop =  [this.getPXTop(17),	this.getPXTop(47)];
+
+	var rndZone = Math.floor((Math.random() * 2));
+	
+	left = this.getRndPoint(maxLeft[rndZone], minLeft[rndZone]);
+	top =  this.getRndPoint(maxTop[rndZone], minTop[rndZone]); 
+	
+	return [left, top];
+}
+
+//desert
+Map.prototype.getZoneTwo = function(){			/// ____________________________________________________
+	var left ;
+	var top;
+
+	var rndZone;
+
+	var minLeft= [this.getPXLeft(1), 	this.getPXLeft(25), 	this.getPXLeft(59)];
+	var minTop = [this.getPXTop(25), 	this.getPXTop(63), 	this.getPXTop(13)];
+
+	var maxLeft = [this.getPXLeft(22), 	this.getPXLeft(55), 	this.getPXLeft(55)];
+	var maxTop =  [this.getPXTop(90), 	this.getPXTop(90), 	this.getPXTop(63)];  
+
+	rndZone = Math.floor((Math.random() * 2));
+
+	left =  this.getRndPoint(maxLeft[rndZone], minLeft[rndZone]);  // minLeft[2]; //
+	top =   this.getRndPoint(maxTop[rndZone], minTop[rndZone]); // minTop[2]; //
+
+	return [left, top];
+}
+
+//mountains
+Map.prototype.getZoneThree = function(){
+	var left ;
+	var top;
+	var bottom;
+	var leftExclude;
+	var rndZone = 1;
+	var procent;
+
+	var minLeft= [this.getPXLeft(70), 	this.getPXLeft(58), this.getPXLeft(92)];
+	var minTop = [this.getPXTop(30) , 	this.getPXTop(35),	this.getPXTop(0)];
+
+	var maxLeft = [this.getPXLeft(84), 	this.getPXLeft(94),	this.getPXLeft(93)];
+	var maxTop =  [this.getPXTop(36), 	this.getPXTop(62),	this.getPXTop(28)];
+
+	// ipad size
+	if (this.map.width() < 700)
+		maxLeft[1] = this.getPXLeft(91);
+
+	rndZone = Math.floor((Math.random() * 3));
+
+
+	// exclude a triangle -> Suezkanal
+	if (rndZone == 0){
+
+		left = this.getRndPoint(maxLeft[rndZone], minLeft[rndZone]);
+		top =  this.getRndPoint(maxTop[rndZone], minTop[rndZone]); 
+
+		bottom = (maxTop[rndZone] - minTop[rndZone])/4 + minTop[rndZone];
+		leftExclude = (maxLeft[rndZone] - minLeft[rndZone]) /4*3 + minLeft[rndZone];
+
+		if (left < leftExclude){
+			if (top > bottom){
+				left = leftExclude;
+				top = bottom;
+			}
+		}
+	}
+	if (rndZone == 1){
+		top =  this.getRndPoint(maxTop[rndZone], minTop[rndZone]); 
+
+		left = this.setButtonDiagonal(top, maxTop[rndZone], maxLeft[rndZone]);
+	}
+	if (rndZone == 2){
+		left = this.getRndPoint(maxLeft[rndZone], minLeft[rndZone]);
+		top =  this.getRndPoint(maxTop[rndZone], minTop[rndZone]); 
+	}
+
+	return [left, top];
+}
+
+
+/* ****************************************************************************** */
+
+
+/**
+ *  used in placementMap.php
+ *  creates buttons on map
 function initializeMap() {
 	var map;
 	var zoneOne;
@@ -71,7 +196,7 @@ function initializeMap() {
 		top =  getRndPoint(maxTop[rndZone], minTop[rndZone]); 
 
 
-		drawButton(left, top, zoneOne); 
+		drawButton(left, top, zoneOne);
 	}
 
 //	desert
@@ -166,4 +291,5 @@ function initializeMap() {
 	}
 };
 
+ */
 

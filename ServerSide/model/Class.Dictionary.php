@@ -12,7 +12,7 @@ class Dictionary{
 	}
 	
 	public function getDictionary($language){
-		$query="select language, `key`, `text` from Dictionary where `Language` = ?";
+		$query="select `Language`, `Key`, `Text` from Dictionary where `Language` = ?";
 		
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array($language));

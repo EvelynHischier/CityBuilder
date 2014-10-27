@@ -12,7 +12,7 @@ private $_pdo = null;
 	}
 	
 	public function getZone($name){
-		$query="select name, `picture` from Zone where `Name` = ?";
+		$query="select `Name`, `Picture` from Zone where `Name` = ?";
 		
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array($name));

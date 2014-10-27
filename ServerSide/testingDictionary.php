@@ -6,6 +6,7 @@ require_once( __DIR__."/model/Class.Item.php");
 require_once( __DIR__."/model/Class.Game.php");
 require_once( __DIR__."/model/Class.Mode.php");
 require_once( __DIR__."/model/Class.ChosenMode.php");
+require_once( __DIR__."/model/Class.User.php");
 
 session_start();
 
@@ -47,6 +48,10 @@ $modes=$mode->getModes();
 $chosenMode = new ChosenMode();
 
 $chosenModes = $chosenMode->getChosenModes();
+
+$user = new User();
+
+$users = $user->getUsers();
 ?>
 
 <html>
@@ -70,7 +75,8 @@ $chosenModes = $chosenMode->getChosenModes();
 	//var_dump($items);
 	//var_dump($games);
 	//var_dump($modes);
-	var_dump($chosenModes);
+	//var_dump($chosenModes);
+	var_dump($users);
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {
 			if ($val['Key'] === $search) {

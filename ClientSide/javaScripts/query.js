@@ -4,11 +4,11 @@ var query = function(functions, callBackDone, callBackFail, callBackAlways) {
 			var urlEvi = "http://127.0.0.1:8080/Git/CityBuilder/ServerSide/fc.php";
 			var urlPierry = "http://127.0.0.1/Git/CityBuilder/ServerSide/fc.php"
 
-			var url = "http://groupe1.informatiquegestion.ch/Old/CityBuilder/ServerSide/fc.php"; // check ? 
+			var url = "http://groupe1.informatiquegestion.ch/New/ServerSide/fc.php"; // check ? 
 
 				
 			$.ajax({
-				url: urlEvi,
+				url: url,
 				type: "POST",
 				data:    {
 					request: {

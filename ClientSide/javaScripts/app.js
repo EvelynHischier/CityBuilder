@@ -132,6 +132,55 @@ app.controller("ViewController", function($scope) {
 			break;
 		}
 	};
+	
+	$scope.hoverGame = function (name){
+		switch(name){
+		case "king" : 
+			$scope.rightPicture = "management4";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_king"];
+			break;
+		case "priest":
+			$scope.rightPicture = "management5";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_priests"];
+			break;
+		case "craftsmen":
+			$scope.rightPicture = "management6";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_craftsmen"];
+			break;
+		case "scribes":
+			$scope.rightPicture = "management7";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_scribes"];
+			break;
+		case "soldier":
+			$scope.rightPicture = "management8";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_soldiers"];
+			break;
+		case "peasants":
+			$scope.rightPicture = "management9";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_peasants"];
+			break;
+		case "slaves":
+			$scope.rightPicture = "management10";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_slaves"];
+			break;
+		case "caravans":
+			$scope.rightPicture = "management11";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_priests"];
+			break;
+		case "writing":
+			$scope.rightPicture = "management_writing";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_writing"];
+			break;
+		case "granary":x
+			$scope.rightPicture = "management_granary";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_granary"];
+			break;
+		case "pottery":
+			$scope.rightPicture = "management_pottery";
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_pottery"];
+			break;
+		}
+	}
 
 	// exit the game (map and in-game)
 	$scope.exitGame = function() {

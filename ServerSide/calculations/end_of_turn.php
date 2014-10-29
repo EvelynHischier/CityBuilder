@@ -1,4 +1,5 @@
 <?php
+	require_once( __DIR__."/model/Class.Historic.php");
 	/*
 	 * Social pyramid
 	 * 				Array Index
@@ -19,6 +20,10 @@
 	 * => else use nbrScribes
 	 * 
 	 */
+
+	//Parameter order
+	//$game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,
+	//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
 	
 	$popTotal = 2000;
 	$wealthTotal = 500;
@@ -27,10 +32,20 @@
 	$invasion = false;
 	$potteryResearched = false;
 	$granaryResearched = false;
+	$writingResearched = false;
 	$unhappiness = false;
 	$nbrCaravans = 2;
 	$food = 1000;
 	$foodProduction = 0;
+	$templeBuilt = false;
+	$palaceBuilt = false;
+	$monumentBuilt = false;
+	
+	//INSERT INTO DB - Table Historic
+	$hist = new Historic();
+	$hist->insertHistoric(1,1,$nbrClasses[0],$nbrClasses[1],$nbrClasses[2],$nbrClasses[3],$nbrClasses[5],$nbrClasses[4],
+			$nbrClasses[6],$nbrClassesSum,$wealthTotal,$food,'00:04:04',0,$potteryResearched,$granaryResearched,
+			$writingResearched,$nbrCaravans,$templeBuilt,$palaceBuilt,$monumentBuilt);
 	
 	echo "<p>Wealth: " . $wealthTotal . "</p>";
 	echo "<p>Food: " . $food . "</p>";

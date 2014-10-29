@@ -48,28 +48,30 @@ app.controller("ViewController", function($scope) {
 
 	// show popup
 	$scope.showPopup = function(popupFormat) {
-
-
-		switch(popupFormat){
-		case "continue":
-			$scope.popup="continue";
-
+		$scope.popup = popupFormat;
+	}
+	
+	$scope.popupButton = function(answer){
+		
+		$scope.popup = false;
+		switch (answer){
+		case "ok":
+			$scope.changeView("gameStart");
 			break;
-		case "yesNo":
-			$scope.popup="yesNo";
+		case "abbort":
 			break;
-		default:
-
+		case "continue" :
+			break;
 		}
 	}
 
 	// set game mode
 	$scope.setMode = function(mode) {
-		
+
 		var success = function(data) {
 			$scope.changeView("mainMenu");
 			$scope.$apply();
-			
+
 		};
 
 		var fail = function(data) {
@@ -185,28 +187,7 @@ app.controller("ViewController", function($scope) {
 
 		$scope.showPopup("yesNo");
 		$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
-		//$scope.
-		
-//		var success = function( data ) {
-//		if(JSON.parse(data)[0] == "goToGame") {
-//		$scope.changeView("yesNo");
-//		$scope.$apply();
 
-//		// set max population
-
-//		$scope.$apply();
-
-//		}
-//		else
-//		alert($scope.dictionary[$scope.lang]["if_main_launch"]);
-//		};
-
-//		var fail = function(data) {
-//		w = window.open("", "_blank");
-//		w.document.write(JSON.stringify(data));
-//		};
-
-//		query([{path: "game/launch", data: null}], success, fail);
 	};
 
 

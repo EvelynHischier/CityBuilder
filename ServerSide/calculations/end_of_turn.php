@@ -1,5 +1,13 @@
 <?php
-	require_once( __DIR__."/model/Class.Historic.php");
+	require_once( "../model/Class.Historic.php");
+	
+	session_start();
+	
+	$pdo = new PDO("mysql:host=db4free.net;
+				port=3306;
+				dbname=pyramidgame1",
+				"groupe1",
+				"8?Wzgr10");
 	/*
 	 * Social pyramid
 	 * 				Array Index
@@ -30,22 +38,25 @@
 	$nbrClasses = array(4,50,100,620,500,500,16); //1790
 	$nbrClassesSum = array_sum($nbrClasses);
 	$invasion = false;
-	$potteryResearched = false;
-	$granaryResearched = false;
-	$writingResearched = false;
+	$potteryResearched = 0;
+	$granaryResearched = 0;
+	$writingResearched = 0;
 	$unhappiness = false;
 	$nbrCaravans = 2;
 	$food = 1000;
 	$foodProduction = 0;
-	$templeBuilt = false;
-	$palaceBuilt = false;
-	$monumentBuilt = false;
+	$templeBuilt = 0;
+	$palaceBuilt = 0;
+	$monumentBuilt = 0;
+	
 	
 	//INSERT INTO DB - Table Historic
 	$hist = new Historic();
+	
 	$hist->insertHistoric(1,1,$nbrClasses[0],$nbrClasses[1],$nbrClasses[2],$nbrClasses[3],$nbrClasses[5],$nbrClasses[4],
 			$nbrClasses[6],$nbrClassesSum,$wealthTotal,$food,'00:04:04',0,$potteryResearched,$granaryResearched,
 			$writingResearched,$nbrCaravans,$templeBuilt,$palaceBuilt,$monumentBuilt);
+	
 	
 	echo "<p>Wealth: " . $wealthTotal . "</p>";
 	echo "<p>Food: " . $food . "</p>";

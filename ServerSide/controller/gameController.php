@@ -10,6 +10,7 @@ class gameController {
 	}
 	
 	public function setModeAction( $data ) {
+		
 		switch($data) {
 			case "block":
 			case "placement_only":
@@ -17,10 +18,17 @@ class gameController {
 			case "infinite":
 				break;
 			default:
-				return false;
+				return array("status" => "error", "errorInfo" => "This mode doesn't exist");
 		}
 		
-		return "The game mode has been set to " . $data;
+		$gameMode = new Mode();
+		
+		if( $gameMode->setMode( $data ) )
+			return array("status" => "success");
+		else {
+			http_response_code(202);
+			return array("error" => "Error while inserting the mode into the DB");
+		}
 	}
 	
 }

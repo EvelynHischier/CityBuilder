@@ -7,6 +7,7 @@ require_once( __DIR__."/model/Class.Game.php");
 require_once( __DIR__."/model/Class.Mode.php");
 require_once( __DIR__."/model/Class.ChosenMode.php");
 require_once( __DIR__."/model/Class.User.php");
+require_once( __DIR__."/model/Class.Historic.php");
 
 session_start();
 
@@ -22,13 +23,13 @@ $dict = new Dictionary();
 $item_test = $dict->getDictionary("en");
 
 $now = new DateTime();
-
+/*
 $zone = new Zone();
 
 $zone_test=$zone->getZone("Desert"); //FertileLand, Desert or Mountain
-
+*/
 //**********************************//
-
+/*
 $it = new ItemType();
 
 $itemTypes = $it->getItemTypes();
@@ -51,7 +52,11 @@ $chosenModes = $chosenMode->getChosenModes();
 
 $user = new User();
 
-$users = $user->getUsers();
+$users = $user->getUsers();*/
+
+$hist=new Historic();
+
+$hist->insertHistoric(1,2,1,2,3,4,5,6,7,1000,10000,100,200,9000,1,1,0,3,1,1,0);
 ?>
 
 <html>
@@ -76,7 +81,7 @@ $users = $user->getUsers();
 	//var_dump($games);
 	//var_dump($modes);
 	//var_dump($chosenModes);
-	var_dump($users);
+	//var_dump($users);
 	function searchForIndex($search,$array) {
 		foreach ($array as $key => $val) {
 			if ($val['Key'] === $search) {

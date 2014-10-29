@@ -24,7 +24,7 @@ class Historic{
 	private $_granary;
 	private $_writing;
 	private $_caravans;
-	private $_rampart;
+	//private $_rampart;
 	private $_temple;
 	private $_palace;
 	private $_monument;
@@ -39,12 +39,13 @@ class Historic{
 			return 'Query failed';
 	}
 	//insert query
-	public function insertHistoric() {
-		$query = "INSERT ";
+	public function insertHistoric($game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument) {
+		$query = "INSERT INTO Historic (Game_GameID, Turn, nbrKings, nbrPriests, nbrScribes, nbrSoldiers, nbrSlaves, nbrPeasants, nbrCraftsmen, Population, Wealth, Food, ElapsedTime, Score, PotteryResearched, GranaryResearched, WritingResearched, nbrCaravans, TempleBuilt, PalaceBuilt, MonumentBuilt)".
+				"VALUES ($game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument)";
 	
 	
-		$this->_pdo->prepare($query);
-		execute(array());
+		$result = $this->_pdo->prepare($query);
+		$result->execute(array());
 		if($this->getError())
 			trigger_error($this->getError());
 		

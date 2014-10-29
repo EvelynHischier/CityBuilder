@@ -15,6 +15,20 @@ class ChosenMode{
 			return 'Query failed';
 	}
 	
+	public function setChosenMode( $mode ) {
+		$query = "INSERT INTO ChosenMode( `Mode_ModeID` ) VALUES( ? )";
+		$statement = $this->_pdo->prepare( $query );
+	
+		$statement->execute(array($mode));
+	
+		if($this->getError()) {
+			trigger_error($this->getError());
+			return false;
+		}
+		else
+			return true;
+	}
+	
 	public function getChosenModes() {
 		$query = "SELECT `Mode_ModeID`, `Time` FROM ChosenMode";
 	

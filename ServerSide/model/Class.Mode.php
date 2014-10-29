@@ -11,19 +11,6 @@ private $_pdo = null;
 			return 'Query failed';
 	}
 	
-	public function setMode( $mode ) {
-		$query = "INSERT INTO Mode( `Name` ) VALUES( ? )";
-		$statement = $this->_pdo->prepare( $query );
-		
-		$statement->execute(array($mode));
-		
-		if($this->getError()) {
-			trigger_error($this->getError());
-			return false;
-		}
-		else
-			return true;
-	}
 	
 	public function getModes(){
 		$query="select `Name` from Mode";

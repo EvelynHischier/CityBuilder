@@ -1,4 +1,5 @@
 function mapLanguage($scope, dataStr ) {
+	
 	data = JSON.parse(dataStr);
 
 	$.each(data[0].data, function(index, row) {

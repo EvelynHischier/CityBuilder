@@ -44,6 +44,7 @@ if( !$authentication->authenticate( $_SESSION["user"] ) ) {
 	exit( json_encode( $response ) );
 }
 
+
 // Check permission
 include_once(__DIR__."/Class.Permission.php");
 $permission = new Permission();
@@ -54,6 +55,7 @@ if( !( $permissionResponse == "" ) ) {
 	$response = array("status" => "error", "errorInfo" => $permissionResponse);
 	exit( json_encode($response) );
 }
+
 
 // Call the controller's functions
 // include every needed controller, prepare the reflection method and call the method
@@ -70,3 +72,5 @@ foreach($request["functions"] as $index => $object) {
 	$responseArray[] = $response;
 }
 exit( json_encode( $responseArray ) );
+
+

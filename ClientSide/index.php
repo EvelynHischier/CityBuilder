@@ -4,7 +4,6 @@
 <!-- IPad simulation: http://www.yourhelpcenter.com/ipad-browser-simulation/ -->
 <!-- my Git test comment -->
 
-
 <html>
 <head>
 <title>Serious game</title>

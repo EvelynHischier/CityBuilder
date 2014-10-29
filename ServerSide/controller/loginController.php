@@ -24,7 +24,6 @@ class loginController {
 	
 	public function disconnectAction() {
 		unset( $_SESSION["user"] );
-		unset( $user );
 		
 		return array("status" => "success");
 	}

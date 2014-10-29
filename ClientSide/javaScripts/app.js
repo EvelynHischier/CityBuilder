@@ -6,7 +6,7 @@ app.controller("ViewController", function($scope) {
 	$scope.page = "mainMenu";
 	$scope.title="City Builder";
 	$scope.pageRight = false;
-	//$scope.popup = "yesNo";
+	//$scope.popup = "continue";
 
 	// update it with database
 	$scope.admin = true;
@@ -19,7 +19,7 @@ app.controller("ViewController", function($scope) {
 	$scope.zoneOneStyle = "";
 
 	query( [{path: "dictionary/initialize", data: null }],
-			function(data){ mapLanguage($scope, data); },
+			function(data){ var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); mapLanguage($scope, data); },
 			function(data){ alert(JSON.stringify(data)); }
 	);
 	// change the view

@@ -1,17 +1,6 @@
 <?php
 class User {
 	
-	/*private $array;
-	
-	function __construct($pseudo, $password, $admin) {
-		$this->array["pseudo"] = $pseudo;
-		$this->array["password"] = $password;
-		$this->array["admin"] = $admin;
-	}
-	
-	function __get( $key ) {
-		return $this->array[$key];
-	}*/
 	
 	private $_pdo;
 	
@@ -31,7 +20,9 @@ class User {
 		$result->execute(array());
 		if($this->getError())
 			trigger_error($this->getError());
-		$users = $result->fetchAll(PDO::FETCH_ASSOC);
+		
+		$users = array_merge(array(), $result->fetchAll(PDO::FETCH_ASSOC));
+		
 	
 		return $users;
 	}

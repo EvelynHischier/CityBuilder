@@ -36,16 +36,16 @@
 			<h1 id="titleTag" data-ng-bind="title"></h1>
 		</div>
 		
-				<?php
-				include_once 'view/DivPopUpYes.php';
-				
-				include_once 'view/DivPopUpContinue.php';
-				?>
 
 		<!-- ---------------     Main Div   ---------------    -->
 		<div id="mainDiv">
 			
 			<?php
+			
+			include_once 'view/DivPopUpYes.php';
+				
+			include_once 'view/DivPopUpContinue.php';
+			
 			include_once 'view/DivMenu.php';
 			
 			include_once 'view/DivMap.php';
@@ -61,6 +61,8 @@
 			include_once 'view/DivLogin.php';
 			
 			include_once 'view/DivRegister.php';
+			
+			
 			?>
 			
 		</div>

@@ -1,12 +1,11 @@
 var app = angular.module("app", []);
 
-// main controller
+//main controller
 app.controller("ViewController", function($scope) {
 	// variables to be changed to control the views
 	$scope.page = "mainMenu";
 	$scope.title="City Builder";
 	$scope.pageRight = false;
-	//$scope.popup = "continue";
 
 	// update it with database
 	$scope.admin = true;
@@ -47,12 +46,30 @@ app.controller("ViewController", function($scope) {
 		}
 	};
 
+	// show popup
+	$scope.showPopup = function(popupFormat) {
+
+
+		switch(popupFormat){
+		case "continue":
+			$scope.popup="continue";
+
+			break;
+		case "yesNo":
+			$scope.popup="yesNo";
+			break;
+		default:
+
+		}
+	}
+
 	// set game mode
 	$scope.setMode = function(mode) {
-
+		
 		var success = function(data) {
 			$scope.changeView("mainMenu");
 			$scope.$apply();
+			
 			alert(JSON.stringify(data));
 		};
 
@@ -96,7 +113,7 @@ app.controller("ViewController", function($scope) {
 
 		query([{path: "game/launch", data: null}], success, fail);
 	};
-	
+
 	// mouse over a zone
 	$scope.hoverZone = function(zoneNbr) {
 		switch(zoneNbr) {
@@ -114,7 +131,7 @@ app.controller("ViewController", function($scope) {
 			break;
 		}
 	};
-	
+
 	// exit the game (map and in-game)
 	$scope.exitGame = function() {
 		switch($scope.page) {
@@ -123,18 +140,75 @@ app.controller("ViewController", function($scope) {
 			break;
 		}
 	};
-	
+
 	// exit the game (main menu)
 	$scope.exitGameMenu = function() {
 		var success = function( data ) {
 			$scope.changeView("login");
 		};
-		
+
 		var fail = function( data ) {
 			var w = window.open("", "_blank");
 			w.document.write( JSON.stringify(data) );
 		};
-		
+
 		query([{path: "login/disconnect", data: null}], success, fail);
 	};
+
+
+	// switch to the game page
+	$scope.startGameZone = function() {
+
+		var success = function( data ) {
+			if(JSON.parse(data)[0] == "goToGame") {
+				$scope.changeView("gameStart");
+				$scope.$apply();
+
+				// set max population
+
+				$scope.$apply();
+
+			}
+			else
+				alert($scope.dictionary[$scope.lang]["if_main_launch"]);
+		};
+
+		var fail = function(data) {
+			w = window.open("", "_blank");
+			w.document.write(JSON.stringify(data));
+		};
+
+		query([{path: "game/launch", data: null}], success, fail);
+	};
+
+	// show up a popup, after clickung on a button on the placement of the city
+	$scope.launcheZoneGame = function(zone) {
+
+		$scope.showPopup("yesNo");
+		$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
+		//$scope.
+		
+//		var success = function( data ) {
+//		if(JSON.parse(data)[0] == "goToGame") {
+//		$scope.changeView("yesNo");
+//		$scope.$apply();
+
+//		// set max population
+
+//		$scope.$apply();
+
+//		}
+//		else
+//		alert($scope.dictionary[$scope.lang]["if_main_launch"]);
+//		};
+
+//		var fail = function(data) {
+//		w = window.open("", "_blank");
+//		w.document.write(JSON.stringify(data));
+//		};
+
+//		query([{path: "game/launch", data: null}], success, fail);
+	};
+
+
 });

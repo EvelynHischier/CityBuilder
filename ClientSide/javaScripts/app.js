@@ -1,6 +1,6 @@
 var app = angular.module("app", []);
-var turn = 0;
-var choosenZone;
+//var turn = 0;
+//var choosenZone;
 
 //main controller
 app.controller("ViewController", function($scope) {
@@ -26,6 +26,7 @@ app.controller("ViewController", function($scope) {
 
 	$scope.nbrTurn = 0;
 	$scope.choosenZone = "";
+	$scope.popupName = "";
 
 	query( [{path: "dictionary/initialize", data: null }],
 			function(data){ mapLanguage($scope, data); },
@@ -72,6 +73,8 @@ app.controller("ViewController", function($scope) {
 		//  --> continue  --> Popup with one button called 'continue' 
 		//  --> yesNo     --> Popup with two buttons calles 'yes' and 'no'
 		
+		$scope.popupName = "";
+		
 		// type of popup
 		// title
 		// picture
@@ -83,67 +86,68 @@ app.controller("ViewController", function($scope) {
 			$scope.popup = 'yesNo';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
 			$scope.popupPicture = "popup_cityValidation";
+			$scope.popupName = zone;
 			break;
-		case 'caravan':
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_caravan";
-			break;
-		case 'endOfTurn':
-			$scope.popup = 'yesNo';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_endOfTurn";
-			break;
-		case 'exitGameInGame':  
-			$scope.popup = 'yesNo';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________ & text on buttons
-			$scope.popupPicture = "popup_ExitGameInGame";
-			break;
-		case 'exitGame': 
-			$scope.popup = 'yesNo';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_exitGame";
-			break;
-		case 'goodEnding': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_goodEnding";
-			break;
-		case 'granary': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_granary";
-			break;
-		case 'badEnding': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_badEnding";
-			break;
-		case 'invasion': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_invasion";
-			break;
-		case 'monument': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_monument";
-			break;
-		case 'palace': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_palace";
-			break;
-		case 'pottery': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_pottery";
-			break;			
-		case 'rampart': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_rampart";
-			break;			
+//		case 'caravan':
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_caravan";
+//			break;
+//		case 'endOfTurn':
+//			$scope.popup = 'yesNo';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_endOfTurn";
+//			break;
+//		case 'exitGameInGame':  
+//			$scope.popup = 'yesNo';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________ & text on buttons
+//			$scope.popupPicture = "popup_ExitGameInGame";
+//			break;
+//		case 'exitGame': 
+//			$scope.popup = 'yesNo';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_exitGame";
+//			break;
+//		case 'goodEnding': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_goodEnding";
+//			break;
+//		case 'granary': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_granary";
+//			break;
+//		case 'badEnding': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_badEnding";
+//			break;
+//		case 'invasion': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_invasion";
+//			break;
+//		case 'monument': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_monument";
+//			break;
+//		case 'palace': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_palace";
+//			break;
+//		case 'pottery': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_pottery";
+//			break;			
+//		case 'rampart': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_ramparts"]; 
+//			$scope.popupPicture = "popup_rampart";
+//			break;			
 		case 'desert': 
 			$scope.popup = 'continue';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
@@ -159,21 +163,21 @@ app.controller("ViewController", function($scope) {
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
 			$scope.popupPicture = "region3";
 			break;
-		case 'temple': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_temple";
-			break;
-		case 'unhappy.': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_unhappy.";
-			break;
-		case 'writing': 
-			$scope.popup = 'continue';
-			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
-			$scope.popupPicture = "popup_writing";
-			break;
+//		case 'temple': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_temple";
+//			break;
+//		case 'unhappy': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_unhappy";
+//			break;
+//		case 'writing': 
+//			$scope.popup = 'continue';
+//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+//			$scope.popupPicture = "popup_writing";
+//			break;
 		default:
 			break;
 		}
@@ -183,13 +187,16 @@ app.controller("ViewController", function($scope) {
 	// *****************************************
 	//            Action of the popups
 	// *****************************************
-	$scope.popupButton = function(answer){
+	$scope.popupButton = function(answer){  
 
 		// hide the popup
 		$scope.popup = false;
 		
 		switch (answer){
 		case "ok":
+			if ($scope.popupName != "")
+				$scope.showPopup($scope.popupName, "");
+
 			// change view to the game
 			$scope.showGame();
 			break;

@@ -203,7 +203,9 @@ div#viewGame {
 	width: 100%;
 	border-spacing: 10px;
 }
-
+.overview{
+	width: 7%;
+}
 .citizen {
 	width: 25%;
 	height: 7%;

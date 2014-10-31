@@ -228,6 +228,8 @@ app.controller("ViewController", function($scope) {
 		$scope.textGamePeasants = $scope.dictionary[$scope.lang]["if_management_peasants"];
 		$scope.textGameSlaves = $scope.dictionary[$scope.lang]["if_management_slaves"];
 		$scope.textGameCaravans = $scope.dictionary[$scope.lang]["if_management_caravans"];
+		$scope.textGameFood = $scope.dictionary[$scope.lang]["if_management_food"];
+		$scope.textGameWealth = $scope.dictionary[$scope.lang]["if_management_wealth"];
 	}
 
 	// show up a popup, after clickung on a button on the placement of the city

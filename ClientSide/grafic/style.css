@@ -106,7 +106,7 @@ div#viewMap, #viewGame, div#viewRules, div#viewScore {
 	font-size: 26pt;
 }
 
-.mainMenu:hover, .buttonRight:hover, .twoButtons:hover, #popupNext:hover {
+.mainMenu:hover, .buttonRight:hover, .twoButtons:hover, #popupNext:hover, .buttonRules:hover {
 	background-color: #ffb044; /* dark orange */
 }
 

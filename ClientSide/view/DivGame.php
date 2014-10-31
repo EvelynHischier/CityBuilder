@@ -48,10 +48,10 @@
 		<tbody>
 			<tr>
 				<td class="overview" data-ng-bind="textGameFood" ></td>
-				<td class="overview"><input type="text" readonly="readonly" style="text-align: right" /></td>
+				<td class="overview"><input type="text" readonly="readonly" style="text-align: right" data-ng-value="numberGameFood" /></td>
 				
 				<td class="overview" data-ng-bind="textGameWealth"></td>
-				<td class="number"><input type="text" readonly="readonly" style="text-align: right" /></td>
+				<td class="number"><input type="text" readonly="readonly" style="text-align: right" data-ng-value="numberGameWealth"/></td>
 				
 				<td class="tech" data-ng-bind="textGameWriting" data-ng-click="clickTechnologie('writing')"></td>
 				<td class="tech" data-ng-bind="textGameGranary" data-ng-click="clickTechnologie('granary')"></td>
@@ -59,9 +59,9 @@
 			</tr>
 			<tr>
 				<th colspan="4" class="description" data-ng-bind="textGameDescriptionTechnologie"></th>
-				<th rowspan="2"><input class="tech_Button" type="button" name="writing" ng-disabled="buttonInactiveW" data-ng-mouseover="hoverGame('writing')" data-ng-click="clickTechnologie('writing')"></th>
-				<th rowspan="2"><input class="tech_Button" type="button" name="granary" ng-disabled="buttonInactiveG" data-ng-mouseover="hoverGame('granary')" data-ng-click="clickTechnologie('granary')"></th>
-				<th rowspan="2"><input class="tech_Button" type="button" name="pottery" ng-disabled="buttonInactiveP" data-ng-mouseover="hoverGame('pottery')" data-ng-click="clickTechnologie('pottery')"></th>
+				<th rowspan="2"><input class="tech_Button" type="button" name="writing" ng-disabled="buttonInactiveW()" data-ng-mouseover="hoverGame('writing')" data-ng-click="clickTechnologie('writing')"></th>
+				<th rowspan="2"><input class="tech_Button" type="button" name="granary" ng-disabled="buttonInactiveG()" data-ng-mouseover="hoverGame('granary')" data-ng-click="clickTechnologie('granary')"></th>
+				<th rowspan="2"><input class="tech_Button" type="button" name="pottery" ng-disabled="buttonInactiveP()" data-ng-mouseover="hoverGame('pottery')" data-ng-click="clickTechnologie('pottery')"></th>
 			</tr>
 			<tr>
 				<th colspan="4" class="description" data-ng-bind="textGameDescriptionCitizen"></th>

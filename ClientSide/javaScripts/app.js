@@ -1,4 +1,6 @@
 var app = angular.module("app", []);
+var turn = 0;
+var choosenZone;
 
 //main controller
 app.controller("ViewController", function($scope) {
@@ -211,22 +213,23 @@ app.controller("ViewController", function($scope) {
 		$scope.page = "gameStart";
 		$scope.title="City Builder";
 
-		// ___________________________________________________________________--
-		choosenZone = "mountain";
 		
 		// set total number of population
 		switch (choosenZone){
 		case "fertile":
-			$scope.numberGameTotalPop = 1200;
+			$scope.numberGameTotalPop = 2000;
 			break;
 		case "desert":
-			$scope.numberGameTotalPop = 800;
+			$scope.numberGameTotalPop = 1500;
 			break;
 		case "mountain":
-			$scope.numberGameTotalPop = 1000
+			$scope.numberGameTotalPop = 1200
 			break;
 		}
 		
+		// calculatinc of food and wealth
+		$scope.numberGameFood = $scope.numberGameTotalPop / 2;
+		$scope.numberGameWealth = $scope.numberGameTotalPop / 4;
 
 		// get title text of the database
 		$scope.textGameWriting = $scope.dictionary[$scope.lang]["if_management_writing"];
@@ -251,6 +254,7 @@ app.controller("ViewController", function($scope) {
 	// show up a popup, after clickung on a button on the placement of the city
 	$scope.launcheZoneGame = function(zone) {
 
+		choosenZone = zone;
 		$scope.showPopup("yesNo");
 		$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
 		$scope.title="City Builder";

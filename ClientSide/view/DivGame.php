@@ -48,10 +48,10 @@
 		<tbody>
 			<tr>
 				<td class="overview" data-ng-bind="textGameFood" ></td>
-				<td class="overview"><input type="number" readonly="readonly" /></td>
+				<td class="overview"><input type="text" readonly="readonly" style="text-align: right" /></td>
 				
 				<td class="overview" data-ng-bind="textGameWealth"></td>
-				<td class="number"><input type="number" readonly="readonly"/></td>
+				<td class="number"><input type="text" readonly="readonly" style="text-align: right" /></td>
 				
 				<td class="tech" data-ng-bind="textGameWriting" data-ng-click="clickTechnologie('writing')"></td>
 				<td class="tech" data-ng-bind="textGameGranary" data-ng-click="clickTechnologie('granary')"></td>
@@ -68,12 +68,12 @@
 			</tr>
 			<tr>
 				<td class="citizen" id="table_population"  colspan="3" data-ng-bind="textGameTotalPop"></td>
-				<td class="number"><input type="number" id="txt_poptotal" value="1200" readonly="readonly" /></td>
+				<td class="number"><input type="text" id="txt_poptotal" value="1200" readonly="readonly" style="text-align: right" /></td>
 				<th class="pyramid" colspan="3" rowspan="10" ><div id="chartdiv"></div></th>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_population" colspan="3" data-ng-bind="textGameAvailablePop"></td>
-				<td class="number"><input type="number" id="txt_popavailable" value="1200" readonly="readonly" /></td>
+				<td class="number"><input type="text" id="txt_popavailable" value="1200" readonly="readonly" style="text-align: right" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_king" colspan="3" data-ng-mouseover="hoverGame('king')" data-ng-bind="textGameKing"></td>
@@ -105,7 +105,7 @@
 			</tr>
 			<tr>
 				<td class="citizen" id="table_caravans" colspan="3" data-ng-mouseover="hoverGame('caravans')" data-ng-bind="textGameCaravans"></td>
-				<td class="number"><input type="number" id="caravans" value="1" min="0" onBlur="updatePyramid()" readonly="readonly"/></td>
+				<td class="number"><input type="text" id="caravans" value="1" min="0" onBlur="updatePyramid()" readonly="readonly" style="text-align: right" /></td>
 			</tr>
 
 			

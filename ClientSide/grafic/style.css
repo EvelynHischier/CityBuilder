@@ -249,6 +249,10 @@ input[type="number"] {
 	text-align: right;
 }
 
+input[type="text"] {
+	background-color: #ffd966;
+}
+
 /* table content */
 .tech_Button {
 	width: 100%;

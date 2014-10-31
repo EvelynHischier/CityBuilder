@@ -4,6 +4,11 @@ var choosenZone;
 
 //main controller
 app.controller("ViewController", function($scope) {
+
+	// *****************************************
+	//              variables
+	// *****************************************
+
 	// variables to be changed to control the views
 	$scope.page = "mainMenu";
 	$scope.title="City Builder";
@@ -19,45 +24,173 @@ app.controller("ViewController", function($scope) {
 
 	$scope.zoneOneStyle = "";
 
+	$scope.nbrTurn = 0;
+	$scope.choosenZone = "";
+
 	query( [{path: "dictionary/initialize", data: null }],
 			function(data){ mapLanguage($scope, data); },
 			function(data){ alert(JSON.stringify(data)); }
 	);
-	// change the view
-	$scope.changeView = function(pageName) {
-		$scope.page = pageName;
-		$scope.title = $scope.dictionary[$scope.lang][pageName+"Title"];
 
+	// *****************************************
+	//            change the view 
+	// *****************************************
+	$scope.changeView = function(pageName) {
+		// sets the view to the the given name
+		$scope.page = pageName;
+
+		// depending on the site
+		// show different titles
+		// and display the divRight (image, text, endOfTurn button, exit game button)
 		switch(pageName) {
-		// display title
 		case "showRules":
 			$scope.title = $scope.dictionary[$scope.lang]['if_main_rules'];
 			break;
 		case "gameModes":
 			$scope.title = $scope.dictionary[$scope.lang]['title_if_gamemodes'];
 			break;
-
-			// display interface right
 		case "map" :
 			$scope.title = $scope.dictionary[$scope.lang]['title_if_placement'];
 		case "gameStart":
+			// display interface right
 			$scope.pageRight = true;
 			break;
-		default: $scope.pageRight = false;
-		$scope.title="City Builder";
+		default: 
+			// hide the divRight 
+			$scope.pageRight = false;
+			// no special title for the page
+			$scope.title="City Builder";
 		}
 	};
 
-	// show popup
-	$scope.showPopup = function(popupFormat) {
-		$scope.popup = popupFormat;
-	}
-
+	// ***************************************************************************************************
+	//            display the popups with text and image 
+	//***************************************************************************************************
+	$scope.showPopup = function(name, zone) {
+		
+		// display a popup with
+		//  --> continue  --> Popup with one button called 'continue' 
+		//  --> yesNo     --> Popup with two buttons calles 'yes' and 'no'
+		
+		// type of popup
+		// title
+		// picture
+		switch (name) {
+		case 'zone':
+			// safe the choosen zone in a variable
+			$scope.choosenZone = zone;
+			
+			$scope.popup = 'yesNo';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
+			$scope.popupPicture = "popup_cityValidation";
+			break;
+		case 'caravan':
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_caravan";
+			break;
+		case 'endOfTurn':
+			$scope.popup = 'yesNo';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_endOfTurn";
+			break;
+		case 'exitGameInGame':  
+			$scope.popup = 'yesNo';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________ & text on buttons
+			$scope.popupPicture = "popup_ExitGameInGame";
+			break;
+		case 'exitGame': 
+			$scope.popup = 'yesNo';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_exitGame";
+			break;
+		case 'goodEnding': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_goodEnding";
+			break;
+		case 'granary': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_granary";
+			break;
+		case 'badEnding': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_badEnding";
+			break;
+		case 'invasion': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_invasion";
+			break;
+		case 'monument': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_monument";
+			break;
+		case 'palace': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_palace";
+			break;
+		case 'pottery': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_pottery";
+			break;			
+		case 'rampart': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_rampart";
+			break;			
+		case 'desert': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "region2";
+			break;			
+		case 'fertile': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "region1";
+			break;
+		case 'mountain': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "region3";
+			break;
+		case 'temple': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_temple";
+			break;
+		case 'unhappy.': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_unhappy.";
+			break;
+		case 'writing': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"]; // <<<<___________________
+			$scope.popupPicture = "popup_writing";
+			break;
+		default:
+			break;
+		}
+	};
+	
+	
+	// *****************************************
+	//            Action of the popups
+	// *****************************************
 	$scope.popupButton = function(answer){
 
+		// hide the popup
 		$scope.popup = false;
+		
 		switch (answer){
 		case "ok":
+			// change view to the game
 			$scope.showGame();
 			break;
 		case "abbort":
@@ -65,17 +198,23 @@ app.controller("ViewController", function($scope) {
 		case "continue" :
 			break;
 		}
-	}
-
-	// set game mode
+	};
+	
+	// ***************************************************************************
+	//            Set the mode of the game (save into the database)
+	// ***************************************************************************
 	$scope.setMode = function(mode) {
 
+		// if insert into the database was possible
+		// ---> change the view back to the menu
 		var success = function(data) {
 			$scope.changeView("mainMenu");
 			$scope.$apply();
 
 		};
 
+		// if it fails
+		// open a new window to show the error 
 		var fail = function(data) {
 			w = window.open("", "_blank");
 			w.document.write(JSON.stringify(data));
@@ -84,19 +223,28 @@ app.controller("ViewController", function($scope) {
 		query([{path: "game/setMode", data: mode}], success, fail);
 	};
 
-	// display zones
+	// ************************************************************************************
+	//            display the map with buttons on the different zones
+	// ************************************************************************************
 	$scope.launchGame = function() {
 
 		var success = function( data ) {
+			// if the mode is '5 turns' or infinite 
+			// the server returns 'goToMap'
 			if(JSON.parse(data)[0] == "goToMap") {
+				// display the map
 				$scope.changeView("map");
 				$scope.$apply();
 
+				// draw on the map buttons 
+				// --> the position of the buttons are dynamic in a specific zone
 				var map = new Map();
 				var coordsOne = map.getZoneOne();
 				var coordsTwo = map.getZoneTwo();
 				var coordsThree = map.getZoneThree();
 
+				// place the buttons on the correct position
+				// the position is randomly choosen in the file javaScripts/mapZone.js
 				$scope.zoneOneStyle = {"margin-left": coordsOne[0] + "px", "top": coordsOne[1] + "px"};
 				$scope.zoneTwoStyle = {"margin-left": coordsTwo[0] + "px", "top": coordsTwo[1] + "px"};
 				$scope.zoneThreeStyle = {"margin-left": coordsThree[0] + "px", "top": coordsThree[1] + "px"};
@@ -109,6 +257,8 @@ app.controller("ViewController", function($scope) {
 				alert($scope.dictionary[$scope.lang]["if_main_launch"]);
 		};
 
+		// if there was a problem in the frontcontroller
+		// --> it shows the error in a sperated window
 		var fail = function(data) {
 			w = window.open("", "_blank");
 			w.document.write(JSON.stringify(data));
@@ -117,8 +267,12 @@ app.controller("ViewController", function($scope) {
 		query([{path: "game/launch", data: null}], success, fail);
 	};
 
-	// mouse over a zone
+	// ************************************************************************************
+	//            Display text and images by hovering over a zone
+	// ************************************************************************************
 	$scope.hoverZone = function(zoneNbr) {
+		
+		// sets the text and picture depending on the zone
 		switch(zoneNbr) {
 		case "fertile":
 			$scope.rightPicture = "region1";
@@ -135,7 +289,12 @@ app.controller("ViewController", function($scope) {
 		}
 	};
 
+	// ************************************************************************************
+	//            Display text and images by hovering over a social class or technologie
+	// ************************************************************************************
 	$scope.hoverGame = function (name){
+		
+		// sets the text and picture depending on the social class
 		switch(name){
 		case "king" : 
 			$scope.rightPicture = "management4";
@@ -167,7 +326,7 @@ app.controller("ViewController", function($scope) {
 			break;
 		case "caravans":
 			$scope.rightPicture = "management11";
-			$scope.rightText = $scope.dictionary[$scope.lang]["management_priests"];
+			$scope.rightText = $scope.dictionary[$scope.lang]["management_caravans"];
 			break;
 		case "writing":
 			$scope.rightPicture = "management_writing";
@@ -184,18 +343,29 @@ app.controller("ViewController", function($scope) {
 		}
 	}
 
-	// exit the game (map and in-game)
+	// ************************************************************************************
+	//            Exit game (on the map or in the game)
+	// ************************************************************************************
 	$scope.exitGame = function() {
 		switch($scope.page) {
 		case "map":
+			// go back to menu
 			$scope.changeView("mainMenu");
+			break;
+		case "game":
+			// display score  //__________________________________________________________________________________________
 			break;
 		}
 	};
 
+	// ************************************************************************************
+	//            Exit game (on the main menu)
+	// ************************************************************************************
 	// exit the game (main menu)
 	$scope.exitGameMenu = function() {
+		
 		var success = function( data ) {
+			// go back to the login screen
 			$scope.changeView("login");
 		};
 
@@ -204,18 +374,23 @@ app.controller("ViewController", function($scope) {
 			w.document.write( JSON.stringify(data) );
 		};
 
+		// close the session
 		query([{path: "login/disconnect", data: null}], success, fail);
 	};
 
 
-	// switch to the game page
+	// ************************************************************************************
+	//            Display the game
+	// ************************************************************************************
 	$scope.showGame = function(){
+		// set title and switch the page
 		$scope.page = "gameStart";
 		$scope.title="City Builder";
 
-		
+		// depending on the zone 
+		// --> the population varies 
 		// set total number of population
-		switch (choosenZone){
+		switch ($scope.choosenZone){
 		case "fertile":
 			$scope.numberGameTotalPop = 2000;
 			break;
@@ -226,12 +401,13 @@ app.controller("ViewController", function($scope) {
 			$scope.numberGameTotalPop = 1200
 			break;
 		}
-		
+
 		// calculatinc of food and wealth
+		// display the result on the corresponding field
 		$scope.numberGameFood = $scope.numberGameTotalPop / 2;
 		$scope.numberGameWealth = $scope.numberGameTotalPop / 4;
 
-		// get title text of the database
+		// get the text for title of the database 
 		$scope.textGameWriting = $scope.dictionary[$scope.lang]["if_management_writing"];
 		$scope.textGameGranary = $scope.dictionary[$scope.lang]["if_management_granary"];
 		$scope.textGamePottery = $scope.dictionary[$scope.lang]["if_management_pottery"];
@@ -250,24 +426,16 @@ app.controller("ViewController", function($scope) {
 		$scope.textGameFood = $scope.dictionary[$scope.lang]["if_management_food"];
 		$scope.textGameWealth = $scope.dictionary[$scope.lang]["if_management_wealth"];
 	}
-
-	// show up a popup, after clickung on a button on the placement of the city
-	$scope.launcheZoneGame = function(zone) {
-
-		choosenZone = zone;
-		$scope.showPopup("yesNo");
-		$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
-		$scope.title="City Builder";
-	};
-
-
-	// game buttons -> technologie -> set as set
-	// _____________________________________________________________________ problem
+	
+	// ************************************************************************************
+	//            Technologie buttons -> technologies to explore
+	// ************************************************************************************
+	// _______________________________________________________________________________ problem  --> set choosen, pro round 1 technologie
 	$scope.clickTechnologie = function (technologie){
 		switch (technologie) {
 		case "writing":
 			$scope.buttonInactiveW = true;
-			
+
 			break;
 		case "granary":
 			$scope.buttonInactiveG = true;
@@ -277,6 +445,39 @@ app.controller("ViewController", function($scope) {
 			break;
 		default:
 			break;
+		}
+	}
+
+	// ************************************************************************************
+	//            Calculate new population, happiness, welth,... --> when turn ends
+	// ************************************************************************************
+	// click on end of turn 
+	// calculation of new food ...
+	$scope.endOfTurnCalculation = function (){
+		if ($scope.nbrTurn < 5){
+
+			alert("end of turn was clicked");
+//			query( [{path: "game/getEndOfTurnAction", data: null }],
+//			function(data){ mapLanguage($scope, data); },
+//			function(data){ alert(JSON.stringify(data)); }
+//			);
+
+//			MapLanguage($scope, dataStr)
+//			data = JSON.parse(dataStr);
+
+//			$.each(data[0].data, function(index, row) {
+
+//			if(typeof $scope.dictionary[row.Language] !== "object") {
+//			$scope.dictionary[row.Language] = [];
+//			$scope.lang = row.Language;
+//			}
+
+//			$scope.dictionary[row.Language][row.Key] = row.Text;
+//			});
+
+//			$scope.$apply();
+
+			$scope.nbrTurn ++;
 		}
 	}
 

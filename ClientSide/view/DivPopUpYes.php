@@ -1,7 +1,7 @@
 <div id="popupYes" class="divPopup" data-ng-show="popup=='yesNo'">
 
 	<div class="popupImage" id="popupImageYes">
-		<img alt="picture" src="pictures/management5.png">
+		<img alt="picture" src="pictures/management5.png" data-ng-src="pictures/{{ popupPicture }}.png">
 	</div>
 	<div class="popupText" id="popupTextYes" data-ng-bind="popupYesNo_Text"></div>
 	<div class="popupButton" id="popupButtonYesNo">

@@ -18,10 +18,10 @@
 	</p>
 	<p>
 		<input type="button" value="Login" class="buttonLogin"
-			id="buttonLogin">
+			id="buttonLogin"  data-ng-click="buttonLogin()">
 	</p>
 	<p>
 		<input type="button" value="Register" class="buttonLogin"
-			id="buttonRegister">
+			id="buttonRegister" data-ng-click="buttonRegister()">
 	</p>
 </div>

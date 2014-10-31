@@ -31,4 +31,11 @@ class gameController {
 		}
 	}
 	
+	public function getEndOfTurnAction(){
+		
+		$calculation = new Calculation();
+	}
+	
+	
+	
 }

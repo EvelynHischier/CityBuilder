@@ -68,36 +68,40 @@ class Calculation {
 		
 		$this->_hist = new Historic();
 		
+		/*************************DB ACCESS*************************/
+		
 		insertIntoDB();
+		
+		
 		invasion();
 		
 		//1) Unhappiness
-		$unhappiness = calculateUnhappiness($this->_nbrClasses);
+		$this->_unhappiness = calculateUnhappiness($this->_nbrClasses);
 		//2) wealth
-		$wealthTotal += calculateWealth($this->_nbrClasses, $this->_potteryResearched);
+		$this->_wealthTotal += calculateWealth($this->_nbrClasses, $this->_potteryResearched);
 		//3) caravan
 		if(calculateCaravan($this->_wealthTotal))
 			$this->_nbrCaravans++;
 		//4) building
 		checkBuildings($this->_wealthTotal, $this->_nbrClasses);
 		//5) food
-		$foodProduction = calculateFoodProduction($this->_nbrClasses,$this->_unhappiness);
+		$this->_foodProduction = calculateFoodProduction($this->_nbrClasses,$this->_unhappiness);
 		$foodConsumption = $this->_nbrClassesSum;
-		$food = calculateRemainingFood($this->_granaryResearched, $this->_food, $this->_foodConsumption, $this->_foodProduction);
+		$this->_food = calculateRemainingFood($this->_granaryResearched, $this->_food, $foodConsumption, $this->_foodProduction);
 		//6) population
 		$newTotalPopulation = calculateNewTotalPopulation($this->_food, $this->_popTotal, $this->_foodProduction);
+		$this->_popTotal = $newTotalPopulation;
 	}
 	
-	/*************************DB ACCESS*************************/
-	
-	//INSERT INTO DB - Table Historic
-	
-	
-	//Parameter order
-	//$game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,
-	//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
-	
 	public function insertIntoDB() {
+		
+		//INSERT INTO DB - Table Historic
+		
+		
+		//Parameter order
+		//$game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,
+		//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
+		
 		$this->_hist->insertHistoric(1,1,$this->_nbrClasses[0],$this->_nbrClasses[1],$this->_nbrClasses[2],
 			$this->_nbrClasses[3],$this->_nbrClasses[5],$this->_nbrClasses[4],$this->_nbrClasses[6],
 			$this->_nbrClassesSum,$this->_wealthTotal,$this->_food,'00:04:04',0,$this->_potteryResearched,
@@ -105,6 +109,9 @@ class Calculation {
 			$this->_palaceBuilt,$this->_monumentBuilt);
 	}
 	
+	public function getInvasion() {
+		return $this->_invasion;
+	}
 	
 	public function invasion() {
 		if($this->_nbrClasses[3]<$this->_popTotal*0.025) //number of soldiers < 2.5%

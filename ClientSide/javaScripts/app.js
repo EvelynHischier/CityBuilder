@@ -211,6 +211,22 @@ app.controller("ViewController", function($scope) {
 		$scope.page = "gameStart";
 		$scope.title="City Builder";
 
+		// ___________________________________________________________________--
+		choosenZone = "mountain";
+		
+		// set total number of population
+		switch (choosenZone){
+		case "fertile":
+			$scope.numberGameTotalPop = 1200;
+			break;
+		case "desert":
+			$scope.numberGameTotalPop = 800;
+			break;
+		case "mountain":
+			$scope.numberGameTotalPop = 1000
+			break;
+		}
+		
 
 		// get title text of the database
 		$scope.textGameWriting = $scope.dictionary[$scope.lang]["if_management_writing"];
@@ -242,10 +258,12 @@ app.controller("ViewController", function($scope) {
 
 
 	// game buttons -> technologie -> set as set
+	// _____________________________________________________________________ problem
 	$scope.clickTechnologie = function (technologie){
 		switch (technologie) {
 		case "writing":
 			$scope.buttonInactiveW = true;
+			
 			break;
 		case "granary":
 			$scope.buttonInactiveG = true;

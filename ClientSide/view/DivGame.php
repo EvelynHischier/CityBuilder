@@ -68,7 +68,7 @@
 			</tr>
 			<tr>
 				<td class="citizen" id="table_population"  colspan="3" data-ng-bind="textGameTotalPop"></td>
-				<td class="number"><input type="text" id="txt_poptotal" value="1200" readonly="readonly" style="text-align: right" /></td>
+				<td class="number"><input type="text" id="txt_poptotal" readonly="readonly" style="text-align: right" data-ng-value="numberGameTotalPop"/></td>
 				<th class="pyramid" colspan="3" rowspan="10" ><div id="chartdiv"></div></th>
 			</tr>
 			<tr>

@@ -247,6 +247,7 @@ input[type="number"] {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
+	background-color: white;
 }
 
 .tech_Button[name="writing"] {

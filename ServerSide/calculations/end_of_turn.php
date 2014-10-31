@@ -29,9 +29,8 @@
 	 * 
 	 */
 
-	//Parameter order
-	//$game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,
-	//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
+
+	/*************************VARIABLES*************************/
 	
 	$popTotal = 2000;
 	$wealthTotal = 500; //population divided by 4
@@ -49,15 +48,21 @@
 	$palaceBuilt = 0;
 	$monumentBuilt = 0;
 	
+	/*************************DB ACCESS*************************/
 	
 	//INSERT INTO DB - Table Historic
 	$hist = new Historic();
+	
+	//Parameter order
+	//$game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,
+	//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
 	
 	$hist->insertHistoric(1,1,$nbrClasses[0],$nbrClasses[1],$nbrClasses[2],$nbrClasses[3],$nbrClasses[5],$nbrClasses[4],
 			$nbrClasses[6],$nbrClassesSum,$wealthTotal,$food,'00:04:04',0,$potteryResearched,$granaryResearched,
 			$writingResearched,$nbrCaravans,$templeBuilt,$palaceBuilt,$monumentBuilt);
 	
 	
+	/*************************CALCULATIONS*************************/
 	echo "<p>Wealth: " . $wealthTotal . "</p>";
 	echo "<p>Food: " . $food . "</p>";
 	
@@ -67,16 +72,16 @@
 	
 	//Calculate losses
 	if($invasion) {
-		$lostPop = (int) ((3-($nbrClasses[3]*100)/$popTotal)*5)*$popTotal/100; //14000
-		$lostWealth = (int) ((3-($nbrClasses[3]*100)/$popTotal)*15)*$wealthTotal/100; //840
+		$lostPop = (int) ((3-($nbrClasses[3]*100)/$popTotal)*5)*$popTotal/100;
+		$lostWealth = (int) ((3-($nbrClasses[3]*100)/$popTotal)*15)*$wealthTotal/100;
 		
 		echo "<p>Population lost: " . $lostPop . "</p>";
 		echo "<p>Wealth lost: " . $lostWealth . "</p>";
 		
-		//Apply the losses (algorithm? -> use array!)
-		$wealthTotal -= $lostWealth; //116000
+		//Apply the losses
+		$wealthTotal -= $lostWealth;
 
-		$nbrClasses[3] -= $lostPop; //-13800 => 0, number of soldiers
+		$nbrClasses[3] -= $lostPop; //example: -13800 => 0, number of soldiers
 		if($nbrClasses[3] < 0) {
 			$nbrClasses[4] += $nbrClasses[3]; //-3800, number of peasants
 			$nbrClasses[3] = 0;
@@ -126,6 +131,8 @@
 	//6) population
 	$newTotalPopulation = calculateNewTotalPopulation($food, $popTotal, $foodProduction);
 	
+	/*************************UNHAPPINESS*************************/
+	
 	function calculateUnhappiness($nbrClasses) {
 		$unhappiness = false;
 		
@@ -140,6 +147,8 @@
 		return $unhappiness;
 	}
 	
+	/*************************WEALTH*************************/
+	
 	function calculateWealth($nbrClasses, $potteryResearched) {
 		$potteryValue = 0;
 		
@@ -150,10 +159,14 @@
 		return $producedWealth;
 	}
 	
+	/*************************CARAVAN*************************/
+	
 	function calculateCaravan($wealthTotal) {
 		if($wealthTotal >= 550)
 			return true;
 	}
+	
+	/*************************BUILDINGS*************************/
 	
 	function checkBuildings($wealthTotal, $nbrClasses) {
 		if($nbrClasses[1] >= 10 && $wealthTotal >= 550 && $nbrClasses[4] >= 1000)
@@ -166,6 +179,8 @@
 			echo "<p>Building monument...</p>"; //set monumentBuilt to 1
 		
 	}
+	
+	/*************************FOOD*************************/
 	
 	function calculateFoodProduction($nbrClasses,$unhappiness) {
 		//100/2000 = 5%
@@ -187,6 +202,8 @@
 		
 		return $foodProduction;
 	}
+	
+	/*************************CALCULATIONS*************************/
 	
 	function calculateRemainingFood($granaryResearched, $food, $foodConsumption, $foodProduction) {
 		$foodRemaining = 0;

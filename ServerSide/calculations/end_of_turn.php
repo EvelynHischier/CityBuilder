@@ -165,7 +165,7 @@ class Calculation {
 			$this->_nbrClasses[1] <= array_sum($this->_nbrClasses)*0.0025 ||
 			$this->_nbrClasses[5] <= array_sum($this->_nbrClasses)*0.02)
 		{
-			echo "Unhappiness = 1!";
+			//echo "Unhappiness = 1!";
 			$unhappiness = true;
 		}
 		
@@ -194,14 +194,21 @@ class Calculation {
 	/*************************BUILDINGS*************************/
 	
 	function checkBuildings($wealthTotal, $nbrClasses) {
-		if($this->_nbrClasses[1] >= 10 && $this->_wealthTotal >= 550 && $this->_nbrClasses[4] >= 1000)
-			echo "<p>Building temple...</p>"; //set templeBuilt to 1
+
+		if($this->_nbrClasses[1] >= 10 && $this->_wealthTotal >= 550 && $this->_nbrClasses[4] >= 1000) {
+			//echo "<p>Building temple...</p>"; //set templeBuilt to 1
+			$this->_templeBuilt = 1;
+		}
 		
-		if($this->_wealthTotal >= 850 && $this->_nbrClasses[4] >= 1500)
-			echo "<p>Building Palace...</p>"; //set palaceBuilt to 1
+		if($this->_wealthTotal >= 850 && $this->_nbrClasses[4] >= 1500) {
+			//echo "<p>Building Palace...</p>"; //set palaceBuilt to 1
+			$this->_palaceBuilt = 1;
+		}
 		
-		if($this->_wealthTotal >= 1150 && $this->_nbrClasses[4] >= 1900)
-			echo "<p>Building monument...</p>"; //set monumentBuilt to 1
+		if($this->_wealthTotal >= 1150 && $this->_nbrClasses[4] >= 1900) {
+			//echo "<p>Building monument...</p>"; //set monumentBuilt to 1
+			$this->_monumentBuilt = 1;
+		}
 		
 	}
 	

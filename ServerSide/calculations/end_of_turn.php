@@ -34,7 +34,7 @@
 	//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
 	
 	$popTotal = 2000;
-	$wealthTotal = 500;
+	$wealthTotal = 500; //population divided by 4
 	$nbrClasses = array(4,50,100,620,500,500,16); //1790
 	$nbrClassesSum = array_sum($nbrClasses);
 	$invasion = false;
@@ -43,7 +43,7 @@
 	$writingResearched = 0;
 	$unhappiness = false;
 	$nbrCaravans = 2;
-	$food = 1000;
+	$food = 1000; //population divided by 2
 	$foodProduction = 0;
 	$templeBuilt = 0;
 	$palaceBuilt = 0;

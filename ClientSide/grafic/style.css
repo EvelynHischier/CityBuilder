@@ -3,11 +3,24 @@
  *  ----------------------    general  ----------------------------
 */
 body {
-	background-image: url("background.png");
 	margin: 0px;
 	z-index: -10; /* Layer  (background) */
 	font-family: Arial;
 	overflow-y: hidden;
+	
+
+}
+html{
+	
+/* 	background image
+	no repeat
+	full screen size
+	 */
+	 background: url("background.png") fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
 }
 
 h1 {
@@ -245,6 +258,10 @@ input[type="number"] {
 	background-position: center;
 	background-size: auto 100%;
 	background-color: white;
+}
+
+.tech_Button:active{
+	background-color: black;
 }
 
 .tech_Button[name="writing"] {

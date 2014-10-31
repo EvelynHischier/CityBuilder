@@ -50,9 +50,9 @@ app.controller("ViewController", function($scope) {
 	$scope.showPopup = function(popupFormat) {
 		$scope.popup = popupFormat;
 	}
-	
+
 	$scope.popupButton = function(answer){
-		
+
 		$scope.popup = false;
 		switch (answer){
 		case "ok":
@@ -132,7 +132,7 @@ app.controller("ViewController", function($scope) {
 			break;
 		}
 	};
-	
+
 	$scope.hoverGame = function (name){
 		switch(name){
 		case "king" : 
@@ -210,14 +210,14 @@ app.controller("ViewController", function($scope) {
 	$scope.showGame = function(){
 		$scope.page = "gameStart";
 		$scope.title="City Builder";
-		
-		
+
+
 		// get title text of the database
 		$scope.textGameWriting = $scope.dictionary[$scope.lang]["if_management_writing"];
 		$scope.textGameGranary = $scope.dictionary[$scope.lang]["if_management_granary"];
 		$scope.textGamePottery = $scope.dictionary[$scope.lang]["if_management_pottery"];
-		$scope.textGameDescriptionCitizen = $scope.dictionary[$scope.lang]["if_management_assignCitizens"];
-		$scope.textGameDescriptionTechnologie = $scope.dictionary[$scope.lang]["if_management_chooseTech"];
+		$scope.textGameDescriptionCitizen = $scope.dictionary[$scope.lang]["if_management_assignCitizens"] + '  \u2193';
+		$scope.textGameDescriptionTechnologie = $scope.dictionary[$scope.lang]["if_management_chooseTech"] + '  \u2192';
 		$scope.textGameTotalPop = $scope.dictionary[$scope.lang]["if_management_popTotal"];
 		$scope.textGameAvailablePop = $scope.dictionary[$scope.lang]["if_management_popAvailable"];
 		$scope.textGameKing = $scope.dictionary[$scope.lang]["if_management_king"];
@@ -239,6 +239,24 @@ app.controller("ViewController", function($scope) {
 		$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
 		$scope.title="City Builder";
 	};
+
+
+	// game buttons -> technologie -> set as set
+	$scope.clickTechnologie = function (technologie){
+		switch (technologie) {
+		case "writing":
+			$scope.buttonInactiveW = true;
+			break;
+		case "granary":
+			$scope.buttonInactiveG = true;
+			break;
+		case "pottery":
+			$scope.buttonInactiveP = true;
+			break;
+		default:
+			break;
+		}
+	}
 
 
 });

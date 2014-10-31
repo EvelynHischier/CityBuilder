@@ -15,7 +15,7 @@
 				chart.funnelAlpha = 0.9;
 				chart.valueField = "value";
 				chart.startX = -500;
-// 				chart.labelText = "[[title]]: [[value]] ([[percents]]%)";
+				//chart.labelText = "[[title]]: [[value]] ([[percents]]%)";
 				chart.labelText = "[[title]]";
 				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBA0"];
 				/*
@@ -159,11 +159,11 @@
 
 					for(var i = 0; i < data.length; i++) {
 						
-						if(data[i].value / sum < 0.0625) {//less than 6.25%
+						if(data[i].value / popAvailable < 0.0625) {//less than 6.25%
 							data[i].value = popAvailable*0.0625;
 						}
 						
-						if(data[i].value / sum > 0.625) {//greater than 62.5%
+						if(data[i].value / popAvailable > 0.625) {//greater than 62.5%
 							data[i].value = popAvailable*0.625;
 						}
 					}

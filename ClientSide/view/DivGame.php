@@ -41,16 +41,16 @@
 			}
 			
         </script>
-<!--  Static texts --- get from database, table to 
-      number > hover 
-      button > hintergrund 
+<!--   number > hover 
       welth-->
 
 	<table id="tableGame">
 		<tbody>
 			<tr>
-				<td>Score (title)</td>
-				<td>Score</td>
+				<td class="overview">Food</td>
+				<td class="overview">Score</td>
+				<td class="overview">welth</td>
+				<td class="number">Score</td>
 				<td class="tech" data-ng-bind="textGameWriting"></td>
 				<td class="tech" data-ng-bind="textGameGranary"></td>
 				<td class="tech" data-ng-bind="textGamePottery"></td>
@@ -66,7 +66,7 @@
 			</tr>
 			<tr>
 				<td class="citizen" id="table_population"  data-ng-bind="textGameTotalPop"></td>
-				<td class="number">number</td>
+				<td class="number"><input type="number" id="txt_poptotal" value="1200" readonly="readonly" /></td>
 				<th class="pyramid" colspan="3" rowspan="10" ><div id="chartdiv"></div></th>
 			</tr>
 			<tr>

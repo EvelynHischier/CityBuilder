@@ -51,9 +51,9 @@
 			<tr>
 				<td>Score (title)</td>
 				<td>Score</td>
-				<td class="tech" data-ng-bind="textGameWriting">Writing</td>
-				<td class="tech" data-ng-bind="textGameGranary">Granary</td>
-				<td class="tech" data-ng-bind="textGamePottery">Pottery</td>
+				<td class="tech" data-ng-bind="textGameWriting"></td>
+				<td class="tech" data-ng-bind="textGameGranary"></td>
+				<td class="tech" data-ng-bind="textGamePottery"></td>
 			</tr>
 			<tr>
 				<th colspan="2" class="description" data-ng-bind="textGameDescriptionTechnologie"></th>

@@ -56,7 +56,7 @@ app.controller("ViewController", function($scope) {
 		$scope.popup = false;
 		switch (answer){
 		case "ok":
-			$scope.changeView("gameStart");
+			$scope.showGame();
 			break;
 		case "abbort":
 			break;
@@ -171,7 +171,7 @@ app.controller("ViewController", function($scope) {
 			$scope.rightPicture = "management_writing";
 			$scope.rightText = $scope.dictionary[$scope.lang]["management_writing"];
 			break;
-		case "granary":x
+		case "granary":
 			$scope.rightPicture = "management_granary";
 			$scope.rightText = $scope.dictionary[$scope.lang]["management_granary"];
 			break;
@@ -207,36 +207,35 @@ app.controller("ViewController", function($scope) {
 
 
 	// switch to the game page
-	$scope.startGameZone = function() {
-
-		var success = function( data ) {
-			if(JSON.parse(data)[0] == "goToGame") {
-				$scope.changeView("gameStart");
-				$scope.$apply();
-
-				// set max population
-
-				$scope.$apply();
-
-			}
-			else
-				alert($scope.dictionary[$scope.lang]["if_main_launch"]);
-		};
-
-		var fail = function(data) {
-			w = window.open("", "_blank");
-			w.document.write(JSON.stringify(data));
-		};
-
-		query([{path: "game/launch", data: null}], success, fail);
-	};
+	$scope.showGame = function(){
+		$scope.page = "gameStart";
+		$scope.title="City Builder";
+		
+		
+		// get title text of the database
+		$scope.textGameWriting = $scope.dictionary[$scope.lang]["if_management_writing"];
+		$scope.textGameGranary = $scope.dictionary[$scope.lang]["if_management_granary"];
+		$scope.textGamePottery = $scope.dictionary[$scope.lang]["if_management_pottery"];
+		$scope.textGameDescriptionCitizen = $scope.dictionary[$scope.lang]["if_management_assignCitizens"];
+		$scope.textGameDescriptionTechnologie = $scope.dictionary[$scope.lang]["if_management_chooseTech"];
+		$scope.textGameTotalPop = $scope.dictionary[$scope.lang]["if_management_popTotal"];
+		$scope.textGameAvailablePop = $scope.dictionary[$scope.lang]["if_management_popAvailable"];
+		$scope.textGameKing = $scope.dictionary[$scope.lang]["if_management_king"];
+		$scope.textGamePriest = $scope.dictionary[$scope.lang]["if_management_priest"];	
+		$scope.textGameCraft = $scope.dictionary[$scope.lang]["if_management_craftsmen"];
+		$scope.textGameScribes = $scope.dictionary[$scope.lang]["if_management_scribes"];
+		$scope.textGameSoldiers = $scope.dictionary[$scope.lang]["if_management_soldiers"];
+		$scope.textGamePeasants = $scope.dictionary[$scope.lang]["if_management_peasants"];
+		$scope.textGameSlaves = $scope.dictionary[$scope.lang]["if_management_slaves"];
+		$scope.textGameCaravans = $scope.dictionary[$scope.lang]["if_management_caravans"];
+	}
 
 	// show up a popup, after clickung on a button on the placement of the city
 	$scope.launcheZoneGame = function(zone) {
 
 		$scope.showPopup("yesNo");
 		$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
-
+		$scope.title="City Builder";
 	};
 
 

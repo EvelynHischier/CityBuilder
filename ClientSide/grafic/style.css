@@ -194,11 +194,6 @@ div#viewMap {
 /* table size*/
 div#viewGame {
 	border: 1px solid black;
-
-	/*
-	height: 100%;
-	width: 100%;
-	background-color: #ffd966; /* orange */
 }
 
 #tableGame {

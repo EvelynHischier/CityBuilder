@@ -41,16 +41,31 @@
 			}
 			
         </script>
+<<<<<<< HEAD
 
+=======
+<!--   number > hover 
+      welth-->
+>>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 
 	<table id="tableGame">
 		<tbody>
 			<tr>
+<<<<<<< HEAD
 				<td>Score (title)</td>
 				<td>Score</td>
 				<td class="tech" data-ng-bind="textGameWriting">Writing</td>
 				<td class="tech" data-ng-bind="textGameGranary">Granary</td>
 				<td class="tech" data-ng-bind="textGamePottery">Pottery</td>
+=======
+				<td class="overview">Food</td>
+				<td class="overview">Score</td>
+				<td class="overview">welth</td>
+				<td class="number">Score</td>
+				<td class="tech" data-ng-bind="textGameWriting"></td>
+				<td class="tech" data-ng-bind="textGameGranary"></td>
+				<td class="tech" data-ng-bind="textGamePottery"></td>
+>>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 			</tr>
 			<tr>
 				<th colspan="2" class="description" data-ng-bind="textGameDescriptionTechnologie">Choose technology</th>
@@ -62,8 +77,13 @@
 				<th colspan="2" class="description" data-ng-bind="textGameDescriptionCitizen">Assign citizen</th>
 			</tr>
 			<tr>
+<<<<<<< HEAD
 				<td class="citizen" id="table_population">Total pop</td>
 				<td class="number">number</td>
+=======
+				<td class="citizen" id="table_population"  data-ng-bind="textGameTotalPop"></td>
+				<td class="number"><input type="number" id="txt_poptotal" value="1200" readonly="readonly" /></td>
+>>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 				<th class="pyramid" colspan="3" rowspan="10" ><div id="chartdiv"></div></th>
 			</tr>
 			<tr>

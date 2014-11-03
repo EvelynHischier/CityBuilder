@@ -1,5 +1,5 @@
 <?php
-	require_once( "../model/Class.Historic.php");
+	require_once( __DIR__ . "/../model/Class.Historic.php");
 	
 	/*session_start();
 	

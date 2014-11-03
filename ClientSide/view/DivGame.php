@@ -1,10 +1,7 @@
 <div id="viewGame" data-ng-show = "page == 'gameStart'" onload="updatePyramid()">
         <script type="text/javascript">
 			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
-<<<<<<< HEAD
-			var popAvailable = 2000;
-=======
->>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
+
 			var chart;
 			
 			configChart = function() {
@@ -115,13 +112,10 @@
 			
 <!-- 			pyramid actions  -->
 			<script type="text/javascript">
-<<<<<<< HEAD
 				configChart();
 				updatePyramid();
 				
-=======
 				var popAvailable = 1200;
->>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 				function updatePyramid()
 				{
 					var sum = 0;
@@ -168,11 +162,8 @@
 						"title": "King",
 						"value": population[6]
 					}];
-<<<<<<< HEAD
+					
 					//var numbers = "Sum: " + sum + "; ";
-=======
-
->>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 					for(var i = 0; i < data.length; i++) {
 						
 						if(data[i].value / popAvailable < 0.0625) {//less than 6.25%

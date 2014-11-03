@@ -22,4 +22,14 @@ class Item{
 	
 		return $items;
 	}
+	//method to insert a new item
+	public function insertItem($itemTypeID,$gameID,$number,$turn){
+		$query = "INSERT INTO Item (ItemType_ItemTypeID,Game_GameID,Number,Turn) ".
+				"VALUES ($itemTypeID,$gameID,$number,$turn)";
+		
+		$result = $this->_pdo->prepare($query);
+		$result->execute();
+		if($this->getError())
+			trigger_error($this->getError());
+	}
 }

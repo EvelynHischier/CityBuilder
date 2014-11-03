@@ -468,24 +468,40 @@ app.controller("ViewController", function($scope) {
 			function(data){ alert(JSON.stringify(data)); }
 			);
 
-//			MapLanguage($scope, dataStr)
-//			data = JSON.parse(dataStr);
-
-//			$.each(data[0].data, function(index, row) {
-
-//			if(typeof $scope.dictionary[row.Language] !== "object") {
-//			$scope.dictionary[row.Language] = [];
-//			$scope.lang = row.Language;
-//			}
-
-//			$scope.dictionary[row.Language][row.Key] = row.Text;
-//			});
-
-//			$scope.$apply();
-
 			$scope.nbrTurn ++;
 		}
 	}
 
-
+	// ************************************************************************************
+	//            Display the score
+	// ************************************************************************************
+	$scope.displayTheScore = function (){
+		
+		// set title, change the view to DivScore.php
+		$scope.page = "score";
+		$scope.title =  $scope.dictionary[$scope.lang]["if_management_score"]; 
+		
+		// set titles of the table columns
+		$scope.scoreTechnologyTxt =  $scope.dictionary[$scope.lang]["score_technology"]; 
+		$scope.scoreWealthTxt =  $scope.dictionary[$scope.lang]["if_management_wealth"]; 
+		$scope.scoreBuildingsTxt =  $scope.dictionary[$scope.lang]["score_buildings"]; 
+		$scope.scorePopulationTxt =  $scope.dictionary[$scope.lang]["score_population"]; 
+		$scope.scoreHappinessTxt =  $scope.dictionary[$scope.lang]["score_happiness"]; 
+		$scope.scoreTotalTxt =  $scope.dictionary[$scope.lang]["score_scoreTotal"]; 
+		
+		
+		$scope.scoreTxt =  $scope.dictionary[$scope.lang]["if_management_score"]; 
+		
+		
+		// set numbers
+		$scope.scoreTechnology = 0; // <<------ number
+		$scope.scoreWealth = 0; // <<------ number
+		$scope.scoreBuildings = 0; // <<------ number
+		$scope.scorePopulation = 0; // <<------ number
+		$scope.scoreHappyness = 0; // <<------ number
+		$scope.scoreTotal = 0; // <<------ number
+		
+		
+	}
+	
 });

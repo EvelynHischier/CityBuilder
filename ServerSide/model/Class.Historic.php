@@ -1,10 +1,9 @@
 <?php
-<<<<<<< HEAD
+
 /*function __autoload($class){
 	include_once __DIR__."../model/Class.".$class."php";
 }*/
-=======
->>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
+
 class Historic{
 	
 	

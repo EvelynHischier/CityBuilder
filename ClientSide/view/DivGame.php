@@ -1,7 +1,7 @@
 <div id="viewGame" data-ng-show = "page == 'gameStart'" onload="updatePyramid()">
         <script type="text/javascript">
 			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
-
+			var popAvailable = 2000;
 			var chart;
 			
 			configChart = function() {
@@ -35,11 +35,11 @@
 				chart.write("chartdiv");
 			};
 			
-			if(AmCharts.isReady) {
+			/*if(AmCharts.isReady) {
 				configChart();
 			} else {
 				AmCharts.ready(configChart);
-			}
+			}*/
 			
         </script>
 <!--   number > hover 
@@ -115,7 +115,7 @@
 				configChart();
 				updatePyramid();
 				
-				var popAvailable = 1200;
+				
 				function updatePyramid()
 				{
 					var sum = 0;

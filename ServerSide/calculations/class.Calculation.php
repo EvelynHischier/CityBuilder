@@ -32,6 +32,7 @@
 class Calculation {
 	/*************************VARIABLES*************************/
 	
+	private $_arrayItems;
 	private $_popTotal;
 	private $_wealthTotal;
 	private $_nbrClasses;
@@ -49,48 +50,68 @@ class Calculation {
 	private $_monumentBuilt;
 	private $_hist;
 	
-	public function __construct($popTotal, $wealthTotal, $nbrClasses, $food, $nbrCaravans) {
-		$this->_popTotal = $popTotal;
-		$this->_wealthTotal = $wealthTotal;
-		$this->_nbrClasses = $nbrClasses; //array(4,50,100,620,500,500,16); //1790
-		$this->_nbrClassesSum = array_sum($this->_nbrClasses);
-		$this->_invasion = false;
-		$this->_potteryResearched = 0;
-		$this->_granaryResearched = 0;
-		$this->_writingResearched = 0;
-		$this->_unhappiness = false;
-		$this->_nbrCaravans = $nbrCaravans;
-		$this->_food = $food; //population times 2%, for 2000 people = 40 food
-		$this->_foodProduction = 0;
-		$this->_templeBuilt = 0;
-		$this->_palaceBuilt = 0;
-		$this->_monumentBuilt = 0;
+	public function __construct($arrayClient) {	
+		$this->_arrayItems = array();
+		
+		/*$this->_arrayItems["popTotal"] = $popTotal;
+		$this->_nbrClassesSum = $this->_calculateAllocatedPopulation();
+		$this->_arrayItems["potteryResearch"] = 0;
+		$this->_arrayItems["granaryResearch"] = 0;
+		$this->_arrayItems["writingResearch"] = 0;
+		$this->_arrayItems["caravans"] = $nbrCaravans;
+		$this->_arrayItems["wealthTotal"] = $wealthTotal;
+		$this->_arrayItems["food"] = $food; //population times 2%, for 2000 people = 40 food
+		*/
+		$this->_arrayItems["foodProduction"] = 0;
+		$this->_arrayItems["templeBuilt"] = 0;
+		$this->_arrayItems["palaceBuilt"] = 0;
+		$this->_arrayItems["monumentBuilt"] = 0;
+		$this->_arrayItems["unhappiness"] = false;
+		$this->_arrayItems["invasion"] = false;
+		
+		foreach($arrayClient as $key => $value) {
+			$this->_arrayItems[$key] = $value;
+		}
 		
 		$this->_hist = new Historic();
 		
 		/*************************DB ACCESS*************************/
 		
-		insertIntoDB();
+		$this->insertIntoDB();
 		
 		
-		invasion();
+		$this->invasion();
 		
 		//1) Unhappiness
-		$this->_unhappiness = calculateUnhappiness($this->_nbrClasses);
+		$this->_arrayItems["unhappiness"] = $this->calculateUnhappiness($this->_nbrClasses);
 		//2) wealth
-		$this->_wealthTotal += calculateWealth($this->_nbrClasses, $this->_potteryResearched);
+		$this->_arrayItems["wealthTotal"] += $this->calculateWealth($this->_nbrClasses, $this->_arrayItems["potteryResearch"]);
 		//3) caravan
-		if(calculateCaravan($this->_wealthTotal))
-			$this->_nbrCaravans++;
+		if($this->calculateCaravan($this->_arrayItems["wealthTotal"]))
+			$this->_arrayItems["caravans"]++;
 		//4) building
-		checkBuildings($this->_wealthTotal, $this->_nbrClasses);
+		$this->checkBuildings($this->_arrayItems["wealthTotal"], $this->_nbrClasses);
 		//5) food
-		$this->_foodProduction = calculateFoodProduction($this->_nbrClasses,$this->_unhappiness);
+		$this->_arrayItems["foodProduction"] = $this->calculateFoodProduction($this->_nbrClasses,$this->_arrayItems["unhappiness"]);
 		$foodConsumption = $this->_nbrClassesSum;
-		$this->_food = calculateRemainingFood($this->_granaryResearched, $this->_food, $foodConsumption, $this->_foodProduction);
+		$this->_arrayItems["food"] = $this->calculateRemainingFood($this->_arrayItems["granaryResearch"], $this->_arrayItems["food"], $foodConsumption, $this->_arrayItems["foodProduction"]);
 		//6) population
-		$newTotalPopulation = calculateNewTotalPopulation($this->_food, $this->_popTotal, $this->_foodProduction);
-		$this->_popTotal = $newTotalPopulation;
+		$newTotalPopulation = $this->calculateNewTotalPopulation($this->_arrayItems["food"], $this->_arrayItems["popTotal"], $this->_arrayItems["foodProduction"]);
+		$this->_arrayItems["popTotal"] = $newTotalPopulation;
+	}
+	
+	public function getArray() {
+		return $this->_arrayItems;
+	}
+	
+	public function calculateAllocatedPopulation() {
+		return 	$this->_arrayItems["kings"] +
+				$this->_arrayItems["priests"] +
+				$this->_arrayItems["craftmen"] +
+				$this->_arrayItems["scribes"] +
+				$this->_arrayItems["soldiers"] +
+				$this->_arrayItems["peasants"] +
+				$this->_arrayItems["slaves"];
 	}
 	
 	public function insertIntoDB() {
@@ -103,60 +124,60 @@ class Calculation {
 		//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
 		
 		//$time (elapsed time) and $score will not be used
-		$this->_hist->insertHistoric(1,1,$this->_nbrClasses[0],$this->_nbrClasses[1],$this->_nbrClasses[2],
-			$this->_nbrClasses[3],$this->_nbrClasses[5],$this->_nbrClasses[4],$this->_nbrClasses[6],
-			$this->_nbrClassesSum,$this->_wealthTotal,$this->_food,0,0,$this->_potteryResearched,
-			$this->_granaryResearched,$this->_writingResearched,$this->_nbrCaravans,$this->_templeBuilt,
-			$this->_palaceBuilt,$this->_monumentBuilt);
+		$this->_hist->insertHistoric(1,1,$this->_arrayItems["kings"],$this->_arrayItems["priests"],$this->_arrayItems["scribes"],
+			$this->_arrayItems["soldiers"],$this->_arrayItems["slaves"],$this->_arrayItems["peasants"],$this->_arrayItems["craftmen"],
+			$this->_nbrClassesSum,$this->_arrayItems["wealthTotal"],$this->_arrayItems["food"],0,0,$this->_arrayItems["potteryResearch"],
+			$this->_arrayItems["granaryResearch"],$this->_arrayItems["writingResearch"],$this->_arrayItems["caravans"],$this->_arrayItems["templeBuilt"],
+			$this->_arrayItems["palaceBuilt"],$this->_arrayItems["monumentBuilt"]);
 	}
 	
 	public function getInvasion() {
-		return $this->_invasion;
+		return $this->_arrayItems["invasion"];
 	}
 	
 	public function invasion() {
-		if($this->_nbrClasses[3]<$this->_popTotal*0.025) //number of soldiers < 2.5%
-			$this->_invasion = true;
+		if($this->_arrayItems["soldiers"]<$this->_arrayItems["popTotal"]*0.025) //number of soldiers < 2.5%
+			$this->_arrayItems["invasion"] = true;
 		
 		//Calculate losses
-		if($this->_invasion) {
-			$this->_lostPop = (int) ((3-($this->_nbrClasses[3]*100)/$this->_popTotal)*5)*$this->_popTotal/100;
-			$this->_lostWealth = (int) ((3-($this->_nbrClasses[3]*100)/$this->_popTotal)*15)*$this->_wealthTotal/100;
+		if($this->_arrayItems["invasion"]) {
+			$this->_lostPop = (int) ((3-($this->_arrayItems["soldiers"]*100)/$this->_arrayItems["popTotal"])*5)*$this->_arrayItems["popTotal"]/100;
+			$this->_lostWealth = (int) ((3-($this->_arrayItems["soldiers"]*100)/$this->_arrayItems["popTotal"])*15)*$this->_arrayItems["wealthTotal"]/100;
 		
-			//echo "<p>Population lost: " . $lostPop . "</p>";
-			//echo "<p>Wealth lost: " . $lostWealth . "</p>";
+			echo "<p>Population lost: " . $lostPop . "</p>";
+			echo "<p>Wealth lost: " . $lostWealth . "</p>";
 		
 			//Apply the losses
-			$this->_wealthTotal -= $this->_lostWealth;
+			$this->_arrayItems["wealthTotal"] -= $this->_lostWealth;
 		
-			$this->_nbrClasses[3] -= $this->_lostPop; //example: -13800 => 0, number of soldiers
-			if($this->_nbrClasses[3] < 0) {
-				$this->_nbrClasses[4] += $this->_nbrClasses[3]; //-3800, number of peasants
-				$this->_nbrClasses[3] = 0;
+			$this->_arrayItems["soldiers"] -= $this->_lostPop; //example: -13800 => 0, number of soldiers
+			if($this->_arrayItems["soldiers"] < 0) {
+				$this->_arrayItems["peasants"] += $this->_arrayItems["soldiers"]; //-3800, number of peasants
+				$this->_arrayItems["soldiers"] = 0;
 			}
 		
-			if($this->_nbrClasses[4] < 0) {
-				$this->_nbrClasses[5] += $this->_nbrClasses[4]; //1200, number of slaves
-				$this->_nbrClasses[4] = 0;
+			if($this->_arrayItems["peasants"] < 0) {
+				$this->_arrayItems["slaves"] += $this->_arrayItems["peasants"]; //1200, number of slaves
+				$this->_arrayItems["peasants"] = 0;
 			}
 		
-			if($this->_nbrClasses[5] < 0) { //false, 1200 is greater than 0
-				$this->_nbrClasses[2] += $this->_nbrClasses[5]; //number of scribes
-				$this->_nbrClasses[5] = 0;
+			if($this->_arrayItems["slaves"] < 0) { //false, 1200 is greater than 0
+				$this->_arrayItems["scribes"] += $this->_arrayItems["slaves"]; //number of scribes
+				$this->_arrayItems["slaves"] = 0;
 			}
 		
-			if($this->_nbrClasses[2] < 0) {
-				$this->_nbrClasses[1] += $this->_nbrClasses[2]; //number of priests
-				$this->_nbrClasses[2] = 0;
+			if($this->_arrayItems["scribes"] < 0) {
+				$this->_arrayItems["priests"] += $this->_arrayItems["scribes"]; //number of priests
+				$this->_arrayItems["scribes"] = 0;
 			}
 		
-			if($this->_nbrClasses[1] < 0) {
-				$this->_nbrClasses[0] += $this->_nbrClasses[1]; //number of kings
-				$this->_nbrClasses[1] = 0;
+			if($this->_arrayItems["priests"] < 0) {
+				$this->_arrayItems["kings"] += $this->_arrayItems["priests"]; //number of kings
+				$this->_arrayItems["priests"] = 0;
 			}
 		
-			if($this->_nbrClasses[0] < 0) {
-				$this->_nbrClasses[0] = 0;
+			if($this->_arrayItems["kings"] < 0) {
+				$this->_arrayItems["kings"] = 0;
 			}
 		} else {
 			$this->_lostPop = 0;
@@ -169,11 +190,11 @@ class Calculation {
 	function calculateUnhappiness($nbrClasses) {
 		$unhappiness = false;
 		
-		if($this->_nbrClasses[0] > 1 || $this->_nbrClasses[0] < 1 || 
-			$this->_nbrClasses[1] <= array_sum($this->_nbrClasses)*0.0025 ||
-			$this->_nbrClasses[5] <= array_sum($this->_nbrClasses)*0.02)
+		if($this->_arrayItems["kings"] > 1 || $this->_arrayItems["kings"] < 1 || 
+			$this->_arrayItems["priests"] <= $this->calculateAllocatedPopulation()*0.0025 ||
+			$this->_arrayItems["slaves"] <= $this->calculateAllocatedPopulation()*0.02)
 		{
-			//echo "Unhappiness = 1!";
+			echo "Unhappiness = 1!";
 			$unhappiness = true;
 		}
 		
@@ -188,7 +209,7 @@ class Calculation {
 		if($potteryResearched)
 			$potteryValue = 2;
 		
-		$producedWealth = $this->_nbrClasses[6] * (10 + $potteryValue);
+		$producedWealth = $this->_arrayItems["craftmen"] * (10 + $potteryValue);
 		return $producedWealth;
 	}
 	
@@ -203,19 +224,19 @@ class Calculation {
 	
 	function checkBuildings($wealthTotal, $nbrClasses) {
 
-		if($this->_nbrClasses[1] >= 10 && $this->_wealthTotal >= 550 && $this->_nbrClasses[4] >= 1000) {
-			//echo "<p>Building temple...</p>"; //set templeBuilt to 1
-			$this->_templeBuilt = 1;
+		if($this->_arrayItems["priests"] >= 10 && $this->_arrayItems["wealthTotal"] >= 550 && $this->_arrayItems["peasants"] >= 1000) {
+			echo "<p>Building temple...</p>"; //set templeBuilt to 1
+			$this->_arrayItems["templeBuilt"] = 1;
 		}
 		
-		if($this->_wealthTotal >= 850 && $this->_nbrClasses[4] >= 1500) {
-			//echo "<p>Building Palace...</p>"; //set palaceBuilt to 1
-			$this->_palaceBuilt = 1;
+		if($this->_arrayItems["wealthTotal"] >= 850 && $this->_arrayItems["peasants"] >= 1500) {
+			echo "<p>Building Palace...</p>"; //set palaceBuilt to 1
+			$this->_arrayItems["palaceBuilt"] = 1;
 		}
 		
-		if($this->_wealthTotal >= 1150 && $this->_nbrClasses[4] >= 1900) {
-			//echo "<p>Building monument...</p>"; //set monumentBuilt to 1
-			$this->_monumentBuilt = 1;
+		if($this->_arrayItems["wealthTotal"] >= 1150 && $this->_arrayItems["peasants"] >= 1900) {
+			echo "<p>Building monument...</p>"; //set monumentBuilt to 1
+			$this->_arrayItems["monumentBuilt"] = 1;
 		}
 		
 	}
@@ -226,7 +247,7 @@ class Calculation {
 		//100/2000 = 5%
 		$unhappinessFactor = 1;
 		
-		$scribesFactor = ($this->_nbrClasses[2]/array_sum($this->_nbrClasses))*100*(1/36); //
+		$scribesFactor = ($this->_arrayItems["scribes"]/$this->calculateAllocatedPopulation())*100*(1/36); //
 		if($scribesFactor > (1/36))
 			$scribesFactor = 1/36;
 		
@@ -238,7 +259,7 @@ class Calculation {
 		
 		//Example: (peasants: 500, unhappiness = true, number of scribes: 100)
 		//500*0.75*((10/9)+(1/36)) = 500*0.75*1.138888
-		$foodProduction = (int) ($this->_nbrClasses[4]*$unhappinessFactor*((10/9)+$scribesFactor));
+		$foodProduction = (int) ($this->_arrayItems["peasants"]*$unhappinessFactor*((10/9)+$scribesFactor));
 		
 		return $foodProduction;
 	}
@@ -257,8 +278,8 @@ class Calculation {
 	}
 	
 	function calculateNewTotalPopulation($food, $popTotal) {
-		//echo "<p>food: " . $food . "</p>";
-		//echo "<p>popTotal: " . $popTotal . "</p>";
+		echo "<p>food: " . $food . "</p>";
+		echo "<p>popTotal: " . $popTotal . "</p>";
 		$newTotalPopulation = $popTotal + $food * 2; //-706
 		
 		if($newTotalPopulation <= 0.5*$popTotal)
@@ -267,9 +288,28 @@ class Calculation {
 		return $newTotalPopulation;
 	}
 }
-	
+
+
+$arrayClient = array();
+$arrayClient["popTotal"] = 1000;
+$arrayClient["potteryResearch"] = 1;
+$arrayClient["granaryResearch"] = 1;
+$arrayClient["writingResearch"] = 1;
+$arrayClient["caravans"] = 50;
+$arrayClient["wealthTotal"] = 100;
+$arrayClient["food"] = 500;
+$arrayClient["kings"] = 1;
+$arrayClient["priests"] = 10;
+$arrayClient["craftmen"] = 600;
+$arrayClient["scribes"] = 50;
+$arrayClient["soldiers"] = 500;
+$arrayClient["peasants"] = 100;
+$arrayClient["slaves"] = 0;
+
+$calculation = new Calculation($arrayClient);
+$ar = $calculation->getArray();
 ?>
-<!--
+
 <html>
 <head>
 <title>Testing</title>
@@ -279,75 +319,75 @@ class Calculation {
 <table>
 	<tr>
 		<td>Invasion:</td>
-		<td><?php //var_dump($invasion); ?></td>
+		<td><?php echo $ar["invasion"]; ?></td>
 	</tr>
 	<tr>
 		<td>Total population</td>
-		<td><?php //var_dump($popTotal); ?></td>
+		<td><?php echo $ar["popTotal"]; ?></td>
 	</tr>
 	<tr>
 		<td>Population assigned:</td>
-		<td><?php //var_dump($this->_nbrClassesSum); ?></td>
+		<td><?php echo $calculation->calculateAllocatedPopulation(); ?></td>
 	</tr>
 	<tr>
 		<td>Remaining wealth:</td>
-		<td><?php //var_dump($wealthTotal); ?></td>
+		<td><?php var_dump($wealthTotal); ?></td>
 	</tr>
 	<tr>
 		<td>Soldiers:</td>
-		<td><input type="number" value="<?php //echo $this->_nbrClasses[3]; ?>" /></td>
+		<td><input type="number" value="<?php echo $this->_arrayItems["soldiers"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Peasants:</td>
-		<td><input type="number" value="<?php //echo $this->_nbrClasses[4]; ?>" /></td>
+		<td><input type="number" value="<?php echo $this->_arrayItems["peasants"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Slaves:</td>
-		<td><input type="number" value="<?php //echo $this->_nbrClasses[5]; ?>" /></td>
+		<td><input type="number" value="<?php echo $this->_arrayItems["slaves"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Craftsmen:</td>
-		<td><input type="number" value="<?php //echo $this->_nbrClasses[6]; ?>" /></td>
+		<td><input type="number" value="<?php echo $this->_arrayItems["craftmen"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Scribes:</td>
-		<td><input type="number" value="<?php //echo $this->_nbrClasses[2]; ?>" /></td>
+		<td><input type="number" value="<?php echo $this->_arrayItems["scribes"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Priests:</td>
-		<td><input type="number" value="<?php //echo $this->_nbrClasses[1]; ?>" /></td>
+		<td><input type="number" value="<?php echo $this->_arrayItems["priests"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Kings:</td>
-		<td><input type="number" value="<?php //echo $this->_nbrClasses[0]; ?>" /></td>
+		<td><input type="number" value="<?php echo $this->_arrayItems["kings"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Population lost:</td>
-		<td><?php //echo $lostPop; ?></td>
+		<td><?php echo $lostPop; ?></td>
 	</tr>
 	<tr>
 		<td>Remaining population:</td>
-		<td><?php //echo array_sum($this->_nbrClasses); ?></td>
+		<td><?php echo $this->calculateAllocatedPopulation(); ?></td>
 	</tr>
 	<tr>
 		<td>Wealth lost:</td>
-		<td><?php //echo $lostWealth; ?></td>
+		<td><?php echo $lostWealth; ?></td>
 	</tr>
 	<tr>
 		<td>Food production:</td>
-		<td><?php //echo $foodProduction; ?></td>
+		<td><?php echo $foodProduction; ?></td>
 	</tr>
 	<tr>
 		<td>Food consumption:</td>
-		<td><?php //echo $foodConsumption; ?></td>
+		<td><?php echo $foodConsumption; ?></td>
 	</tr>
 	<tr>
 		<td>Remaining food:</td>
-		<td><?php //echo $food; ?></td>
+		<td><?php echo $food; ?></td>
 	</tr>
 	<tr>
 		<td>New total population:</td>
-		<td><?php //echo $newTotalPopulation; ?></td>
+		<td><?php echo $newTotalPopulation; ?></td>
 	</tr>
 </table>
 <input type="button" value="Next round" onclick="nextRound()" />
@@ -361,4 +401,3 @@ class Calculation {
 
 </body>
 </html>
- -->

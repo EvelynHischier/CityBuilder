@@ -464,7 +464,7 @@ app.controller("ViewController", function($scope) {
 		if ($scope.nbrTurn < 5){
 
 			query( [{path: "game/endOfTurn", data: null }],
-			function(data){ alert("success : " + JSON.stringify(data)) },
+			function(data){ var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); },
 			function(data){ alert(JSON.stringify(data)); }
 			);
 

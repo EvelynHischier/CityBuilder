@@ -141,16 +141,16 @@ class Calculation {
 		
 		//Calculate losses
 		if($this->_arrayItems["invasion"]) {
-			$this->_lostPop = (int) ((3-($this->_arrayItems["soldiers"]*100)/$this->_arrayItems["popTotal"])*5)*$this->_arrayItems["popTotal"]/100;
-			$this->_lostWealth = (int) ((3-($this->_arrayItems["soldiers"]*100)/$this->_arrayItems["popTotal"])*15)*$this->_arrayItems["wealthTotal"]/100;
+			$this->_arrayItems["lostPop"] = (int) ((3-($this->_arrayItems["soldiers"]*100)/$this->_arrayItems["popTotal"])*5)*$this->_arrayItems["popTotal"]/100;
+			$this->_arrayItems["lostWealth"] = (int) ((3-($this->_arrayItems["soldiers"]*100)/$this->_arrayItems["popTotal"])*15)*$this->_arrayItems["wealthTotal"]/100;
 		
 			echo "<p>Population lost: " . $lostPop . "</p>";
 			echo "<p>Wealth lost: " . $lostWealth . "</p>";
 		
 			//Apply the losses
-			$this->_arrayItems["wealthTotal"] -= $this->_lostWealth;
+			$this->_arrayItems["wealthTotal"] -= $this->_arrayItems["lostWealth"];
 		
-			$this->_arrayItems["soldiers"] -= $this->_lostPop; //example: -13800 => 0, number of soldiers
+			$this->_arrayItems["soldiers"] -= $this->_arrayItems["lostPop"]; //example: -13800 => 0, number of soldiers
 			if($this->_arrayItems["soldiers"] < 0) {
 				$this->_arrayItems["peasants"] += $this->_arrayItems["soldiers"]; //-3800, number of peasants
 				$this->_arrayItems["soldiers"] = 0;
@@ -180,8 +180,8 @@ class Calculation {
 				$this->_arrayItems["kings"] = 0;
 			}
 		} else {
-			$this->_lostPop = 0;
-			$this->_lostWealth = 0;
+			$this->_arrayItems["lostPop"] = 0;
+			$this->_arrayItems["lostWealth"] = 0;
 		}
 	}
 
@@ -319,7 +319,7 @@ $ar = $calculation->getArray();
 <table>
 	<tr>
 		<td>Invasion:</td>
-		<td><?php echo $ar["invasion"]; ?></td>
+		<td><?php echo (""+$ar["invasion"]); ?></td>
 	</tr>
 	<tr>
 		<td>Total population</td>
@@ -331,63 +331,63 @@ $ar = $calculation->getArray();
 	</tr>
 	<tr>
 		<td>Remaining wealth:</td>
-		<td><?php var_dump($wealthTotal); ?></td>
+		<td><?php echo $ar["wealthTotal"]; ?></td>
 	</tr>
 	<tr>
 		<td>Soldiers:</td>
-		<td><input type="number" value="<?php echo $this->_arrayItems["soldiers"]; ?>" /></td>
+		<td><input type="number" value="<?php echo $ar["soldiers"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Peasants:</td>
-		<td><input type="number" value="<?php echo $this->_arrayItems["peasants"]; ?>" /></td>
+		<td><input type="number" value="<?php echo $ar["peasants"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Slaves:</td>
-		<td><input type="number" value="<?php echo $this->_arrayItems["slaves"]; ?>" /></td>
+		<td><input type="number" value="<?php echo $ar["slaves"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Craftsmen:</td>
-		<td><input type="number" value="<?php echo $this->_arrayItems["craftmen"]; ?>" /></td>
+		<td><input type="number" value="<?php echo $ar["craftmen"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Scribes:</td>
-		<td><input type="number" value="<?php echo $this->_arrayItems["scribes"]; ?>" /></td>
+		<td><input type="number" value="<?php echo $ar["scribes"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Priests:</td>
-		<td><input type="number" value="<?php echo $this->_arrayItems["priests"]; ?>" /></td>
+		<td><input type="number" value="<?php echo $ar["priests"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Kings:</td>
-		<td><input type="number" value="<?php echo $this->_arrayItems["kings"]; ?>" /></td>
+		<td><input type="number" value="<?php echo $ar["kings"]; ?>" /></td>
 	</tr>
 	<tr>
 		<td>Population lost:</td>
-		<td><?php echo $lostPop; ?></td>
+		<td><?php echo $ar["lostPop"]; ?></td>
 	</tr>
 	<tr>
 		<td>Remaining population:</td>
-		<td><?php echo $this->calculateAllocatedPopulation(); ?></td>
+		<td><?php echo $calculation->calculateAllocatedPopulation(); ?></td>
 	</tr>
 	<tr>
 		<td>Wealth lost:</td>
-		<td><?php echo $lostWealth; ?></td>
+		<td><?php echo $ar["lostWealth"]; ?></td>
 	</tr>
 	<tr>
 		<td>Food production:</td>
-		<td><?php echo $foodProduction; ?></td>
+		<td><?php echo $ar["foodProduction"]; ?></td>
 	</tr>
 	<tr>
 		<td>Food consumption:</td>
-		<td><?php echo $foodConsumption; ?></td>
+		<td><?php echo $ar["food"]; ?></td>
 	</tr>
 	<tr>
 		<td>Remaining food:</td>
-		<td><?php echo $food; ?></td>
+		<td><?php echo $ar["food"]; ?></td>
 	</tr>
 	<tr>
 		<td>New total population:</td>
-		<td><?php echo $newTotalPopulation; ?></td>
+		<td><?php echo $ar["popTotal"]; ?></td>
 	</tr>
 </table>
 <input type="button" value="Next round" onclick="nextRound()" />

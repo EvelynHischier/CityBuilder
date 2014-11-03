@@ -8,7 +8,7 @@ var query = function(functions, callBackDone, callBackFail, callBackAlways) {
 
 				
 			$.ajax({
-				url: url,
+				url: urlMehdi,
 				type: "POST",
 				data:    {
 					request: {

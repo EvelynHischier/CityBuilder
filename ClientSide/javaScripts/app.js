@@ -411,8 +411,8 @@ app.controller("ViewController", function($scope) {
 
 		// calculatinc of food and wealth
 		// display the result on the corresponding field
-		$scope.numberGameFood = $scope.numberGameTotalPop / 2;
-		$scope.numberGameWealth = $scope.numberGameTotalPop / 4;
+		$scope.numberGameFood = $scope.numberGameTotalPop *0.02;
+		$scope.numberGameWealth = 0;
 
 		// get the text for title of the database 
 		$scope.textGameWriting = $scope.dictionary[$scope.lang]["if_management_writing"];
@@ -441,14 +441,14 @@ app.controller("ViewController", function($scope) {
 	$scope.clickTechnologie = function (technologie){
 		switch (technologie) {
 		case "writing":
-			$scope.buttonInactiveW = true;
-
+//			$scope.buttonInactiveW = true;
+			$.scope.enableButton = true;
 			break;
 		case "granary":
-			$scope.buttonInactiveG = true;
+//			$scope.buttonInactiveG = true;
 			break;
 		case "pottery":
-			$scope.buttonInactiveP = true;
+//			$scope.buttonInactiveP = true;
 			break;
 		default:
 			break;
@@ -464,7 +464,7 @@ app.controller("ViewController", function($scope) {
 		if ($scope.nbrTurn < 5){
 
 			query( [{path: "game/endOfTurn", data: null }],
-			function(data){ alert("success : " + JSON.stringify(data)) },
+			function(data){ var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); },
 			function(data){ alert(JSON.stringify(data)); }
 			);
 

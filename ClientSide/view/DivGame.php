@@ -1,7 +1,10 @@
-<div id="viewGame" data-ng-show = "page == 'gameStart'">
+<div id="viewGame" data-ng-show = "page == 'gameStart'" onload="updatePyramid()">
         <script type="text/javascript">
 			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
+<<<<<<< HEAD
 			var popAvailable = 2000;
+=======
+>>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 			var chart;
 			
 			configChart = function() {
@@ -10,7 +13,7 @@
 				chart.titleField = "title";
 				chart.balloonText = "";
 				chart.pullDistance = 0;
-				chart.marginRight = 100; //100
+				chart.marginRight = 100;
 				chart.marginLeft = 15;
 				chart.labelPosition = "right";
 				chart.funnelAlpha = 0.9;
@@ -35,9 +38,15 @@
 				chart.write("chartdiv");
 			};
 			
+			if(AmCharts.isReady) {
+				configChart();
+			} else {
+				AmCharts.ready(configChart);
+			}
+			
         </script>
 <!--   number > hover 
-      wealth-->
+      welth-->
 
 	<table id="tableGame">
 		<tbody>
@@ -106,9 +115,13 @@
 			
 <!-- 			pyramid actions  -->
 			<script type="text/javascript">
+<<<<<<< HEAD
 				configChart();
 				updatePyramid();
 				
+=======
+				var popAvailable = 1200;
+>>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 				function updatePyramid()
 				{
 					var sum = 0;
@@ -155,23 +168,22 @@
 						"title": "King",
 						"value": population[6]
 					}];
+<<<<<<< HEAD
 					//var numbers = "Sum: " + sum + "; ";
+=======
+
+>>>>>>> branch 'MergingError' of https://github.com/EvelynHischier/CityBuilder
 					for(var i = 0; i < data.length; i++) {
 						
-						if(data[i].value / sum < 0.0625) {//less than 6.25%
-							data[i].value = sum*0.0625;
+						if(data[i].value / popAvailable < 0.0625) {//less than 6.25%
+							data[i].value = popAvailable*0.0625;
 						}
 						
-						if(data[i].value / sum > 0.625) {//greater than 62.5%
-							data[i].value = sum*0.625;
+						if(data[i].value / popAvailable > 0.625) {//greater than 62.5%
+							data[i].value = popAvailable*0.625;
 						}
-
-						//numbers += data[i].value + " ";
-						
 					}
-
-					//alert(numbers);
-	
+					
 					if(sum > popAvailable) {
 						alert("You cannot assign more people than available!");
 						document.getElementById("txt_popavailable").value = 0;

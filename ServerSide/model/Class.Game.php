@@ -24,4 +24,14 @@ class Game {
 	
 		return $games;
 	}
+	//method to insert a new game
+	public function insertGame($Mode_ModeID,$Zone_ZoneID,$User_UserID,$Start){
+		$query = "INSERT INTO Game (Mode_ModeID,Zone_ZoneID,User_UserID,Start) ".
+				"VALUES ($Mode_ModeID,$Zone_ZoneID,$User_UserID,$Start)";
+	
+		$result = $this->_pdo->prepare($query);
+		$result->execute();
+		if($this->getError())
+			trigger_error($this->getError());
+	}
 }

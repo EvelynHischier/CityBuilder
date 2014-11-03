@@ -8,7 +8,12 @@ class Historic{
 	
 	
 	public function __construct(){
-		$this->_pdo = $GLOBALS["pdo"];
+		// $this->_pdo = $GLOBALS["pdo"];
+		$this->_pdo = new PDO("mysql:host=db4free.net;
+						port=3306;
+						dbname=pyramidgame1",
+						"groupe1",
+						"8?Wzgr10");
 	}
 	//method to catch the error in the connection to the DB
 	public function getError(){

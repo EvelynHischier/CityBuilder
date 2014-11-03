@@ -1,6 +1,11 @@
 <?php
 function __autoload( $class ) {
-	include_once( __DIR__."/../model/Class." . $class . ".php" );
+	if($class == "Calculation") {
+		include_once( __DIR__."/../calculations/Class." . $class . ".php");
+	}
+	else {
+		include_once( __DIR__."/../model/Class." . $class . ".php" );
+	}
 }
 
 class gameController {
@@ -31,9 +36,10 @@ class gameController {
 		}
 	}
 	
-	public function getEndOfTurnAction(){
+	public function endOfTurnAction(){
+		$calculation = new Calculation(1000, 500, 5, 200, 50);
 		
-		$calculation = new Calculation();
+		return $calculation;
 	}
 	
 	

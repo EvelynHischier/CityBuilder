@@ -5,12 +5,12 @@ class Dictionary{
 	public function __construct() {
 		$this->_pdo = $GLOBALS["pdo"];
 	}
-
+	//method to catch the error in the connection to the DB
 	public function getError(){
 		if($this->_pdo->errorCode()!='00000')
 			return 'Query failed';
 	}
-	
+	//method to get all elements from a specific language
 	public function getDictionary($language){
 		$query="select `Language`, `Key`, `Text` from Dictionary where `Language` = ?";
 		

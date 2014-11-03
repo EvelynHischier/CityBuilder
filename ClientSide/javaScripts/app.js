@@ -463,11 +463,10 @@ app.controller("ViewController", function($scope) {
 	$scope.endOfTurnCalculation = function (){
 		if ($scope.nbrTurn < 5){
 
-			alert("end of turn was clicked");
-//			query( [{path: "game/getEndOfTurnAction", data: null }],
-//			function(data){ mapLanguage($scope, data); },
-//			function(data){ alert(JSON.stringify(data)); }
-//			);
+			query( [{path: "game/endOfTurn", data: null }],
+			function(data){ alert("success : " + JSON.stringify(data)) },
+			function(data){ alert(JSON.stringify(data)); }
+			);
 
 //			MapLanguage($scope, dataStr)
 //			data = JSON.parse(dataStr);

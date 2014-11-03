@@ -1,5 +1,5 @@
 <?php
-	require_once( "../model/Class.Historic.php");
+	require_once( __DIR__ . "/../model/Class.Historic.php");
 	
 	/*session_start();
 	
@@ -50,17 +50,17 @@ class Calculation {
 	private $_hist;
 	
 	public function __construct($popTotal, $wealthTotal, $nbrClasses, $food, $nbrCaravans) {
-		$this->_popTotal = 2000;
-		$this->_wealthTotal = 500; //population divided by 4
-		$this->_nbrClasses = array(4,50,100,620,500,500,16); //1790
+		$this->_popTotal = $popTotal;
+		$this->_wealthTotal = $wealthTotal;
+		$this->_nbrClasses = $nbrClasses; //array(4,50,100,620,500,500,16); //1790
 		$this->_nbrClassesSum = array_sum($this->_nbrClasses);
 		$this->_invasion = false;
 		$this->_potteryResearched = 0;
 		$this->_granaryResearched = 0;
 		$this->_writingResearched = 0;
 		$this->_unhappiness = false;
-		$this->_nbrCaravans = 2;
-		$this->_food = 1000; //population divided by 2
+		$this->_nbrCaravans = $nbrCaravans;
+		$this->_food = $food; //population times 2%, for 2000 people = 40 food
 		$this->_foodProduction = 0;
 		$this->_templeBuilt = 0;
 		$this->_palaceBuilt = 0;
@@ -102,9 +102,10 @@ class Calculation {
 		//$game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,
 		//$time,$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument
 		
+		//$time (elapsed time) and $score will not be used
 		$this->_hist->insertHistoric(1,1,$this->_nbrClasses[0],$this->_nbrClasses[1],$this->_nbrClasses[2],
 			$this->_nbrClasses[3],$this->_nbrClasses[5],$this->_nbrClasses[4],$this->_nbrClasses[6],
-			$this->_nbrClassesSum,$this->_wealthTotal,$this->_food,'00:04:04',0,$this->_potteryResearched,
+			$this->_nbrClassesSum,$this->_wealthTotal,$this->_food,0,0,$this->_potteryResearched,
 			$this->_granaryResearched,$this->_writingResearched,$this->_nbrCaravans,$this->_templeBuilt,
 			$this->_palaceBuilt,$this->_monumentBuilt);
 	}

@@ -1,7 +1,7 @@
 <div id="viewGame" data-ng-show = "page == 'gameStart'">
         <script type="text/javascript">
 			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
-			
+			var popAvailable = 2000;
 			var chart;
 			
 			configChart = function() {
@@ -108,8 +108,6 @@
 			<script type="text/javascript">
 				configChart();
 				updatePyramid();
-
-				
 				
 				function updatePyramid()
 				{
@@ -157,9 +155,7 @@
 						"title": "King",
 						"value": population[6]
 					}];
-					
 					//var numbers = "Sum: " + sum + "; ";
-					
 					for(var i = 0; i < data.length; i++) {
 						
 						if(data[i].value / sum < 0.0625) {//less than 6.25%

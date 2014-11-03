@@ -173,11 +173,11 @@ app.controller("ViewController", function($scope) {
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_unhappiness"];
 //			$scope.popupPicture = "popup_unhappy";
 //			break;
-//		case 'writing': 
-//			$scope.popup = 'continue';
-//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_writing"]; 
-//			$scope.popupPicture = "popup_writing";
-//			break;
+		case 'writing': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_writing"]; 
+			$scope.popupPicture = "popup_writing";
+			break;
 		default:
 			break;
 		}
@@ -439,17 +439,22 @@ app.controller("ViewController", function($scope) {
 	// ************************************************************************************
 	// _______________________________________________________________________________ problem  --> set choosen, pro round 1 technologie
 	$scope.clickTechnologie = function (technologie){
+
 		switch (technologie) {
-		case "writing":
+		case 'writing':
 //			$scope.buttonInactiveW = true;
-			$.scope.enableButton = true;
+//			$.scope.enableButton = true;
+
+			$scope.showPopup("writing", "") ; // <<---------------------------------- has to be displayed after end of turn
 			break;
 		case "granary":
 //			$scope.buttonInactiveG = true;
+			$scope.showPopup("granary", "");  // <<---------------------------------- has to be displayed after end of turn
 			break;
 		case "pottery":
 //			$scope.buttonInactiveP = true;
-			break;
+			$scope.showPopup("pottery", "");   // <<---------------------------------- has to be displayed after end of turn
+			break; 
 		default:
 			break;
 		}

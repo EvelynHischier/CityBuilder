@@ -1,6 +1,12 @@
 <?php
-	$score = 1;
+	class Score {
+
+	private $_score; //1
+	private $_arrayItems;
 	
+	public function __construct($arrayClient) {
+		$this->_arrayItems = array();
+	}
 	//Technologies
 	$granaryResearched = true;
 	$potteryResearched = false;
@@ -62,13 +68,13 @@
 	//Unhappiness
 	if(!$unhappiness)
 		$score+=0.5;
-	
-	echo "<p>$score</p>";
+	}
+	/*echo "<p>$score</p>";
 	$scoreRounded = round(($score+0.5/2)/0.5)*0.5;
 	if($scoreRounded > 6)
 		$scoreRounded = 6;
 	if($score == 1)
 		$scoreRounded = 1;
-	echo "<p>$scoreRounded</p>";
+	echo "<p>$scoreRounded</p>";*/
 	
 ?>

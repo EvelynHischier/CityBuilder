@@ -1,7 +1,5 @@
 <?php
-/*function __autoload($class){
-	include_once __DIR__."../model/Class.".$class."php";
-}*/
+
 class ChosenMode{
 
 	private $_pdo;
@@ -9,12 +7,12 @@ class ChosenMode{
 	public function __construct() {
 		$this->_pdo = $GLOBALS["pdo"];
 	}
-	
+	//method to catch the error in the connection to the DB
 	public function getError() {
 		if($this->_pdo->errorCode()!='00000')
 			return 'Query failed';
 	}
-	
+	//method to set a mode
 	public function setChosenMode( $mode ) {
 		$query = "INSERT INTO ChosenMode( `Mode_ModeID` ) VALUES( ? )";
 		$statement = $this->_pdo->prepare( $query );
@@ -28,7 +26,7 @@ class ChosenMode{
 		else
 			return true;
 	}
-	
+	//method to get all choosen modes
 	public function getChosenModes() {
 		$query = "SELECT `Mode_ModeID`, `Time` FROM ChosenMode";
 	

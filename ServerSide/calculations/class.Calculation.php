@@ -12,7 +12,7 @@ class Calculation {
 		$this->_arrayItems["Wealth"] = $this->_arrayItems["Wealth"] + $this->wealthProduction();
 		$this->_arrayItems["nbrCaravans"] = $this->_arrayItems["nbrCaravans"] + $this->caravanProduction();
 		$this->_arrayItems["RampartBuilt"] = 1;
-		$this->_arrayItems["TempleBuilt"] = 1;
+		$this->_arrayItems["TempleBuilt"] = $this->templeBuilt();
 		$this->_arrayItems["Food"] = $this->foodRemaining();
 		
 		$initialPopulation = $this->_arrayItems["Population"];

@@ -41,7 +41,7 @@ class gameController {
 		$calculation = new Calculation($datas);
 		
 		$result = $calculation->saveIntoDB();
-		if($result == "")
+		if($result == "success")
 			return $calculation->getResult();
 			
 		return "error";

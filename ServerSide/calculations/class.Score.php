@@ -24,7 +24,7 @@
 					"unhappiness" => 0,
 					"total" => 1
 			);
-			$this->_granaryResearched = $arrayClient["unhappiness"];
+			$this->_granaryResearched = $arrayClient["granaryResearched"];
 			$this->_potteryResearched = $arrayClient["potteryResearched"];
 			$this->_writingResearched = $arrayClient["writingResearched"];
 			$this->_wealth = $arrayClient["wealth"];

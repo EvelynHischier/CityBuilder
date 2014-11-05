@@ -64,4 +64,5 @@ class Historic{
 			trigger_error($this->getError());
 		
 	}
+
 }

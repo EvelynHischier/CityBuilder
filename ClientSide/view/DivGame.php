@@ -214,7 +214,7 @@
 							data[i].value = popAvailable*0.625;
 						}
 					}
-					
+
 					if(sum > popAvailable) {
 						alert("You cannot assign more people than available!");
 						document.getElementById("txt_popavailable").value = 0;

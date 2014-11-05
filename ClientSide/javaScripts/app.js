@@ -39,7 +39,17 @@ app.controller("ViewController", function($scope) {
 	$scope.techGranary = 0;
 	$scope.techPottery = 0;
 	
-	$scope.gameTableValues = new Object();
+	
+	// initialize gameTableValues
+	$scope.gameTableValues = {};
+	$scope.gameTableValues['nbrKings'] = 0  ;
+	$scope.gameTableValues['nbrPriests']  = 0 ;
+	$scope.gameTableValues['nbrScribes']  = 0 ;
+	$scope.gameTableValues['nbrSoldiers']  = 0 ;
+	$scope.gameTableValues['nbrSlaves']  = 0 ;
+	$scope.gameTableValues['nbrPeasants']  = 0 ;
+	$scope.gameTableValues['nbrCraftsmen']  = 0 ;
+	$scope.gameTableValues['nbrCaravans'] = 0;
 
 	query( [{path: "dictionary/initialize", data: null }],
 			function(data){ mapLanguage($scope, data); },
@@ -484,10 +494,8 @@ app.controller("ViewController", function($scope) {
 	// click on end of turn 
 	// calculation of new food ...
 	$scope.endOfTurnCalculation = function (){
-
-		// prepare array for the calculations
-		           
-		$scope.gameTableValues["Turn"] = $scope.nbrTurn;
+ 
+		$scope.gameTableValues['Turn'] = $scope.nbrTurn;
 		$scope.gameTableValues['nbrKings']  ;
 		$scope.gameTableValues['nbrPriests'];
 		$scope.gameTableValues['nbrScribes'];
@@ -506,13 +514,7 @@ app.controller("ViewController", function($scope) {
 		$scope.gameTableValues['TempleBuilt'] = 	$scope.temple;
 		$scope.gameTableValues['PalaceBuilt'] = 	$scope.palace;
 		$scope.gameTableValues['MonumentBuilt'] = 	$scope.monument;
-		
-		if (!isset($scope.gameTableValues['nbrCaravans']))
-			$scope.gameTableValues['nbrCaravans'] = 0;
-		
-		for(key in $scope.gameTableValues) {
-			 $scope.gameTableValues[key] = 1;
-		}
+
 		
 		if ($scope.nbrTurn < 5){
 			

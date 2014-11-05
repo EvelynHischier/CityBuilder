@@ -80,6 +80,7 @@
 					data-ng-bind="textGameDescriptionCitizen"></th>
 			</tr>
 			<tr>
+<!-- 			total population -->
 				<td class="citizen" id="table_population" colspan="3"
 					data-ng-bind="textGameTotalPop"></td>
 				<td class="number"><input type="text" id="txt_poptotal"
@@ -88,66 +89,83 @@
 				<th class="pyramid" colspan="3" rowspan="10"><div id="chartdiv"></div></th>
 			</tr>
 			<tr>
+<!-- 			available population -->
 				<td class="citizen" id="table_population" colspan="3"
 					data-ng-bind="textGameAvailablePop"></td>
 				<td class="number"><input type="text" id="txt_popavailable"
 					readonly="readonly" style="text-align: right" /></td>
 			</tr>
 			<tr>
+<!-- 			king -->
 				<td class="citizen" id="table_king" colspan="3"
 					data-ng-mouseover="hoverGame('king')" data-ng-bind="textGameKing"></td>
 				<td class="number"><input type="number" id="txt1" value="0" min="0"
-					onBlur="updatePyramid()" /></td>
+					onBlur="updatePyramid()" 
+					data-ng-value="numberGameKing"/></td>
 			</tr>
 			<tr>
+<!-- 			priest -->
 				<td class="citizen" id="table_priest" colspan="3"
 					data-ng-mouseover="hoverGame('priest')"
 					data-ng-bind="textGamePriest"></td>
 				<td class="number"><input type="number" id="txt2" value="0" min="0"
-					onBlur="updatePyramid()" /></td>
+					onBlur="updatePyramid()"
+					data-ng-value="numberGamePriest" /></td>
 			</tr>
 			<tr>
+<!-- 			craftsmen -->
 				<td class="citizen" id="table_craftsment" colspan="3"
 					data-ng-mouseover="hoverGame('craftsmen')"
 					data-ng-bind="textGameCraft"></td>
 				<td class="number"><input type="number" id="txt3" value="0" min="0"
-					onBlur="updatePyramid()" /></td>
+					onBlur="updatePyramid()" 
+					data-ng-value="numberGameCraftsmen" /></td>
 			</tr>
 			<tr>
+<!-- 			scribes -->
 				<td class="citizen" id="table_scribes" colspan="3"
 					data-ng-mouseover="hoverGame('scribes')"
 					data-ng-bind="textGameScribes"></td>
 				<td class="number"><input type="number" id="txt4" value="0" min="0"
-					onBlur="updatePyramid()" /></td>
+					onBlur="updatePyramid()" 
+					data-ng-value="numberGameScribes" /></td>
 			</tr>
 			<tr>
+<!-- 			soldiers -->
 				<td class="citizen" id="table_soldiers" colspan="3"
 					data-ng-mouseover="hoverGame('soldier')"
 					data-ng-bind="textGameSoldiers"></td>
 				<td class="number"><input type="number" id="txt5" value="0" min="0"
-					onBlur="updatePyramid()" /></td>
+					onBlur="updatePyramid()"
+					data-ng-value="numberGameSoldier" /></td>
 			</tr>
 			<tr>
+<!-- 			peasants -->
 				<td class="citizen" id="table_peasants" colspan="3"
 					data-ng-mouseover="hoverGame('peasants')"
 					data-ng-bind="textGamePeasants"></td>
 				<td class="number"><input type="number" id="txt6" value="0" min="0"
-					onBlur="updatePyramid()" /></td>
+					onBlur="updatePyramid()"
+					data-ng-value="numberGamePeasants"  /></td>
 			</tr>
 			<tr>
+<!-- 			slaves -->
 				<td class="citizen" id="table_slaves" colspan="3"
 					data-ng-mouseover="hoverGame('slaves')"
 					data-ng-bind="textGameSlaves"></td>
 				<td class="number"><input type="number" id="txt7" value="0" min="0"
-					onBlur="updatePyramid()" /></td>
+					onBlur="updatePyramid()"
+					data-ng-value="numberGameSlaves"  /></td>
 			</tr>
 			<tr>
+<!-- 			caravans -->
 				<td class="citizen" id="table_caravans" colspan="3"
 					data-ng-mouseover="hoverGame('caravans')"
 					data-ng-bind="textGameCaravans"></td>
 				<td class="number"><input type="text" id="caravans" value="0"
 					min="0" onBlur="updatePyramid()" readonly="readonly"
-					style="text-align: right" /></td>
+					style="text-align: right"
+					data-ng-value="numberGameCaravans"  /></td>
 			</tr>
 
 			<!-- 			pyramid actions  -->

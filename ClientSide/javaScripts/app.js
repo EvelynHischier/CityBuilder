@@ -27,6 +27,17 @@ app.controller("ViewController", function($scope) {
 	$scope.nbrTurn = 0;
 	$scope.choosenZone = "";
 	$scope.popupName = "";
+	
+	// buildings
+	$scope.palace = 0;
+	$scope.monument = 0;
+	$scope.temple = 0;
+	$scope.rampart = 0;
+	
+	// technolgie
+	$scope.techWriting = 0;
+	$scope.techGranary = 0;
+	$scope.techPottery = 0;
 
 	query( [{path: "dictionary/initialize", data: null }],
 			function(data){ mapLanguage($scope, data); },
@@ -59,8 +70,8 @@ app.controller("ViewController", function($scope) {
 		default: 
 			// hide the divRight 
 			$scope.pageRight = false;
-			// no special title for the page
-			$scope.title="City Builder";
+		// no special title for the page
+		$scope.title="City Builder";
 		}
 	};
 
@@ -68,13 +79,13 @@ app.controller("ViewController", function($scope) {
 	//            display the popups with text and image 
 	//***************************************************************************************************
 	$scope.showPopup = function(name, zone) {
-		
+
 		// display a popup with
 		//  --> continue  --> Popup with one button called 'continue' 
 		//  --> yesNo     --> Popup with two buttons calles 'yes' and 'no'
-		
+
 		$scope.popupName = "";
-		
+
 		// type of popup
 		// title
 		// picture
@@ -82,33 +93,33 @@ app.controller("ViewController", function($scope) {
 		case 'zone':
 			// safe the choosen zone in a variable
 			$scope.choosenZone = zone;
-			
+
 			$scope.popup = 'yesNo';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_placement_validation"];
 			$scope.popupPicture = "popup_cityValidation";
 			$scope.popupName = zone;
 			break;
-//		case 'caravan':
+//			case 'caravan':
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_caravan"]; 
 //			$scope.popupPicture = "popup_caravan";
 //			break;
-//		case 'endOfTurn':
+//			case 'endOfTurn':
 //			$scope.popup = 'yesNo';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_end_of_turn_validation"]; 
 //			$scope.popupPicture = "popup_endOfTurn";
 //			break;
-//		case 'exitGameInGame':  
+//			case 'exitGameInGame':  
 //			$scope.popup = 'yesNo';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_exit_during_game"]; // <<<<___________________ & text on buttons
 //			$scope.popupPicture = "popup_ExitGameInGame";
 //			break;
-//		case 'exitGame': 
+//			case 'exitGame': 
 //			$scope.popup = 'yesNo';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_exit_validation"]; 
 //			$scope.popupPicture = "popup_exitGame";
 //			break;
-//		case 'goodEnding': 
+//			case 'goodEnding': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_good_ending"]; 
 //			$scope.popupPicture = "popup_goodEnding";
@@ -118,22 +129,22 @@ app.controller("ViewController", function($scope) {
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_granary"]; 
 			$scope.popupPicture = "popup_granary";
 			break;
-//		case 'badEnding': 
+//			case 'badEnding': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_bad_ending"]; 
 //			$scope.popupPicture = "popup_badEnding";
 //			break;
-//		case 'invasion': 
+//			case 'invasion': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_invasion"]; 
 //			$scope.popupPicture = "popup_invasion";
 //			break;
-//		case 'monument': 
+//			case 'monument': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_monument"]; 
 //			$scope.popupPicture = "popup_monument";
 //			break;
-//		case 'palace': 
+//			case 'palace': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_palace"]; 
 //			$scope.popupPicture = "popup_palace";
@@ -143,7 +154,7 @@ app.controller("ViewController", function($scope) {
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_pottery"];
 			$scope.popupPicture = "popup_pottery";
 			break;			
-//		case 'rampart': 
+//			case 'rampart': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_ramparts"]; 
 //			$scope.popupPicture = "popup_rampart";
@@ -166,12 +177,12 @@ app.controller("ViewController", function($scope) {
 			$scope.popupPicture = "region3";
 			$scope.popupName = "pyramid";
 			break;
-//		case 'temple': 
+//			case 'temple': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_temple"]; 
 //			$scope.popupPicture = "popup_temple";
 //			break;
-//		case 'unhappy': 
+//			case 'unhappy': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_unhappiness"];
 //			$scope.popupPicture = "popup_unhappy";
@@ -185,8 +196,8 @@ app.controller("ViewController", function($scope) {
 			break;
 		}
 	};
-	
-	
+
+
 	// *****************************************
 	//            Action of the popups
 	// *****************************************
@@ -194,7 +205,7 @@ app.controller("ViewController", function($scope) {
 
 		// hide the popup
 		$scope.popup = false;
-		
+
 		switch (answer){
 		case "ok":
 			if ($scope.popupName != "")
@@ -211,7 +222,7 @@ app.controller("ViewController", function($scope) {
 			break;
 		}
 	};
-	
+
 	// ***************************************************************************
 	//            Set the mode of the game (save into the database)
 	// ***************************************************************************
@@ -283,7 +294,7 @@ app.controller("ViewController", function($scope) {
 	//            Display text and images by hovering over a zone
 	// ************************************************************************************
 	$scope.hoverZone = function(zoneNbr) {
-		
+
 		// sets the text and picture depending on the zone
 		switch(zoneNbr) {
 		case "fertile":
@@ -305,7 +316,7 @@ app.controller("ViewController", function($scope) {
 	//            Display text and images by hovering over a social class or technologie
 	// ************************************************************************************
 	$scope.hoverGame = function (name){
-		
+
 		// sets the text and picture depending on the social class
 		switch(name){
 		case "king" : 
@@ -375,7 +386,7 @@ app.controller("ViewController", function($scope) {
 	// ************************************************************************************
 	// exit the game (main menu)
 	$scope.exitGameMenu = function() {
-		
+
 		var success = function( data ) {
 			// go back to the login screen
 			$scope.changeView("login");
@@ -438,7 +449,7 @@ app.controller("ViewController", function($scope) {
 		$scope.textGameFood = $scope.dictionary[$scope.lang]["if_management_food"];
 		$scope.textGameWealth = $scope.dictionary[$scope.lang]["if_management_wealth"];
 	}
-	
+
 	// ************************************************************************************
 	//            Technologie buttons -> technologies to explore
 	// ************************************************************************************
@@ -471,11 +482,36 @@ app.controller("ViewController", function($scope) {
 	// click on end of turn 
 	// calculation of new food ...
 	$scope.endOfTurnCalculation = function (){
+
+		// prepare array for the calculations
+		$scope.gameTableValues = [];
+		$scope.gameTableValues["Turn"] = 1; 
+		$scope.gameTableValues["nbrKings"] =  		$scope.numberGameKing;
+		$scope.gameTableValues["nbrPriests"] =  	$scope.numberGamePriest;
+		$scope.gameTableValues["nbrScribes"] = 		$scope.numberGameScribes;
+		$scope.gameTableValues["nbrSoldiers"] = 	$scope.numberGameSoldier;
+		$scope.gameTableValues["nbrSlaves"] = 		$scope.numberGameSlaves;
+		$scope.gameTableValues["nbrPeasants"] = 	$scope.numberGamePeasants;
+		$scope.gameTableValues["nbrCraftsmen"] = 	$scope.numberGameCraftsmen;
+		$scope.gameTableValues["Population"] = 		$scope.numberGameTotalPop; 
+		$scope.gameTableValues["Wealth"] = 			$scope.numberGameWealth; 
+		$scope.gameTableValues["Food"] = 			$scope.numberGameFood; 
+		$scope.gameTableValues["PotteryResearched"] = $scope.techPottery; 
+		$scope.gameTableValues["GranaryResearched"] = $scope.techGranary; 
+		$scope.gameTableValues["WritingResearched"] = $scope.techWriting; 
+		$scope.gameTableValues["nbrCaravans"] = 	$scope.numberGameCaravans;
+		$scope.gameTableValues["RampartBuilt"] = 	$scope.rampart;
+		$scope.gameTableValues["TempleBuilt"] = 	$scope.temple;
+		$scope.gameTableValues["PalaceBuilt"] = 	$scope.palace;
+		$scope.gameTableValues["MonumentBuilt"] = 	$scope.monument; 
+		
+		
+		
 		if ($scope.nbrTurn < 5){
 
-			query( [{path: "game/endOfTurn", data: null }],
-			function(data){ var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); },
-			function(data){ alert(JSON.stringify(data)); }
+			query( [{path: "game/endOfTurn", data: $scope.gameTableValues }],
+					function(data){ var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); },
+					function(data){ alert(JSON.stringify(data)); }
 			);
 
 			$scope.nbrTurn ++;
@@ -486,11 +522,11 @@ app.controller("ViewController", function($scope) {
 	//            Display the score
 	// ************************************************************************************
 	$scope.displayTheScore = function (){
-		
+
 		// set title, change the view to DivScore.php
 		$scope.page = "score";
 		$scope.title =  $scope.dictionary[$scope.lang]["if_management_score"]; 
-		
+
 		// set titles of the table columns
 		$scope.scoreTechnologyTxt =  $scope.dictionary[$scope.lang]["score_technology"]; 
 		$scope.scoreWealthTxt =  $scope.dictionary[$scope.lang]["if_management_wealth"]; 
@@ -498,11 +534,27 @@ app.controller("ViewController", function($scope) {
 		$scope.scorePopulationTxt =  $scope.dictionary[$scope.lang]["score_population"]; 
 		$scope.scoreHappinessTxt =  $scope.dictionary[$scope.lang]["score_happiness"]; 
 		$scope.scoreTotalTxt =  $scope.dictionary[$scope.lang]["score_scoreTotal"]; 
-		
-		
+
+
 		$scope.scoreTxt =  $scope.dictionary[$scope.lang]["if_management_score"]; 
-		
-		
+
+
+		query( [{path: "turn/scoreValues", data: null }],
+				// success
+				function(data){ 
+
+						data = JSON.parse(data);
+						$.each(data[0].data, function(index, row) {
+						$scope.scoreValues[row.Key] = row.Text;
+						});
+
+			$scope.$apply();
+		},
+		// error
+		function(data){ alert(JSON.stringify(data)); }
+		);
+
+
 		// set numbers
 		$scope.scoreTechnology = 0; // <<------ number
 		$scope.scoreWealth = 0; // <<------ number
@@ -510,8 +562,8 @@ app.controller("ViewController", function($scope) {
 		$scope.scorePopulation = 0; // <<------ number
 		$scope.scoreHappyness = 0; // <<------ number
 		$scope.scoreTotal = 0; // <<------ number
-		
-		
+
+
 	}
-	
+
 });

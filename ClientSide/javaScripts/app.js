@@ -510,6 +510,10 @@ app.controller("ViewController", function($scope) {
 		if (!isset($scope.gameTableValues['nbrCaravans']))
 			$scope.gameTableValues['nbrCaravans'] = 0;
 		
+		for(key in $scope.gameTableValues) {
+			 $scope.gameTableValues[key] = 1;
+		}
+		
 		if ($scope.nbrTurn < 5){
 			
 			query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],

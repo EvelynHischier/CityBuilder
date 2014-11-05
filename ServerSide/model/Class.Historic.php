@@ -36,10 +36,10 @@ class Historic{
 				$keys .= ", ";
 			}
 				
-			$columns .= $key;
-			$keys .= ":".$key;
+			$columns .= "`".$key."`";
+			$keys .= "?";
 				
-			$values[$key] = $value;
+			$values[] = $value;
 		}
 		
 		// 		$query = "INSERT INTO Historic (Game_GameID, Turn, nbrKings, nbrPriests, nbrScribes, nbrSoldiers, nbrSlaves, nbrPeasants, nbrCraftsmen, Population, Wealth, Food, ElapsedTime, Score, PotteryResearched, GranaryResearched, WritingResearched, nbrCaravans, TempleBuilt, PalaceBuilt, MonumentBuilt) ".
@@ -48,7 +48,13 @@ class Historic{
 		$query = "INSERT INTO Historic (" . $columns . ") VALUES(" . $keys . ")";
 		
 		$result = $this->_pdo->prepare($query);
-		$result->execute($values);
+		
+		if(!$result)
+			return "pepare error";
+		
+		if( !$result->execute($values) )
+			return "execute error";
+		
 		if($this->getError())
 			trigger_error($this->getError());
 		

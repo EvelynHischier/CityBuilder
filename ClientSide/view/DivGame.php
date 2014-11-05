@@ -3,7 +3,7 @@
 	<script type="text/javascript">
 			//Properties, methods and events for the pyramid chart: 
 			//http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
-			var scribesResearched = true;
+			var scribesResearched = false;
 			var chart;
 			
 			configChart = function() {
@@ -180,9 +180,7 @@
 					var sum = 0;
 					var population = new Array(7);
 					
-					//If writing is not researched, no scribes can be assigned
-					if(!scribesResearched)
-						document.getElementById("txt4").setAttribute("readonly", "true");
+					
 					
 					//Putting all the numbers from the text fields in an array
 					for(var i = 0, j = 7; i < population.length; i++, j--) {
@@ -220,6 +218,8 @@
 						"title": "King",
 						"value": population[6]
 					}];
+
+					
 					
 					//var numbers = "Sum: " + sum + "; ";
 					for(var i = 0; i < data.length; i++) {
@@ -231,6 +231,13 @@
 						if(data[i].value / popAvailable > 0.625) {//greater than 62.5%
 							data[i].value = popAvailable*0.625;
 						}
+					}
+
+					//If writing is not researched, no scribes can be assigned
+					if(!scribesResearched) {
+						document.getElementById("txt4").setAttribute("readonly", "true");
+						document.getElementById("txt4").setAttribute("type", "text");
+						data[3].value = 0;
 					}
 
 					//if the user assigns more people than available...

@@ -152,16 +152,19 @@ app.controller("ViewController", function($scope) {
 			$scope.popup = 'continue';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_result_placement_desert"]; 
 			$scope.popupPicture = "region2";
+			$scope.popupName = "pyramid";
 			break;			
 		case 'fertile': 
 			$scope.popup = 'continue';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_result_placement_fertile_lands"];
 			$scope.popupPicture = "region1";
+			$scope.popupName = "pyramid";
 			break;
 		case 'mountain': 
 			$scope.popup = 'continue';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_result_placement_mountains"];
 			$scope.popupPicture = "region3";
+			$scope.popupName = "pyramid";
 			break;
 //		case 'temple': 
 //			$scope.popup = 'continue';
@@ -203,6 +206,8 @@ app.controller("ViewController", function($scope) {
 		case "abbort":
 			break;
 		case "continue" :
+			if($scope.popupName== "pyramid")
+				updatePyramid();
 			break;
 		}
 	};

@@ -101,7 +101,7 @@
 					data-ng-mouseover="hoverGame('king')" data-ng-bind="textGameKing"></td>
 				<td class="number"><input type="number" id="txt1" value="0" min="0"
 					onBlur="updatePyramid()" 
-					data-ng-value="numberGameKing"/></td>
+					data-ng-model="gameTableValues['nbrKings']"  /></td>
 			</tr>
 			<tr>
 <!-- 			priest -->
@@ -110,7 +110,7 @@
 					data-ng-bind="textGamePriest"></td>
 				<td class="number"><input type="number" id="txt2" value="0" min="0"
 					onBlur="updatePyramid()"
-					data-ng-value="numberGamePriest" /></td>
+					data-ng-model="gameTableValues['nbrPriests']" /></td>
 			</tr>
 			<tr>
 <!-- 			craftsmen -->
@@ -119,7 +119,7 @@
 					data-ng-bind="textGameCraft"></td>
 				<td class="number"><input type="number" id="txt3" value="0" min="0"
 					onBlur="updatePyramid()" 
-					data-ng-value="numberGameCraftsmen" /></td>
+					data-ng-model="gameTableValues['nbrCraftsmen']" /></td>
 			</tr>
 			<tr>
 <!-- 			scribes -->
@@ -128,7 +128,7 @@
 					data-ng-bind="textGameScribes"></td>
 				<td class="number"><input type="number" id="txt4" value="0" min="0"
 					onBlur="updatePyramid()" 
-					data-ng-value="numberGameScribes" /></td>
+					data-ng-model="gameTableValues['nbrScribes']" /></td>
 			</tr>
 			<tr>
 <!-- 			soldiers -->
@@ -137,7 +137,7 @@
 					data-ng-bind="textGameSoldiers"></td>
 				<td class="number"><input type="number" id="txt5" value="0" min="0"
 					onBlur="updatePyramid()"
-					data-ng-value="numberGameSoldier" /></td>
+					data-ng-model="gameTableValues['nbrSoldiers']" /></td>
 			</tr>
 			<tr>
 <!-- 			peasants -->
@@ -146,7 +146,7 @@
 					data-ng-bind="textGamePeasants"></td>
 				<td class="number"><input type="number" id="txt6" value="0" min="0"
 					onBlur="updatePyramid()"
-					data-ng-value="numberGamePeasants"  /></td>
+					data-ng-model="gameTableValues['nbrPeasants']"  /></td>
 			</tr>
 			<tr>
 <!-- 			slaves -->
@@ -155,7 +155,7 @@
 					data-ng-bind="textGameSlaves"></td>
 				<td class="number"><input type="number" id="txt7" value="0" min="0"
 					onBlur="updatePyramid()"
-					data-ng-value="numberGameSlaves"  /></td>
+					data-ng-model="gameTableValues['nbrSlaves']"  /></td>
 			</tr>
 			<tr>
 <!-- 			caravans -->
@@ -165,7 +165,7 @@
 				<td class="number"><input type="text" id="caravans" value="0"
 					min="0" onBlur="updatePyramid()" readonly="readonly"
 					style="text-align: right"
-					data-ng-value="numberGameCaravans"  /></td>
+					data-ng-model="gameTableValues['nbrCaravans']"  /></td>
 			</tr>
 
 			<!-- 			pyramid actions  -->

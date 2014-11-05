@@ -38,6 +38,8 @@ app.controller("ViewController", function($scope) {
 	$scope.techWriting = 0;
 	$scope.techGranary = 0;
 	$scope.techPottery = 0;
+	
+	$scope.gameTableValues = new Object();
 
 	query( [{path: "dictionary/initialize", data: null }],
 			function(data){ mapLanguage($scope, data); },
@@ -484,26 +486,29 @@ app.controller("ViewController", function($scope) {
 	$scope.endOfTurnCalculation = function (){
 
 		// prepare array for the calculations
-		$scope.gameTableValues = new Object();
+		
 		$scope.gameTableValues["Turn"] = $scope.nbrTurn;
-		$scope.gameTableValues["nbrKings"] =  		$scope.numberGameKing;
-		$scope.gameTableValues["nbrPriests"] =  	$scope.numberGamePriest;
-		$scope.gameTableValues["nbrScribes"] = 		$scope.numberGameScribes;
-		$scope.gameTableValues["nbrSoldiers"] = 	$scope.numberGameSoldier;
-		$scope.gameTableValues["nbrSlaves"] = 		$scope.numberGameSlaves;
-		$scope.gameTableValues["nbrPeasants"] = 	$scope.numberGamePeasants;
-		$scope.gameTableValues["nbrCraftsmen"] = 	$scope.numberGameCraftsmen;
-		$scope.gameTableValues["Population"] = 		$scope.numberGameTotalPop; 
-		$scope.gameTableValues["Wealth"] = 			$scope.numberGameWealth; 
-		$scope.gameTableValues["Food"] = 			$scope.numberGameFood; 
-		$scope.gameTableValues["PotteryResearched"] = $scope.techPottery; 
-		$scope.gameTableValues["GranaryResearched"] = $scope.techGranary; 
-		$scope.gameTableValues["WritingResearched"] = $scope.techWriting; 
-		$scope.gameTableValues["nbrCaravans"] = 	$scope.numberGameCaravans;
-		$scope.gameTableValues["RampartBuilt"] = 	$scope.rampart;
-		$scope.gameTableValues["TempleBuilt"] = 	$scope.temple;
-		$scope.gameTableValues["PalaceBuilt"] = 	$scope.palace;
-		$scope.gameTableValues["MonumentBuilt"] = 	$scope.monument;
+		$scope.gameTableValues['nbrKings']  ;
+		$scope.gameTableValues['nbrPriests'];
+		$scope.gameTableValues['nbrScribes'];
+		$scope.gameTableValues['nbrSoldiers'] ;
+		$scope.gameTableValues['nbrSlaves'] ;
+		$scope.gameTableValues['nbrPeasants'];
+		$scope.gameTableValues['nbrCraftsmen'];
+		$scope.gameTableValues['Population'] = 		$scope.numberGameTotalPop; 
+		$scope.gameTableValues['Wealth'] = 			$scope.numberGameWealth; 
+		$scope.gameTableValues['Food'] = 			$scope.numberGameFood; 
+		$scope.gameTableValues['PotteryResearched'] = $scope.techPottery; 
+		$scope.gameTableValues['GranaryResearched'] = $scope.techGranary; 
+		$scope.gameTableValues['WritingResearched'] = $scope.techWriting; 
+		$scope.gameTableValues['nbrCaravans'] ;
+		$scope.gameTableValues['RampartBuilt'] = 	$scope.rampart;
+		$scope.gameTableValues['TempleBuilt'] = 	$scope.temple;
+		$scope.gameTableValues['PalaceBuilt'] = 	$scope.palace;
+		$scope.gameTableValues['MonumentBuilt'] = 	$scope.monument;
+		
+		if (!isset($scope.gameTableValues['nbrCaravans']))
+			$scope.gameTableValues['nbrCaravans'] = 0;
 		
 		if ($scope.nbrTurn < 5){
 			

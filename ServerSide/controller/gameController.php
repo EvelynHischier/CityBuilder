@@ -36,10 +36,13 @@ class gameController {
 		}
 	}
 	
-	public function endOfTurnAction(){
-		$calculation = new Calculation(1000, 500, [5,6,8,9,10,12,3,5], 200, 50);
+	public function endOfTurnAction( $datas ){
 		
-		return ;
+		$calculation = new Calculation($datas);
+		
+		return $calculation->saveIntoDB();
+		
+		return $calculation->getResult();
 	}
 	
 	

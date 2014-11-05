@@ -37,31 +37,8 @@ class gameController {
 	}
 	
 	public function endOfTurnAction( $datas ){
-		$calculation = new Calculation(
-			array(
-				"HistoricID" => 1,
-				"Game_GameID" => 1,
-				"Turn" => 1,
-				"nbrKings" => 1,
-				"nbrPriests" => 10,
-				"nbrScribes" => 15,
-				"nbrSoldiers" => 20,
-				"nbrSlaves" => 200,
-				"nbrPeasants" => 500,
-				"nbrCraftsmen" => 100,
-				"Population" => 1000,
-				"Wealth" => 800,
-				"Food" => 600,
-				"PotteryResearched" => 1,
-				"GranaryResearched" => 0,
-				"WritingResearched" => 1,
-				"nbrCaravans" => 3,
-				"RampartBuilt" => 1,
-				"TempleBuilt" => 1,
-				"PalaceBuilt" => 0,
-				"MonumentBuilt" => 0
-			)
-		);
+		
+		$calculation = new Calculation($datas);
 		
 		return $calculation->saveIntoDB();
 		

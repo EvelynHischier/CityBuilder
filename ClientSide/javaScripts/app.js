@@ -484,8 +484,8 @@ app.controller("ViewController", function($scope) {
 	$scope.endOfTurnCalculation = function (){
 
 		// prepare array for the calculations
-		$scope.gameTableValues = [];
-		$scope.gameTableValues["Turn"] = 1; 
+		$scope.gameTableValues = new Object();
+		$scope.gameTableValues["Turn"] = $scope.nbrTurn;
 		$scope.gameTableValues["nbrKings"] =  		$scope.numberGameKing;
 		$scope.gameTableValues["nbrPriests"] =  	$scope.numberGamePriest;
 		$scope.gameTableValues["nbrScribes"] = 		$scope.numberGameScribes;
@@ -503,13 +503,11 @@ app.controller("ViewController", function($scope) {
 		$scope.gameTableValues["RampartBuilt"] = 	$scope.rampart;
 		$scope.gameTableValues["TempleBuilt"] = 	$scope.temple;
 		$scope.gameTableValues["PalaceBuilt"] = 	$scope.palace;
-		$scope.gameTableValues["MonumentBuilt"] = 	$scope.monument; 
-		
-		
+		$scope.gameTableValues["MonumentBuilt"] = 	$scope.monument;
 		
 		if ($scope.nbrTurn < 5){
-
-			query( [{path: "game/endOfTurn", data: $scope.gameTableValues }],
+			
+			query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],
 					function(data){ var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); },
 					function(data){ alert(JSON.stringify(data)); }
 			);

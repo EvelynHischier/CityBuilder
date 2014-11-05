@@ -47,26 +47,7 @@
 		public function getScoreArray() {
 			return $this->_scoreArray;
 		}
-		//Technologies
-		/*$granaryResearched = true;
-		$potteryResearched = false;
-		$writingResearched = true;*/
 		
-		//Wealth
-		//$wealth = 3000;
-		
-		//Buildings
-		/*$rampartBuilt = true;
-		$monumentBuilt = false;
-		$templeBuilt = true;
-		$palaceBuilt = false;
-		*/
-		//Population
-		/*$population = 2000;
-		*/
-		//Unhappiness
-		/*$unhappiness = false;
-		*/
 		/***********************Calculations***********************/
 		function calculateScore() {
 			//Technologies
@@ -116,12 +97,4 @@
 				$this->_scoreArray["unhappiness"] += 0.5;
 		}
 	}
-	/*echo "<p>$score</p>";
-	$scoreRounded = round(($score+0.5/2)/0.5)*0.5;
-	if($scoreRounded > 6)
-		$scoreRounded = 6;
-	if($score == 1)
-		$scoreRounded = 1;
-	echo "<p>$scoreRounded</p>";*/
-	
 ?>

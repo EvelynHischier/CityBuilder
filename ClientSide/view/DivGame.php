@@ -1,7 +1,8 @@
 <div id="viewGame" data-ng-show="page == 'gameStart'"
 	onload="updatePyramid()">
 	<script type="text/javascript">
-			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
+			//Properties, methods and events for the pyramid chart: 
+			//http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
 			var scribesResearched = true;
 			var chart;
 			
@@ -17,7 +18,7 @@
 				chart.funnelAlpha = 0.9;
 				chart.valueField = "value";
 				chart.startX = -500;
-				//chart.labelText = "[[title]]: [[value]] ([[percents]]%)";
+				//chart.labelText = "[[title]]: [[value]] ([[percents]]%)"; //debugging purposes
 				chart.labelText = "[[title]]";
 				chart.colors = ["#C3C3C3", "#D2F079", "#F36971", "#39B7FB", "#FADAA9", "#B962B9", "#FDFBA0"];
 				/*
@@ -36,15 +37,9 @@
 				chart.write("chartdiv");
 			};
 			
-			/*if(AmCharts.isReady) {
-				configChart();
-			} else {
-				AmCharts.ready(configChart);
-			}*/
-			
         </script>
 	<!--   number > hover 
-      welth-->
+      wealth-->
 
 	<table id="tableGame">
 		<tbody>
@@ -154,7 +149,6 @@
 					min="0" onBlur="updatePyramid()" readonly="readonly"
 					style="text-align: right" /></td>
 			</tr>
-
 
 			<!-- 			pyramid actions  -->
 			<script type="text/javascript">

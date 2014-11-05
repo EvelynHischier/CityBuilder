@@ -486,7 +486,7 @@ app.controller("ViewController", function($scope) {
 	$scope.endOfTurnCalculation = function (){
 
 		// prepare array for the calculations
-		
+		     
 		$scope.gameTableValues["Turn"] = $scope.nbrTurn;
 		$scope.gameTableValues['nbrKings']  ;
 		$scope.gameTableValues['nbrPriests'];

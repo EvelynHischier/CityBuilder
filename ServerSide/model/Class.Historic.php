@@ -45,12 +45,13 @@ class Historic{
 		// 		$query = "INSERT INTO Historic (Game_GameID, Turn, nbrKings, nbrPriests, nbrScribes, nbrSoldiers, nbrSlaves, nbrPeasants, nbrCraftsmen, Population, Wealth, Food, ElapsedTime, Score, PotteryResearched, GranaryResearched, WritingResearched, nbrCaravans, TempleBuilt, PalaceBuilt, MonumentBuilt) ".
 		// 				"VALUES ($game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,'$time',$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument)";
 		
-		$query = "INSERT INTO Historic (" . $columns . ") VALUES(" . $keys . ")";
+		$query = "INSERT INTO Historic ( $columns ) VALUES( $keys )";
+		
 		
 		$result = $this->_pdo->prepare($query);
 		
 		if(!$result)
-			return "pepare error";
+			return "prepare error";
 		
 		if( !$result->execute($values) )
 			return "execute error";
@@ -58,16 +59,7 @@ class Historic{
 		if($this->getError())
 			trigger_error($this->getError());
 		
-		return "hello";
-		
-		//insert query
-		$query = "INSERT INTO Historic (Game_GameID, Turn, nbrKings, nbrPriests, nbrScribes, nbrSoldiers, nbrSlaves, nbrPeasants, nbrCraftsmen, Population, Wealth, Food, ElapsedTime, Score, PotteryResearched, GranaryResearched, WritingResearched, nbrCaravans, TempleBuilt, PalaceBuilt, MonumentBuilt) ".
-				"VALUES ($game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,'$time',$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument)";
-		
-		$result = $this->_pdo->prepare($query);
-		$result->execute();
-		if($this->getError())
-			trigger_error($this->getError());
+		return "success";
 		
 	}
 

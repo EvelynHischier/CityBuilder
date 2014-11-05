@@ -252,6 +252,7 @@ input[type="number"] {
 
 input[type="text"] {
 	background-color: #ffd966;
+	text-align: right;
 }
 
 /* table content */

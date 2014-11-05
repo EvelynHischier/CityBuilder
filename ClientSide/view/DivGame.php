@@ -4,6 +4,9 @@
 			//Properties, methods and events for the pyramid chart: 
 			//http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
 			var scribesResearched = false;
+			
+			//check if writing researched
+			
 			var chart;
 			
 			configChart = function() {

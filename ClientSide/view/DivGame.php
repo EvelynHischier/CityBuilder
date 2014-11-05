@@ -2,7 +2,7 @@
 	onload="updatePyramid()">
 	<script type="text/javascript">
 			//Properties, methods and events: http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
-			var popAvailable = 2000;
+			var scribesResearched = true;
 			var chart;
 			
 			configChart = function() {
@@ -96,61 +96,61 @@
 				<td class="citizen" id="table_population" colspan="3"
 					data-ng-bind="textGameAvailablePop"></td>
 				<td class="number"><input type="text" id="txt_popavailable"
-					value="1200" readonly="readonly" style="text-align: right" /></td>
+					readonly="readonly" style="text-align: right" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_king" colspan="3"
 					data-ng-mouseover="hoverGame('king')" data-ng-bind="textGameKing"></td>
-				<td class="number"><input type="number" id="txt1" value="1" min="0"
+				<td class="number"><input type="number" id="txt1" value="0" min="0"
 					onBlur="updatePyramid()" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_priest" colspan="3"
 					data-ng-mouseover="hoverGame('priest')"
 					data-ng-bind="textGamePriest"></td>
-				<td class="number"><input type="number" id="txt2" value="1" min="0"
+				<td class="number"><input type="number" id="txt2" value="0" min="0"
 					onBlur="updatePyramid()" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_craftsment" colspan="3"
 					data-ng-mouseover="hoverGame('craftsmen')"
 					data-ng-bind="textGameCraft"></td>
-				<td class="number"><input type="number" id="txt3" value="1" min="0"
+				<td class="number"><input type="number" id="txt3" value="0" min="0"
 					onBlur="updatePyramid()" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_scribes" colspan="3"
 					data-ng-mouseover="hoverGame('scribes')"
 					data-ng-bind="textGameScribes"></td>
-				<td class="number"><input type="number" id="txt4" value="1" min="0"
+				<td class="number"><input type="number" id="txt4" value="0" min="0"
 					onBlur="updatePyramid()" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_soldiers" colspan="3"
 					data-ng-mouseover="hoverGame('soldier')"
 					data-ng-bind="textGameSoldiers"></td>
-				<td class="number"><input type="number" id="txt5" value="1" min="0"
+				<td class="number"><input type="number" id="txt5" value="0" min="0"
 					onBlur="updatePyramid()" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_peasants" colspan="3"
 					data-ng-mouseover="hoverGame('peasants')"
 					data-ng-bind="textGamePeasants"></td>
-				<td class="number"><input type="number" id="txt6" value="1" min="0"
+				<td class="number"><input type="number" id="txt6" value="0" min="0"
 					onBlur="updatePyramid()" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_slaves" colspan="3"
 					data-ng-mouseover="hoverGame('slaves')"
 					data-ng-bind="textGameSlaves"></td>
-				<td class="number"><input type="number" id="txt7" value="1" min="0"
+				<td class="number"><input type="number" id="txt7" value="0" min="0"
 					onBlur="updatePyramid()" /></td>
 			</tr>
 			<tr>
 				<td class="citizen" id="table_caravans" colspan="3"
 					data-ng-mouseover="hoverGame('caravans')"
 					data-ng-bind="textGameCaravans"></td>
-				<td class="number"><input type="text" id="caravans" value="1"
+				<td class="number"><input type="text" id="caravans" value="0"
 					min="0" onBlur="updatePyramid()" readonly="readonly"
 					style="text-align: right" /></td>
 			</tr>
@@ -158,14 +158,14 @@
 
 			<!-- 			pyramid actions  -->
 			<script type="text/javascript">
+
 				configChart();
 				updatePyramid();
-				
-				
+
 				function updatePyramid()
 				{
+					var popAvailable = document.getElementById("txt_poptotal").value;
 					var sum = 0;
-					var scribesResearched = true;
 					var population = new Array(7);
 					
 					//If writing is not researched, no scribes can be assigned

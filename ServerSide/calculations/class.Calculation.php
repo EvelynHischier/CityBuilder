@@ -58,7 +58,7 @@ class Calculation {
 		$foodProduced = $this->foodProduction();
 		
 		if( $this->_arrayItems["GranaryResearched"] == 1 )
-			return floor($this->_arrayItems["Food"] - $foodConsumption + $foodProduced);
+			return floor($this->_arrayItems["Food"] - $this->calculateFoodConsumption() + $this->foodProduction());
 		else
 			return floor($foodProduced - $this->calculateFoodConsumption());
 	}

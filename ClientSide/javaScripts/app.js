@@ -505,6 +505,10 @@ app.controller("ViewController", function($scope) {
 		$scope.gameTableValues["PalaceBuilt"] = 	$scope.palace;
 		$scope.gameTableValues["MonumentBuilt"] = 	$scope.monument;
 		
+		for(key in $scope.gameTableValues) {
+			 $scope.gameTableValues[key] = 1;
+		}
+		
 		if ($scope.nbrTurn < 5){
 			
 			query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],

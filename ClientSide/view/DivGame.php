@@ -232,13 +232,16 @@
 							data[i].value = popAvailable*0.625;
 						}
 					}
-					
+
+					//if the user assigns more people than available...
 					if(sum > popAvailable) {
-						alert("You cannot assign more people than available!");
-						document.getElementById("txt_popavailable").value = 0;
+						document.getElementById("txt_popavailable").value = 0; //So it will not display negative numbers
+						var difference = sum - popAvailable;
+						document.getElementById("txt6").value -= difference;
 					}
-					else
+					else {
 						document.getElementById("txt_popavailable").value = popAvailable - sum;
+					}
 					
 					chart.dataProvider = data;
 					chart.validateData();

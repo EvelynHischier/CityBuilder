@@ -1,4 +1,5 @@
 <?php
+	require_once( __DIR__ . "/../model/Class.Historic.php");
 
 class Calculation {
 
@@ -7,7 +8,7 @@ class Calculation {
 	public function __construct($arrayClient) {
 		$this->_arrayItems = $arrayClient;
 	
-		$this->_arrayItems["unhapiness"] = $this->unhapiness();
+		$this->_arrayItems["unhappiness"] = $this->unhappiness();
 		$this->_arrayItems["Wealth"] = $this->_arrayItems["Wealth"] + $this->wealthProduction();
 		$this->_arrayItems["nbrCaravans"] = $this->_arrayItems["nbrCaravans"] + $this->caravanProduction();
 		$this->_arrayItems["RampartBuilt"] = 1;
@@ -17,13 +18,13 @@ class Calculation {
 		$initialPopulation = $this->_arrayItems["Population"];
 		$this->_arrayItems["Population"] = $this->calculatePopulation();
 
-		$this->_arrayItems["nbrPriests"]	= newNumber($this->_arrayItems["nbrPriests"], $initialPopulation);
-		$this->_arrayItems["nbrSlaves"]		= newNumber($this->_arrayItems["nbrSlaves"], $initialPopulation);
-		$this->_arrayItems["nbrKings"]		= newNumber($this->_arrayItems["nbrKings"], $initialPopulation);
-		$this->_arrayItems["nbrScribes"]	= newNumber($this->_arrayItems["nbrScribes"], $initialPopulation);
-		$this->_arrayItems["nbrPeasants"]	= newNumber($this->_arrayItems["nbrPeasants"], $initialPopulation);
-		$this->_arrayItems["nbrSoldiers"]	= newNumber($this->_arrayItems["nbrSoldiers"], $initialPopulation);
-		$this->_arrayItems["nbrCraftsmen"]	= newNumber($this->_arrayItems["nbrCraftsmen"], $initialPopulation);
+		$this->_arrayItems["nbrPriests"]	= $this->newNumber($this->_arrayItems["nbrPriests"], $initialPopulation);
+		$this->_arrayItems["nbrSlaves"]		= $this->newNumber($this->_arrayItems["nbrSlaves"], $initialPopulation);
+		$this->_arrayItems["nbrKings"]		= $this->newNumber($this->_arrayItems["nbrKings"], $initialPopulation);
+		$this->_arrayItems["nbrScribes"]	= $this->newNumber($this->_arrayItems["nbrScribes"], $initialPopulation);
+		$this->_arrayItems["nbrPeasants"]	= $this->newNumber($this->_arrayItems["nbrPeasants"], $initialPopulation);
+		$this->_arrayItems["nbrSoldiers"]	= $this->newNumber($this->_arrayItems["nbrSoldiers"], $initialPopulation);
+		$this->_arrayItems["nbrCraftsmen"]	= $this->newNumber($this->_arrayItems["nbrCraftsmen"], $initialPopulation);
 	}
 	
 	public function getResult() {
@@ -31,33 +32,8 @@ class Calculation {
 	}
 	
 	public function saveIntoDB() {
-		
-		global $pdo;
-		
-		$columns = "";
-		$keys = "";
-		foreach($this->_arrayItems AS $key -> $value) {
-			if($key == "unhapiness")
-				continue;
-			
-			if($columns != "") {
-				$columns +=", ";
-				$keys += ", ";
-			}
-			
-			$columns += $key;
-			$keys += ":"+$key;
-		}
-		
-// 		$query = "INSERT INTO Historic (Game_GameID, Turn, nbrKings, nbrPriests, nbrScribes, nbrSoldiers, nbrSlaves, nbrPeasants, nbrCraftsmen, Population, Wealth, Food, ElapsedTime, Score, PotteryResearched, GranaryResearched, WritingResearched, nbrCaravans, TempleBuilt, PalaceBuilt, MonumentBuilt) ".
-// 				"VALUES ($game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,'$time',$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument)";
-		
-		$query = "INSERT INTO Historic (".$columns.") VALUES(".$keys.")";
-		
-		$result = $pdo->prepare($query);
-		$result->execute($this->_arrayItems);
-		if($this->getError())
-			trigger_error($this->getError());
+		$h = new Historic();
+		return $h->insertHistoric($this->_arrayItems);
 	}
 	
 	private function invasion() {
@@ -104,7 +80,7 @@ class Calculation {
 			$scribesFactor = 1/36;
 		
 		$unhappinessFactor = 1;
-		if($this->_arrayItems["unhapiness"] == 1)
+		if($this->_arrayItems["unhappiness"] == 1)
 			$unhappinessFactor = 0.75;
 		
 		return floor( $this->_arrayItems["nbrPeasants"]*$unhappinessFactor*((10/9)+$scribesFactor) );
@@ -153,9 +129,9 @@ class Calculation {
 	
 	// calculates whether the population is happy or not
 	private function unhappiness() {
-		if( $this->_arrayItems["nbrKngs"] > 1 || $this->_arrayItems["kings"] < 1 || 
-		$this->_arrayItems["nbrPriests"] <= $this->calculateAllocatedPopulation()*0.0025 ||
-		$this->_arrayItems["nbrSlaves"] <= $this->calculateAllocatedPopulation()*0.02 )
+		if( $this->_arrayItems["nbrKings"] > 1 || $this->_arrayItems["nbrKings"] < 1 || 
+		$this->_arrayItems["nbrPriests"] <= $this->calculateFoodConsumption()*0.0025 ||
+		$this->_arrayItems["nbrSlaves"] <= $this->calculateFoodConsumption()*0.02 )
 			$unhappiness = 1;
 		
 		return 0;

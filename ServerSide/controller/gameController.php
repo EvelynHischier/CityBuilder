@@ -63,7 +63,7 @@ class gameController {
 			)
 		);
 		
-		$calculation->saveIntoDB();
+		return $calculation->saveIntoDB();
 		
 		return $calculation->getResult();
 	}

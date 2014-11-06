@@ -11,15 +11,14 @@ private $_pdo = null;
 			return 'Query failed';
 	}
 	//method to get a zone with a specific name
+	//entry value: name
 	public function getZone($name){
 		$query="select `Name`, `Picture` from Zone where `Name` = ?";
-		
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array($name));
 		if($this->getError())
 			trigger_error($this->getError());
 		$zones = $result->fetchAll(PDO::FETCH_ASSOC);
-
 		return $zones;
 	}
 }

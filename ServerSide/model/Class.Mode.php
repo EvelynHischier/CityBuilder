@@ -14,13 +14,11 @@ private $_pdo = null;
 	//method to get all modes
 	public function getModes(){
 		$query="select `Name` from Mode";
-		
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array());
 		if($this->getError())
 			trigger_error($this->getError());
 		$modes = $result->fetchAll(PDO::FETCH_ASSOC);
-
 		return $modes;
 	}
 }

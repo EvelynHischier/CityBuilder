@@ -22,7 +22,6 @@ class User {
 	
 	// public function getUsers(){
 	// $query="select `Lastname`, `Firstname`, `Username`, `Password`, `Language`, `Admin` from User";
-	
 	// $result= $this->_pdo->prepare($query);
 	// $result->execute(array());
 	// if($this->getError())

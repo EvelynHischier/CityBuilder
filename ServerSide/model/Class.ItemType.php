@@ -12,14 +12,12 @@ class ItemType{
 	}
 	//method to get all item types
 	public function getItemTypes() {
-		$query = "SELECT `ItemTypeID`, `Name`, `Min`, `Max`, `Description` FROM ItemType";
-				
+		$query = "SELECT `ItemTypeID`, `Name`, `Min`, `Max`, `Description` FROM ItemType";	
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array());
 		if($this->getError())
 			trigger_error($this->getError());
 		$itemTypes = $result->fetchAll(PDO::FETCH_ASSOC);
-		
 		return $itemTypes;
 	}
 }

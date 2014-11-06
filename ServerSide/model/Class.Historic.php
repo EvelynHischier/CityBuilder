@@ -5,15 +5,15 @@
 }*/
 
 class Historic{
-	
+	private $_pdo;
 	
 	public function __construct(){
-		// $this->_pdo = $GLOBALS["pdo"];
-		$this->_pdo = new PDO("mysql:host=db4free.net;
+		 $this->_pdo = $GLOBALS["pdo"];
+		/*$this->_pdo = new PDO("mysql:host=db4free.net;
 						port=3306;
 						dbname=pyramidgame1",
 						"groupe1",
-						"8?Wzgr10");
+						"8?Wzgr10");*/
 	}
 	//method to catch the error in the connection to the DB
 	public function getError(){
@@ -46,8 +46,7 @@ class Historic{
 		// 				"VALUES ($game,$turn,$kings,$priests,$scribes,$soldiers,$slaves,$peasants,$craftsmen,$population,$wealth,$food,'$time',$score,$pottery,$granary,$writing,$caravans,$temple,$palace,$monument)";
 		
 		$query = "INSERT INTO Historic ( $columns ) VALUES( $keys )";
-		
-		
+				
 		$result = $this->_pdo->prepare($query);
 		
 		if(!$result)

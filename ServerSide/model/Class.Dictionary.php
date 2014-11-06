@@ -11,15 +11,14 @@ class Dictionary{
 			return 'Query failed';
 	}
 	//method to get all elements from a specific language
+	//entry value: language
 	public function getDictionary($language){
 		$query="select `Language`, `Key`, `Text` from Dictionary where `Language` = ?";
-		
 		$result= $this->_pdo->prepare($query);
 		$result->execute(array($language));
 		if($this->getError())
 			trigger_error($this->getError());
 		$texts = $result->fetchAll(PDO::FETCH_ASSOC);
-
 		return $texts;
 	}
 }

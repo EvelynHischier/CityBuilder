@@ -28,18 +28,6 @@ app.controller("ViewController", function($scope) {
 	$scope.choosenZone = "";
 	$scope.popupName = "";
 	
-	// buildings
-	$scope.palace = 0;
-	$scope.monument = 0;
-	$scope.temple = 0;
-	$scope.rampart = 0;
-	
-	// technolgie
-	$scope.techWriting = 0;
-	$scope.techGranary = 0;
-	$scope.techPottery = 0;
-	
-	
 	// initialize gameTableValues
 	$scope.gameTableValues = {};
 	$scope.gameTableValues['nbrKings'] = 0  ;
@@ -50,7 +38,17 @@ app.controller("ViewController", function($scope) {
 	$scope.gameTableValues['nbrPeasants']  = 0 ;
 	$scope.gameTableValues['nbrCraftsmen']  = 0 ;
 	$scope.gameTableValues['nbrCaravans'] = 0;
-
+	$scope.gameTableValues['Population'] = 0;
+	$scope.gameTableValues['Wealth'] = 0;
+	$scope.gameTableValues['Food'] = 0;
+	$scope.gameTableValues['PotteryResearched'] = 0;
+	$scope.gameTableValues['GranaryResearched'] = 0;
+	$scope.gameTableValues['WritingResearched'] = 0;
+	$scope.gameTableValues['RampartBuilt'] = 0;
+	$scope.gameTableValues['TempleBuilt'] = 0;
+	$scope.gameTableValues['PalaceBuilt'] = 0;
+	$scope.gameTableValues['MonumentBuilt'] = 0;
+	
 	query( [{path: "dictionary/initialize", data: null }],
 			function(data){ mapLanguage($scope, data); },
 			function(data){ alert(JSON.stringify(data)); }
@@ -456,20 +454,20 @@ app.controller("ViewController", function($scope) {
 		// set total number of population
 		switch ($scope.choosenZone){
 		case "fertile":
-			$scope.numberGameTotalPop = 2000;
+			$scope.gameTableValues['Population'] = 2000;
 			break;
 		case "desert":
-			$scope.numberGameTotalPop = 1500;
+			$scope.gameTableValues['Population'] = 1500;
 			break;
 		case "mountain":
-			$scope.numberGameTotalPop = 1200
+			$scope.gameTableValues['Population'] = 1200;
 			break;
 		}
 
 		// calculatinc of food and wealth
 		// display the result on the corresponding field
-		$scope.numberGameFood = $scope.numberGameTotalPop *0.02;
-		$scope.numberGameWealth = 0;
+		$scope.gameTableValues['Food'] = $scope.gameTableValues['Population'] *0.02;
+		$scope.gameTableValues['Wealth'] = 0;
 
 		// get the text for title of the database 
 		$scope.textGameWriting = $scope.dictionary[$scope.lang]["if_management_writing"];
@@ -532,17 +530,17 @@ app.controller("ViewController", function($scope) {
 		$scope.gameTableValues['nbrSlaves'] ;
 		$scope.gameTableValues['nbrPeasants'];
 		$scope.gameTableValues['nbrCraftsmen'];
-		$scope.gameTableValues['Population'] = 		$scope.numberGameTotalPop; 
-		$scope.gameTableValues['Wealth'] = 			$scope.numberGameWealth; 
-		$scope.gameTableValues['Food'] = 			$scope.numberGameFood; 
-		$scope.gameTableValues['PotteryResearched'] = $scope.techPottery; 
-		$scope.gameTableValues['GranaryResearched'] = $scope.techGranary; 
-		$scope.gameTableValues['WritingResearched'] = $scope.techWriting; 
+		$scope.gameTableValues['Population'];
+		$scope.gameTableValues['Wealth'] ;
+		$scope.gameTableValues['Food'];
+		$scope.gameTableValues['PotteryResearched'];
+		$scope.gameTableValues['GranaryResearched'] ;
+		$scope.gameTableValues['WritingResearched'] ; 
 		$scope.gameTableValues['nbrCaravans'] ;
-		$scope.gameTableValues['RampartBuilt'] = 	$scope.rampart;
-		$scope.gameTableValues['TempleBuilt'] = 	$scope.temple;
-		$scope.gameTableValues['PalaceBuilt'] = 	$scope.palace;
-		$scope.gameTableValues['MonumentBuilt'] = 	$scope.monument;
+		$scope.gameTableValues['RampartBuilt'];
+		$scope.gameTableValues['TempleBuilt'] ;
+		$scope.gameTableValues['PalaceBuilt'] ;
+		$scope.gameTableValues['MonumentBuilt'] ;
 
 		var success = function( data ) {
 		}
@@ -555,7 +553,7 @@ app.controller("ViewController", function($scope) {
 					$scope.gameTableValues[key] = value;
 				});
 				
-				//$scope.gameTableValues["nbrPeasants"] = 5000;
+				
 				
 				$scope.$apply();
 			},

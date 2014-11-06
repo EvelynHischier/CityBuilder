@@ -45,14 +45,17 @@
 	<table id="tableGame">
 		<tbody>
 			<tr>
+<!-- 			food -->
 				<td class="overview" data-ng-bind="textGameFood"></td>
 				<td class="overview"><input type="text" readonly="readonly"
-					style="text-align: right" data-ng-value="numberGameFood" /></td>
+					style="text-align: right" data-ng-value="gameTableValues['Food']" /></td>
 
+<!-- 				wealth -->
 				<td class="overview" data-ng-bind="textGameWealth"></td>
 				<td class="number"><input type="text" readonly="readonly"
-					style="text-align: right" data-ng-value="numberGameWealth" /></td>
+					style="text-align: right" data-ng-value="gameTableValues['Wealth']" /></td>
 
+<!-- 				technologies -->
 				<td class="tech" data-ng-bind="textGameWriting"
 					data-ng-click="clickTechnologie('writing')"></td>
 				<td class="tech" data-ng-bind="textGameGranary"
@@ -86,7 +89,7 @@
 					data-ng-bind="textGameTotalPop"></td>
 				<td class="number"><input type="text" id="txt_poptotal"
 					readonly="readonly" style="text-align: right"
-					data-ng-value="numberGameTotalPop" /></td>
+					data-ng-value="gameTableValues['Population']" /></td>
 				<th class="pyramid" colspan="3" rowspan="10"><div id="chartdiv"></div></th>
 			</tr>
 			<tr>

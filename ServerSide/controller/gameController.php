@@ -42,7 +42,9 @@ class gameController {
 		
 		$result = $calculation->saveIntoDB();
 		
-		return $calculation->getResult();
+		$newArray = $calculation->getResult();
+		
+		return $newArray;
 	}
 	
 	public function scoreAction( $data ){

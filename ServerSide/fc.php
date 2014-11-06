@@ -16,18 +16,18 @@ else {
 }
 
 // prepare MySQL connection
-// $pdo = new PDO("mysql:host=db4free.net;
-// 				port=3306;
-// 				dbname=pyramidgame1",
-// 				"groupe1",
-// 				"8?Wzgr10");
-
-//For the REAL server
-$pdo = new PDO("mysql:host=localhost;
+$pdo = new PDO("mysql:host=db4free.net;
 				port=3306;
-				dbname=groupe1",
+				dbname=pyramidgame1",
 				"groupe1",
 				"8?Wzgr10");
+
+//For the REAL server
+// $pdo = new PDO("mysql:host=localhost;
+// 				port=3306;
+// 				dbname=groupe1",
+// 				"groupe1",
+// 				"8?Wzgr10");
 
 // prepare the user's session
 if( !isset($_SESSION["user"]) ) {

@@ -551,37 +551,35 @@ app.controller("ViewController", function($scope) {
 	$scope.endOfTurnCalculation = function (){
 
 		$scope.gameTableValues['Turn'] = $scope.nbrTurn;
-		$scope.gameTableValues['nbrKings']  ;
-		$scope.gameTableValues['nbrPriests'];
-		$scope.gameTableValues['nbrScribes'];
-		$scope.gameTableValues['nbrSoldiers'] ;
-		$scope.gameTableValues['nbrSlaves'] ;
-		$scope.gameTableValues['nbrPeasants'];
-		$scope.gameTableValues['nbrCraftsmen'];
-		$scope.gameTableValues['Population'];
-		$scope.gameTableValues['Wealth'] ;
-		$scope.gameTableValues['Food'];
-		$scope.gameTableValues['PotteryResearched'];
-		$scope.gameTableValues['GranaryResearched'] ;
-		$scope.gameTableValues['WritingResearched'] ; 
-		$scope.gameTableValues['nbrCaravans'] ;
-		$scope.gameTableValues['RampartBuilt'];
-		$scope.gameTableValues['TempleBuilt'] ;
-		$scope.gameTableValues['PalaceBuilt'] ;
-		$scope.gameTableValues['MonumentBuilt'] ;
+//		$scope.gameTableValues['nbrKings']  ;
+//		$scope.gameTableValues['nbrPriests'];
+//		$scope.gameTableValues['nbrScribes'];
+//		$scope.gameTableValues['nbrSoldiers'] ;
+//		$scope.gameTableValues['nbrSlaves'] ;
+//		$scope.gameTableValues['nbrPeasants'];
+//		$scope.gameTableValues['nbrCraftsmen'];
+//		$scope.gameTableValues['Population'];
+//		$scope.gameTableValues['Wealth'] ;
+//		$scope.gameTableValues['Food'];
+//		$scope.gameTableValues['PotteryResearched'];
+//		$scope.gameTableValues['GranaryResearched'] ;
+//		$scope.gameTableValues['WritingResearched'] ; 
+//		$scope.gameTableValues['nbrCaravans'] ;
+//		$scope.gameTableValues['RampartBuilt'];
+//		$scope.gameTableValues['TempleBuilt'] ;
+//		$scope.gameTableValues['PalaceBuilt'] ;
+//		$scope.gameTableValues['MonumentBuilt'] ;
 
 		var success = function( data ) {
 		}
 
 		query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],
 				function(data) {
-			var datas = JSON.parse(data);
+			var datas = JSON.parse(data)[0];
 
 			$.map(datas, function(value, key) {
 				$scope.gameTableValues[key] = value;
 			});
-
-
 
 			$scope.$apply();
 		},

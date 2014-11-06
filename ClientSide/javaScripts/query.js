@@ -1,6 +1,6 @@
 var query = function(functions, callBackDone, callBackFail, callBackAlways) {
 
-//			var urlMehdi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
+			var urlMehdi = "http://127.0.0.1/CityBuilder-ServerSide/fc.php";
 //			var urlEvi = "http://127.0.0.1:8080/Git/CityBuilder/ServerSide/fc.php";
 //			var urlPierry = "http://127.0.0.1/Git/CityBuilder/ServerSide/fc.php"
 
@@ -8,7 +8,7 @@ var query = function(functions, callBackDone, callBackFail, callBackAlways) {
 
 				
 			$.ajax({
-				url: url,
+				url: urlMehdi,
 				type: "POST",
 				data:    {
 					request: {

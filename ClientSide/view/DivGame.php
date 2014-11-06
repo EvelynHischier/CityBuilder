@@ -48,12 +48,12 @@
 <!-- 			food -->
 				<td class="overview" data-ng-bind="textGameFood"></td>
 				<td class="overview"><input type="text" readonly="readonly"
-					style="text-align: right" data-ng-value="gameTableValues['Food']" /></td>
+					style="text-align: right" data-ng-model="gameTableValues['Food']" /></td>
 
 <!-- 				wealth -->
 				<td class="overview" data-ng-bind="textGameWealth"></td>
 				<td class="number"><input type="text" readonly="readonly"
-					style="text-align: right" data-ng-value="gameTableValues['Wealth']" /></td>
+					style="text-align: right" data-ng-model="gameTableValues['Wealth']" /></td>
 
 <!-- 				technologies -->
 				<td class="tech" data-ng-bind="textGameWriting"
@@ -89,7 +89,7 @@
 					data-ng-bind="textGameTotalPop"></td>
 				<td class="number"><input type="text" id="txt_poptotal"
 					readonly="readonly" style="text-align: right"
-					data-ng-value="gameTableValues['Population']" /></td>
+					data-ng-model="gameTableValues['Population']" /></td>
 				<th class="pyramid" colspan="3" rowspan="10"><div id="chartdiv"></div></th>
 			</tr>
 			<tr>
@@ -105,7 +105,7 @@
 					data-ng-mouseover="hoverGame('king')" data-ng-bind="textGameKing"></td>
 				<td class="number"><input type="number" id="txt1" value="0" min="0"
 					onBlur="updatePyramid()" data-ng-mouseover="hoverGame('king')"
-					data-ng-value="gameTableValues['nbrKings']"  /></td>
+					data-ng-model="gameTableValues['nbrKings']"  /></td>
 			</tr>
 			<tr>
 <!-- 			priest -->
@@ -114,7 +114,7 @@
 					data-ng-bind="textGamePriest"></td>
 				<td class="number"><input type="number" id="txt2" value="0" min="0"
 					onBlur="updatePyramid()" data-ng-mouseover="hoverGame('priest')"
-					data-ng-value="gameTableValues['nbrPriests']" /></td>
+					data-ng-model="gameTableValues['nbrPriests']" /></td>
 			</tr>
 			<tr>
 <!-- 			craftsmen -->
@@ -123,7 +123,7 @@
 					data-ng-bind="textGameCraft"></td>
 				<td class="number"><input type="number" id="txt3" value="0" min="0"
 					onBlur="updatePyramid()" data-ng-mouseover="hoverGame('craftsmen')"
-					data-ng-value="gameTableValues['nbrCraftsmen']" /></td>
+					data-ng-model="gameTableValues['nbrCraftsmen']" /></td>
 			</tr>
 			<tr>
 <!-- 			scribes -->
@@ -132,7 +132,7 @@
 					data-ng-bind="textGameScribes"></td>
 				<td class="number"><input type="number" id="txt4" value="0" min="0"
 					onBlur="updatePyramid()" data-ng-mouseover="hoverGame('scribes')"
-					data-ng-value="gameTableValues['nbrScribes']" /></td>
+					data-ng-model="gameTableValues['nbrScribes']" /></td>
 			</tr>
 			<tr>
 <!-- 			soldiers -->
@@ -141,7 +141,7 @@
 					data-ng-bind="textGameSoldiers"></td>
 				<td class="number"><input type="number" id="txt5" value="0" min="0"
 					onBlur="updatePyramid()" data-ng-mouseover="hoverGame('soldier')"
-					data-ng-value="gameTableValues['nbrSoldiers']" /></td>
+					data-ng-model="gameTableValues['nbrSoldiers']" /></td>
 			</tr>
 			<tr>
 <!-- 			peasants -->
@@ -159,7 +159,7 @@
 					data-ng-bind="textGameSlaves"></td>
 				<td class="number"><input type="number" id="txt7" value="0" min="0"
 					onBlur="updatePyramid()" data-ng-mouseover="hoverGame('slaves')"
-					data-ng-value="gameTableValues['nbrSlaves']"  /></td>
+					data-ng-model="gameTableValues['nbrSlaves']"  /></td>
 			</tr>
 			<tr>
 <!-- 			caravans -->
@@ -169,7 +169,7 @@
 				<td class="number"><input type="text" id="caravans" value="0"
 					min="0" onBlur="updatePyramid()" readonly="readonly"
 					style="text-align: right" data-ng-mouseover="hoverGame('caravans')"
-					data-ng-value="gameTableValues['nbrCaravans']"  /></td>
+					data-ng-model="gameTableValues['nbrCaravans']"  /></td>
 			</tr>
 
 			<!-- 			pyramid actions  -->

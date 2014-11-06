@@ -47,6 +47,10 @@ class gameController {
 		return "error";
 	}
 	
+	public function scoreAction( $data ){
+		return "you loose";
+	}
+	
 	
 	
 }

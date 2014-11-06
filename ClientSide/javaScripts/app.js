@@ -172,11 +172,11 @@ app.controller("ViewController", function($scope) {
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_pottery"];
 			$scope.popupPicture = "popup_pottery";
 			break;			
-//			case 'rampart': 
-//			$scope.popup = 'continue';
-//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_ramparts"]; 
-//			$scope.popupPicture = "popup_rampart";
-//			break;			
+			case 'rampart': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_ramparts"]; 
+			$scope.popupPicture = "popup_rampart";
+			break;			
 		case 'desert': 
 			$scope.popup = 'continue';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_result_placement_desert"]; 
@@ -575,7 +575,7 @@ app.controller("ViewController", function($scope) {
 
 		query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],
 				function(data) {
-			var datas = JSON.parse(data)[0];
+			var datas = JSON.parse(data);
 
 			$.map(datas, function(value, key) {
 				$scope.gameTableValues[key] = value;
@@ -605,6 +605,10 @@ app.controller("ViewController", function($scope) {
 			$scope.showPopup($scope.selectedTechnologie, "");
 			break;
 		}
+		
+		// first rouned -> display rampart
+		if ($scope.nbrTurn == 1)
+			$scope.showPopup("rampart", "");
 
 
 		if ($scope.nbrTurn >= 5){

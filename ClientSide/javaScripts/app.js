@@ -595,7 +595,7 @@ app.controller("ViewController", function($scope) {
 		switch($scope.selectedTechnologie){
 		case "writing":
 			// show popup
-			$scope.showPopup($scope.selectedTechnologie, "")
+			$scope.showPopup($scope.selectedTechnologie, "");
 			
 			// set scribes editable
 			scribesResearched = true;
@@ -603,12 +603,10 @@ app.controller("ViewController", function($scope) {
 			break;
 		case "granary":
 		case "pottery":
-			$scope.showPopup($scope.selectedTechnologie, "")
+			$scope.showPopup($scope.selectedTechnologie, "");
 			break;
 		}
 
-
-		$scope.selectedTechnologie = 'pottery';
 
 		if ($scope.nbrTurn >= 5){
 

@@ -20,7 +20,5 @@
 			value="Exit game" data-ng-click="exitGame()">
 	</div>
 
-	<!--  javascript -->
-	<script src="javaScripts/DivRightActions.js" type="text/javascript"></script>
 
 </div>

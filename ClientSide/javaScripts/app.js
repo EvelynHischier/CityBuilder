@@ -543,7 +543,6 @@ app.controller("ViewController", function($scope) {
 	// ************************************************************************************
 	// click on end of turn 
 	// calculation of new food ...
-
 	$scope.startCalculation = function(){
 
 		$scope.showPopup("endOfTurn", "");

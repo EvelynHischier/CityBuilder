@@ -205,7 +205,7 @@ div#viewMap {
 */
 
 /* table size*/
-div#viewGame {
+div#viewGame, div#viewScore {
 	border: 1px solid black;
 }
 

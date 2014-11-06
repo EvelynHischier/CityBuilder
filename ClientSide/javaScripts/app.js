@@ -579,9 +579,9 @@ app.controller("ViewController", function($scope) {
 		// set titles of the table columns
 		$scope.scoreTechnologyTxt =  $scope.dictionary[$scope.lang]["score_technology"]; 
 		$scope.scoreWealthTxt =  $scope.dictionary[$scope.lang]["if_management_wealth"]; 
-		$scope.scoreBuildingsTxt =  $scope.dictionary[$scope.lang]["score_buildings"]; 
-		$scope.scorePopulationTxt =  $scope.dictionary[$scope.lang]["score_population"]; 
-		$scope.scoreHappinessTxt =  $scope.dictionary[$scope.lang]["score_happiness"]; 
+		$scope.scoreBuildingsTxt =  $scope.dictionary[$scope.lang]["score_buildings_title"]; 
+		$scope.scorePopulationTxt =  $scope.dictionary[$scope.lang]["score_population_title"]; 
+		$scope.scoreHappinessTxt =  $scope.dictionary[$scope.lang]["score_happiness_title"]; 
 		$scope.scoreTotalTxt =  $scope.dictionary[$scope.lang]["score_scoreTotal"]; 
 
 		

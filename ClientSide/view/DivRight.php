@@ -11,7 +11,7 @@
 
 	<div id="button_1">
 		<input type="button" class="buttonRight" id="button_turn"
-			data-ng-hide="page == 'map' " value="End of turn" data-ng-click="endOfTurnCalculation()">
+			data-ng-hide="page == 'map' " value="End of turn" data-ng-click="startCalculation()">
 	</div>
 
 

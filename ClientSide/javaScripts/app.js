@@ -377,6 +377,35 @@ app.controller("ViewController", function($scope) {
 			break;
 		}
 	}
+	
+	$scope.hoverScore = function (name){
+		switch (name){
+		case "technologie":
+			$scope.rightPicture = "score1";
+			$scope.rightText = $scope.dictionary[$scope.lang]["score_technologies"];
+			break;
+		case "wealth":
+			$scope.rightPicture = "score2";
+			$scope.rightText = $scope.dictionary[$scope.lang]["score_wealth"];
+			break;
+		case "buildings":
+			$scope.rightPicture = "score3";
+			$scope.rightText = $scope.dictionary[$scope.lang]["score_buildings"];
+			break;
+		case "population":
+			$scope.rightPicture = "score4";
+			$scope.rightText = $scope.dictionary[$scope.lang]["score_population"];
+			break;
+		case "happiness":
+			$scope.rightPicture = "score5";
+			$scope.rightText = $scope.dictionary[$scope.lang]["score_happiness"];
+			break;
+		case "total":
+			$scope.rightPicture = "score6";
+			$scope.rightText = $scope.dictionary[$scope.lang]["score_total"];
+			break;
+		}
+	}
 
 	// ************************************************************************************
 	//            Exit game (on the map or in the game)
@@ -555,7 +584,9 @@ app.controller("ViewController", function($scope) {
 		$scope.scoreHappinessTxt =  $scope.dictionary[$scope.lang]["score_happiness"]; 
 		$scope.scoreTotalTxt =  $scope.dictionary[$scope.lang]["score_scoreTotal"]; 
 
-
+		
+		
+		
 		$scope.scoreTxt =  $scope.dictionary[$scope.lang]["if_management_score"]; 
 
 

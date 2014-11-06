@@ -311,7 +311,7 @@ input[type="text"] {
 	background-color: #C3C3C3; /* grey  */
 }
 
-#table_population, #table_caravans {
+#table_population, #table_caravans, #table_score {
 	background-color: #ffb044; /* dark orange  */
 }
 

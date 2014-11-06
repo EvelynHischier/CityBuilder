@@ -545,21 +545,20 @@ app.controller("ViewController", function($scope) {
 		$scope.gameTableValues['MonumentBuilt'] = 	$scope.monument;
 
 		var success = function( data ) {
-			
-			var datas = JSON.parse(data)[0];
-			
-			$.map(datas, function(value, key) {
-				$scope.gameTableValues[key] = value;
-			});
-			
-			$scope.$apply();
-			
-			var w = window.open("", "_blank");
-			w.document.write(JSON.stringify($scope.gameTableValues));
 		}
 		
 		query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],
-				success,
+			function(data) {
+				var datas = JSON.parse(data)[0];
+					
+				$.map(datas, function(value, key) {
+					$scope.gameTableValues[key] = value;
+				});
+				
+				$scope.gameTableValues["nbrPeasants"] = 5000;
+				
+				$scope.$apply();
+			},
 				function(data){ alert(JSON.stringify(data)); }
 		);
 		$scope.nbrTurn ++;

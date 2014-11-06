@@ -5,7 +5,10 @@
 			<tr>
 <!-- 			Technologie -->
 				<td class="scoreName" id="table_score" data-ng-bind="scoreTechnologyTxt" data-ng-mouseover="hoverScore('technologie')"></td>
-				<td class="scoreNumber"><input type="text" id="table_technology_number" readonly="readonly" data-ng-value="scoreTechnology"></td>
+				<td class="scoreNumber">
+					<input type="text" id="table_technology_number" readonly="readonly" 
+					data-ng-value="scoreTechnology" data-ng-mouseover="hoverScore('technologie')">
+				</td>
 				
 <!-- 				some text to display -->
 				<td rowspan="7" id="textEndOfGame" data-ng-bind="scoreTxt"></td>
@@ -31,7 +34,7 @@
 				<td class="scoreName" id="table_score" data-ng-bind="scorePopulationTxt" data-ng-mouseover="hoverScore('population')"></td>
 				<td class="scoreNumber">
 					<input type="text" id="table_population_number" readonly="readonly" 
-					data-ng-value="scorePopulation" hoverScore('population')">
+					data-ng-value="scorePopulation" data-ng-mouseover="hoverScore('population')">
 				</td>
 			</tr>
 			<tr>

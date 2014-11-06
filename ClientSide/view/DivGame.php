@@ -3,7 +3,7 @@
 	<script type="text/javascript">
 			//Properties, methods and events for the pyramid chart: 
 			//http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart
-			var scribesResearched = false;
+
 			
 			//check if writing researched
 			
@@ -241,6 +241,10 @@
 						document.getElementById("txt4").setAttribute("readonly", "true");
 						document.getElementById("txt4").setAttribute("type", "text");
 						data[3].value = 0;
+					}
+					else{
+						document.getElementById("txt4").setAttribute("readonly", "false");
+						document.getElementById("txt4").setAttribute("type", "number");
 					}
 
 					//if the user assigns more people than available...

@@ -1,6 +1,6 @@
 var app = angular.module("app", []);
-//var turn = 0;
-//var choosenZone;
+
+var scribesResearched = false;
 
 //main controller
 app.controller("ViewController", function($scope) {
@@ -598,7 +598,8 @@ app.controller("ViewController", function($scope) {
 			$scope.showPopup($scope.selectedTechnologie, "")
 			
 			// set scribes editable
-			
+			scribesResearched = true;
+			updatePyramid();
 			break;
 		case "granary":
 		case "pottery":

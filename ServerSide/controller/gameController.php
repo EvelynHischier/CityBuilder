@@ -41,10 +41,8 @@ class gameController {
 		$calculation = new Calculation($datas);
 		
 		$result = $calculation->saveIntoDB();
-		if($result == "success")
-			return $calculation->getResult();
-			
-		return "error";
+		
+		return $calculation->getResult();
 	}
 	
 	public function scoreAction( $data ){

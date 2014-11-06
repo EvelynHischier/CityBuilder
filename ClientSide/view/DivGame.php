@@ -11,13 +11,13 @@
 			
 			configChart = function() {
 				chart = new AmCharts.AmFunnelChart();
-				chart.rotate = true;
-				chart.titleField = "title";
-				chart.balloonText = "";
-				chart.pullDistance = 0;
-				chart.marginRight = 100;
-				chart.marginLeft = 15;
-				chart.labelPosition = "right";
+				chart.rotate = true;		//false results in a reversed pyramid
+				chart.titleField = "title";	//see array below; what to display as title
+				chart.balloonText = "";		//so that it doesn't show text when hovering over the slices
+				chart.pullDistance = 0;		//by default the slices move when you click on them
+				chart.marginRight = 100;	//distance from the right side of the div
+				chart.marginLeft = 15;		//distance from the left side of the div
+				chart.labelPosition = "right"; //the title's position
 				chart.funnelAlpha = 0.9;
 				chart.valueField = "value";
 				chart.startX = -500;
@@ -181,8 +181,8 @@
 				function updatePyramid()
 				{
 					var popAvailable = document.getElementById("txt_poptotal").value;
-					var sum = 0;
-					var population = new Array(7);
+					var sum = 0; //used to calculate the number of assigned people
+					var population = new Array(7); //for the different social classes
 					
 					
 					
@@ -223,9 +223,8 @@
 						"value": population[6]
 					}];
 
-					
-					
-					//var numbers = "Sum: " + sum + "; ";
+
+					//Set a minimum / maximum height for the pyramid
 					for(var i = 0; i < data.length; i++) {
 						
 						if(data[i].value / popAvailable < 0.0625) {//less than 6.25%
@@ -253,7 +252,8 @@
 					else {
 						document.getElementById("txt_popavailable").value = popAvailable - sum;
 					}
-					
+
+					//redraw the chart with the data
 					chart.dataProvider = data;
 					chart.validateData();
 				}

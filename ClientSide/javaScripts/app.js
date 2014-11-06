@@ -516,15 +516,26 @@ app.controller("ViewController", function($scope) {
 		$scope.gameTableValues['MonumentBuilt'] = 	$scope.monument;
 
 		
-		if ($scope.nbrTurn < 5){
-			
-			query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],
-					function(data){ var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); },
-					function(data){ alert(JSON.stringify(data)); }
-			);
 
-			$scope.nbrTurn ++;
+		query( [{"path": "game/endOfTurn", "data": $scope.gameTableValues } ],
+				function(data){ 
+			
+			$scope.gameTableValues = data;
+			//var w = window.open("", "_blank"); w.document.write(JSON.stringify(data)); 
+				
+		
+		
+		},
+				function(data){ alert(JSON.stringify(data)); }
+		);
+		$scope.nbrTurn ++;
+		
+		if ($scope.nbrTurn >= 5){
+			
+			$scope.displayTheScore();
 		}
+		
+		// display the new population in the table
 	}
 
 	// ************************************************************************************

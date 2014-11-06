@@ -18,6 +18,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js" type="text/javascript"></script>
 
+<script src="javaScripts/popup.js" type="text/javascript"></script>
+
 <script src="javaScripts/mapZone.js" type="text/javascript"></script>
 <script src="javaScripts/amcharts.js" type="text/javascript"></script>
 <script src="javaScripts/funnel.js" type="text/javascript"></script>
@@ -38,6 +40,7 @@
 		
 
 		<!-- ---------------     Main Div   ---------------    -->
+		
 		<div id="mainDiv">
 			
 			<?php
@@ -79,6 +82,6 @@
 		</div>
 	</div>
 
-
+<div id="background"></div>
 </body>
 </html>

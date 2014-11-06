@@ -555,7 +555,7 @@ app.controller("ViewController", function($scope) {
 					$scope.gameTableValues[key] = value;
 				});
 				
-				$scope.gameTableValues["nbrPeasants"] = 5000;
+				//$scope.gameTableValues["nbrPeasants"] = 5000;
 				
 				$scope.$apply();
 			},

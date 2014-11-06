@@ -149,7 +149,7 @@
 					data-ng-bind="textGamePeasants"></td>
 				<td class="number"><input type="number" id="txt6" value="0" min="0"
 					onBlur="updatePyramid()"
-					data-ng-value="gameTableValues['nbrPeasants']"  /></td>
+					data-ng-model="gameTableValues['nbrPeasants']"  /></td>
 			</tr>
 			<tr>
 <!-- 			slaves -->

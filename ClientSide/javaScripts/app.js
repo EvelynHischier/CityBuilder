@@ -436,7 +436,7 @@ app.controller("ViewController", function($scope) {
 			$scope.changeView("mainMenu");
 			break;
 		case "game":
-			// display score  //__________________________________________________________________________________________
+			$scope.displayTheScore();
 			break;
 		}
 	};
@@ -625,8 +625,6 @@ app.controller("ViewController", function($scope) {
 			$scope.scorePicture = "popup_goodEnding";
 			
 		}
-
-
 	}
 
 	// ************************************************************************************
@@ -645,9 +643,6 @@ app.controller("ViewController", function($scope) {
 		$scope.scorePopulationTxt =  $scope.dictionary[$scope.lang]["score_population_title"]; 
 		$scope.scoreHappinessTxt =  $scope.dictionary[$scope.lang]["score_happiness_title"]; 
 		$scope.scoreTotalTxt =  $scope.dictionary[$scope.lang]["score_scoreTotal"]; 
-
-
-
 
 		$scope.scoreTxt =  $scope.dictionary[$scope.lang]["if_management_score"]; 
 

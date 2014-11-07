@@ -602,7 +602,8 @@ app.controller("ViewController", function($scope) {
 			$scope.showPopup($scope.selectedTechnologie, "");
 			break;
 		}
-
+		// reset technologie explored
+		$scope.selectedTechnologie = "";
 
 		// first rouned -> display rampart
 		if ($scope.nbrTurn == 1)
@@ -668,12 +669,12 @@ app.controller("ViewController", function($scope) {
 
 
 		// set numbers
-		$scope.scoreTechnology = 0; // <<------ number
-		$scope.scoreWealth = 0; // <<------ number
+		$scope.scoreTechnology = 1; // <<------ number
+		$scope.scoreWealth = 0.5; // <<------ number
 		$scope.scoreBuildings = 0; // <<------ number
-		$scope.scorePopulation = 0; // <<------ number
-		$scope.scoreHappyness = 0; // <<------ number
-		$scope.scoreTotal = 0; // <<------ number
+		$scope.scorePopulation = 1; // <<------ number
+		$scope.scoreHappyness = 0.5; // <<------ number
+		$scope.scoreTotal = 4; // <<------ number
 
 
 	}

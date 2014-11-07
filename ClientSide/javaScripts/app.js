@@ -137,21 +137,21 @@ app.controller("ViewController", function($scope) {
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_exit_validation"]; 
 //			$scope.popupPicture = "popup_exitGame";
 //			break;
-//			case 'goodEnding': 
-//			$scope.popup = 'continue';
-//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_good_ending"]; 
-//			$scope.popupPicture = "popup_goodEnding";
-//			break;
+			case 'goodEnding': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_good_ending"]; 
+			$scope.popupPicture = "popup_goodEnding";
+			break;
 		case 'granary': 
 			$scope.popup = 'continue';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_granary"]; 
 			$scope.popupPicture = "popup_granary";
 			break;
-//			case 'badEnding': 
-//			$scope.popup = 'continue';
-//			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_bad_ending"]; 
-//			$scope.popupPicture = "popup_badEnding";
-//			break;
+			case 'badEnding': 
+			$scope.popup = 'continue';
+			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_bad_ending"]; 
+			$scope.popupPicture = "popup_badEnding";
+			break;
 //			case 'invasion': 
 //			$scope.popup = 'continue';
 //			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_invasion"]; 
@@ -172,7 +172,7 @@ app.controller("ViewController", function($scope) {
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_pottery"];
 			$scope.popupPicture = "popup_pottery";
 			break;			
-			case 'rampart': 
+		case 'rampart': 
 			$scope.popup = 'continue';
 			$scope.popupYesNo_Text = $scope.dictionary[$scope.lang]["popup_ramparts"]; 
 			$scope.popupPicture = "popup_rampart";
@@ -593,7 +593,6 @@ app.controller("ViewController", function($scope) {
 		case "writing":
 			// show popup
 			$scope.showPopup($scope.selectedTechnologie, "");
-			
 			// set scribes editable
 			scribesResearched = true;
 			updatePyramid();
@@ -603,15 +602,27 @@ app.controller("ViewController", function($scope) {
 			$scope.showPopup($scope.selectedTechnologie, "");
 			break;
 		}
-		
+
+
 		// first rouned -> display rampart
 		if ($scope.nbrTurn == 1)
 			$scope.showPopup("rampart", "");
 
-
-		if ($scope.nbrTurn >= 5){
-
+		// if population is 0 -> the player has failed
+		if ($scope.gameTableValues['Population'] == 0){
+			$scope.showPopup("badEnding", "");
 			$scope.displayTheScore();
+			$scope.scoreText =  $scope.dictionary[$scope.lang]["popup_bad_ending"]; 
+			$scope.scorePicture = "popup_badEnding";
+		}
+
+		// display the score after 5 turns - good ending
+		if ($scope.nbrTurn >= 5){
+			$scope.showPopup("goodEnding", "");
+			$scope.displayTheScore();
+			$scope.scoreText =  $scope.dictionary[$scope.lang]["popup_good_ending"]; 
+			$scope.scorePicture = "popup_goodEnding";
+			
 		}
 
 
